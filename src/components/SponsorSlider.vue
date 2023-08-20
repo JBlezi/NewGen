@@ -1,5 +1,5 @@
 <template>
-  <section class="w-screen h-32 overflow-x-hidden" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp" @touchstart="handleTouchStart"
+  <section class="w-screen h-32 overflow-x-hidden" id="sponsor-slider" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp" @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd">
     <div class="h-32 top-0 left-0">
@@ -38,12 +38,28 @@ export default {
     }
   },
   mounted() {
-    this.startSliding();
+    window.addEventListener('scroll', this.checkIfInView);
+    this.checkIfInView();
   },
   beforeUnmount() {
     clearInterval(this.intervalId);
+    window.removeEventListener('scroll', this.checkIfInView);
   },
   methods: {
+    checkIfInView() {
+        const section = document.getElementById("sponsor-slider");
+        const rect = section.getBoundingClientRect();
+        const elemTop = rect.top;
+        const elemBottom = rect.bottom;
+
+        // Check if the element is in the viewport
+        const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+
+        if (isVisible) {
+            this.startSliding();
+            window.removeEventListener('scroll', this.checkIfInView);  // remove listener if we've started sliding
+        }
+    },
     startSliding() {
       this.intervalId = setInterval(() => {
         if (!this.isDragging) {
