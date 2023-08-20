@@ -1,10 +1,16 @@
 <template>
-  <div class="h-32 overflow-hidden w-full">
-    <div class="h-full flex transition transform ease-in-out delay-500" :style="{ transform: `translateX(-${currentSlide * slideWidth}%)` }">
-      <div class="h-full w-full bg-contain bg-no-repeat bg-center" v-for="image in images" :key="image" :style="{ backgroundImage: `url(${image})` }"></div>
+  <section class="w-screen h-32 overflow-x-hidden" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp" @touchstart="handleTouchStart"
+    @touchmove="handleTouchMove"
+    @touchend="handleTouchEnd">
+    <div class="h-32 top-0 left-0">
+      <div class="h-full flex transition-transform" :style="{ transform: `translateX(-${currentSlide}px)` }">
+        <img class="h-full mx-8 py-2" v-for="image in images" :key="image" :src="image">
+
+      </div>
     </div>
-  </div>
+  </section>
 </template>
+
 
 <script>
 export default {
@@ -12,8 +18,8 @@ export default {
   data() {
     return {
       images: [
-        require('@/assets/btd.png'),
         require('@/assets/acce-transparent.png'),
+        require('@/assets/btd.png'),
         require('@/assets/bunterpanda.png'),
         require('@/assets/cathayplay.png'),
         require('@/assets/gotiger-red.png'),
@@ -23,15 +29,71 @@ export default {
         // ... add more images as required
       ],
       currentSlide: 0,
-      slideWidth: 100
+      speed: 2,
+      imageWidthIncludingMargin: 240,  // estimate width of each image including its margins. Adjust this value as per actual width + margins.
+      intervalId: null,
+      isDragging: false,
+      startDragX: null,
+      lastDragX: null
     }
   },
   mounted() {
-    setInterval(this.advanceSlide, 3000);  // every 3 seconds
+    this.startSliding();
+  },
+  beforeUnmount() {
+    clearInterval(this.intervalId);
   },
   methods: {
-    advanceSlide() {
-      this.currentSlide = (this.currentSlide + 1) % this.images.length;
+    startSliding() {
+      this.intervalId = setInterval(() => {
+        if (!this.isDragging) {
+          this.currentSlide += this.speed;
+
+          if (this.currentSlide >= (this.images.length - 1) * this.imageWidthIncludingMargin) {
+            clearInterval(this.intervalId);
+            setTimeout(() => {
+              this.currentSlide = 0;
+            }, 2000);
+          }
+        }
+      }, 30);
+    },
+    handleMouseDown(event) {
+      clearInterval(this.intervalId);
+      this.isDragging = true;
+      this.startDragX = event.clientX;
+      this.lastDragX = event.clientX;
+    },
+    handleMouseMove(event) {
+      if (this.isDragging) {
+        let delta = event.clientX - this.lastDragX;
+        this.currentSlide += delta;
+        this.lastDragX = event.clientX;
+      }
+    },
+    handleMouseUp() {
+      this.isDragging = false;
+      this.startDragX = null;
+      this.lastDragX = null;
+      this.startSliding();
+    },
+    handleTouchStart(event) {
+      clearInterval(this.intervalId);
+      this.isDragging = true;
+      this.startDragX = event.touches[0].clientX;
+      this.lastDragX = event.touches[0].clientX;
+    },
+    handleTouchMove(event) {
+      if (this.isDragging) {
+        let delta = event.touches[0].clientX - this.lastDragX;
+        this.currentSlide += delta;
+        this.lastDragX = event.touches[0].clientX;
+      }
+    },
+    handleTouchEnd() {
+      this.isDragging = false;
+      this.startDragX = null;
+      this.lastDragX = null;
     }
   }
 }
