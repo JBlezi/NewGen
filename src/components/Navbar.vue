@@ -1,8 +1,8 @@
 <template>
-  <nav>
-    <div class="m-4 h-8">
+  <nav class="fixed w-full bg-white top-0 h-16 z-10">
+    <div>
       <div class="flex flex-row">
-        <img :src="logoImage" alt="Logo" class="h-8 w-8 mr-2">
+        <img :src="logoImage" alt="Logo" class="h-8 w-8 m-4">
         <span class="self-center">NewGen</span>
       </div>
       <div>
@@ -17,7 +17,7 @@
         </div>
 
         <!-- Navigation Links -->
-        <div v-if="isOpen" class="bg-white fixed top-12 left-0 w-full h-full">
+        <div v-if="isOpen" class="bg-white fixed top-12 text-center w-full h-full">
           <ul class="list-none p-8 mt-12">
             <li class="text-2xl mb-4"><router-link to="/festival">FESTIVAL</router-link></li>
             <li class="text-2xl mb-4"><router-link to="/about-us">ABOUT US</router-link></li>
@@ -27,7 +27,7 @@
           </ul>
 
           <!-- Social Media Links -->
-          <div class="absolute left-0 right-0 bottom-1/4 text-center space-x-8">
+          <div class="text-center space-x-8">
             <font-awesome-icon :icon="['fab', 'facebook-f']" class="h-6 w-6"/>
             <font-awesome-icon :icon="['fab', 'instagram']" class="h-6 w-6"/>
             <font-awesome-icon :icon="['fab', 'youtube']" class="h-6 w-6"/>

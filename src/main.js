@@ -6,10 +6,13 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
 const app = createApp(App);
+library.add(faChevronDown);
 library.add(faCoffee);
 library.add(faFacebookF, faInstagram, faYoutube);
 
