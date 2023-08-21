@@ -2,31 +2,16 @@
   <HeroSection :bgImage="festivalImage">
     <span class="text-main">Festival Lineup 2023</span>
   </HeroSection>
-  <ScreeningSection
-    v-for="(section, index) in screeningSections"
-    :key="index"
-    button="GET TICKETS"
-    :movieList="section.movies"
-    :bgColor="index % 2 ? desiredColor : 'white'">
-    <template v-slot:heading>
-      {{ section.heading }}
-    </template>
-    <template v-slot:subheading>
-      {{ section.subheading }}
-    </template>
-  </ScreeningSection>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
 <script>
 import HeroSection from '@/components/HeroSection.vue';
-import ScreeningSection from '@/components/ScreeningSection.vue'
 
 export default {
   name: 'Festival',
   components: {
     HeroSection,
-    ScreeningSection,
   },
   data() {
     return {

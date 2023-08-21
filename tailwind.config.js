@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         'footer': '#464646',
         'main': '#FFBD59',
+        'main-light': '#FFF8EE',
       },
       backgroundImage: {
         'mainFestivalImage': "url('@/assets/newgen_2023.png')",
