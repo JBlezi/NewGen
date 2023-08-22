@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/views/Home.vue';
 import About from '@/views/About.vue';
 import Festival from '@/views/Festival.vue';
-import LoveisLove from '@/views/LoveisLove.vue';
+import MovieDetails from '@/views/MovieDetails.vue';
 
 const routes = [
     {
@@ -21,10 +21,11 @@ const routes = [
       component: Festival
     },
     {
-      path: '/love-is-love',
-      name: 'love-is-love',
-      component: LoveisLove
-    }
+      path: '/movie/:id',
+      name: 'movieDetails',
+      component: MovieDetails,
+      props: true
+    },
 ];
 
 const router = createRouter({

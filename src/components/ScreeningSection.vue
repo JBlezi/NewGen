@@ -13,15 +13,16 @@
               </h3>
               <font-awesome-icon :icon="['fas', 'chevron-right']" class="h-6 w-6 absolute bottom-1/2 right-5 transform translate-y-1/2" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRight"/>
               <font-awesome-icon :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-1/2 left-5 transform translate-y-1/2" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
-
-              <div class="flex flex-col justify-center h-4/5">
-                <img :src="movieList[this.counter].poster" alt="" class="h-full max-h-[22rem] self-center">
-                <h4 class="font-medium text-lg flex justify-center text-main">
-                  {{ movieList[this.counter].title }}
-                </h4>
-                <h4 class="font-medium text-lg flex justify-center">
-                  {{ movieList[this.counter].director }} | {{ movieList[this.counter].year }}
-                </h4>
+              <div class="h-4/5">
+                <router-link :to="`/movie/${movieList.id}`" class="flex flex-col justify-center">
+                  <img :src="movieList.movies[this.counter].poster" alt="" class="h-full max-h-[22rem] self-center">
+                  <h4 class="font-medium text-lg flex justify-center text-main">
+                    {{ movieList.movies[this.counter].title }}
+                  </h4>
+                  <h4 class="font-medium text-lg flex justify-center">
+                    {{ movieList.movies[this.counter].director }} | {{ movieList.movies[this.counter].year }}
+                  </h4>
+                </router-link>
               </div>
               <div class="mb-16 flex justify-center">
                 <button class="border border-main font-bold rounded-full p-4">{{ button }}</button>
