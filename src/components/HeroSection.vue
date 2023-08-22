@@ -10,8 +10,11 @@
             <h2 class="px-8 font-medium text-lg mb-4">
               <slot name="subheading"></slot>
             </h2>
-            <h3 class="px-8 font-medium text-lg mb-16">
+            <h3 class="px-8 font-medium text-lg mb-4">
               <slot name="description"></slot>
+            </h3>
+            <h3 class="px-8 font-medium text-lg mb-16">
+              <slot name="middle-button"></slot>
             </h3>
           </div>
         </div>

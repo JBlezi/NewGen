@@ -1,0 +1,127 @@
+<template>
+  <HeroSection :bgImage="bgImagePath0">
+    <template v-slot:heading>
+      Submissions 2023
+    </template>
+    <template v-slot:subheading>
+      Submit your movie now on:
+    </template>
+    <template v-slot:middle-button>
+      <button class="bg-main rounded-lg"><a href="https://filmfreeway.com/" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
+    </template>
+  </HeroSection>
+  <section class="mt-8 mb-8">
+    <div class="px-8">
+      <h3 class="text-main text-3xl italic font-medium mb-2">Submission Deadlines & Fees</h3>
+      <p class="font-medium text-lg">May 7, 2023 (CET) - 1€</p>
+      <p class="font-medium text-lg">June 30, 2023 (CET) - 3€</p>
+    </div>
+  </section>
+  <section class="mt-8 mb-8">
+    <div class="px-8">
+      <h3 class="text-main text-3xl italic font-medium mb-2">Terms & Conditions</h3>
+      <ol class="font-medium text-lg list-decimal px-6">
+        <li>
+          <div>The submitted film must</div>
+          <ol class="list-decimal pl-6 mt-2">
+            <li>be made in one or more than one of the Chinese languages (Mandarin, Cantonese, or other dialects)</li>
+            <li>be produced, directed, written, cinematographed, or performed by at least one ethnic Chinese filmmaker.</li>
+          </ol>
+        </li>
+        <li>The submitted film must provide English subtitles/captions if the dialogues are not in English.</li>
+        <li>The submitted film should be made after January 1, 2021.</li>
+        <li>The submitted film should run no longer than 40 minutes.</li>
+        <li>We welcome all genres and themes.</li>
+        <li>Applicants may submit more than one title, but an entry fee is required for each title.</li>
+        <li>We do not request premiere from applicants.</li>
+        <li>Once selected, the copyright holder of the submission must authorize the selected title to be screened at least once at the festival in Berlin, and allow us to use related promotional materials.</li>
+      </ol>
+    </div>
+  </section>
+  <section class="mt-8 mb-8">
+    <div class="px-8">
+      <h3 class="text-main text-3xl italic font-medium mb-2">How To Submit</h3>
+      <p class="font-medium text-lg">To apply, please fill out the application form and submit your film on <a href="https://filmfreeway.com/" target="_blank">FilmFreeway</a>.<br><br></p>
+      <p class="font-medium text-lg">In principle, we do not accept new versions after your successful submission. In case of major changes, please contact info@bngcff.com before the regular submission deadline.</p>
+    </div>
+  </section>
+  <div class="px-8 mb-16">
+    <p class="mb-2 font-medium">Submit on:</p>
+    <button class="bg-main rounded-lg"><a href="https://filmfreeway.com/" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
+  </div>
+  <SponsorSlider></SponsorSlider>
+</template>
+
+<!-- eslint-disable vue/multi-word-component-names -->
+<script>
+import HeroSection from '@/components/HeroSection.vue';
+import SponsorSlider from '@/components/SponsorSlider.vue';
+
+
+
+export default {
+  name: 'Submissions',
+  components: {
+    HeroSection,
+    SponsorSlider,
+  },
+  data() {
+    return {
+      bgImagePath0: require('@/assets/Film-bg.png'),
+      bgImagePath: require('@/assets/palm_trees.png'),
+      bgImagePath2: require('@/assets/moviemento.png'),
+      bgImagePath3: require('@/assets/projector.png'),
+      screeningSections: [
+        {
+          movies: [
+            { title: 'Will you look at me', director: 'SHULI HUANG', year: '2022', poster: require('@/assets/will_you_look_at_me.png'), id:1 },
+            { title: 'Lan Yu', director: 'STANLEY KWANG', year: '2001', poster: require('@/assets/lan_yu.png'), id:2 },
+          ],
+          heading: "Love is Love",
+          subheading: "Nov. 3 2022, 7:30pm | OmeU OPENING FILM",
+          id: 1
+        },
+        {
+          movies: [
+            { title: 'What can I hold you with', director: 'DI SHEN', year: '2021', poster: require('@/assets/what_can_i_hold_you_with.png'), id:3 },
+            { title: 'Everything near becomes distant', director: 'YUNYI ZHU', year: '2022', poster: require('@/assets/everything_near_becomes_distant.png'), id:4 },
+            { title: 'Go Fishing', director: 'XIN NAN', year: '2022', poster: require('@/assets/go_fishing.png'), id:5 },
+          ],
+          heading: "On Your Own",
+          subheading: "Nov. 4 2022, 5:00pm | OmeU NEWGEN 2022",
+          id: 2
+        },
+        {
+          movies: [
+            { title: 'Reconstructing Rural China', director: 'DI SHEN', year: '2021', poster: require('@/assets/yesterday_i_was_the_moon.png'), id:6 },
+            { title: 'Everything near becomes distant', director: 'YUNYI ZHU', year: '2022', poster: require('@/assets/singing_in_the_widerness.png'), id:7 },
+          ],
+          heading: "Reconstructing Rural China",
+          subheading: "Nov. 4 2022, 5:00pm | OmeU NEWGEN 2022",
+          id: 3
+        },
+        {
+          movies: [
+            { title: 'What can I hold you with', director: 'DI SHEN', year: '2021', poster: require('@/assets/childrens_corner.png'), id:8 },
+            { title: 'Everything near becomes distant', director: 'YUNYI ZHU', year: '2022', poster: require('@/assets/Egg-Hair-Tie-Homework-Books.png'), id:9 },
+            { title: 'Go Fishing', director: 'XIN NAN', year: '2022', poster: require('@/assets/nanhai_girls.png'), id:10 },
+            { title: 'What can I hold you with', director: 'DI SHEN', year: '2021', poster: require('@/assets/secrets_at_the_intermissions.png'), id:11 },
+            { title: 'Everything near becomes distant', director: 'YUNYI ZHU', year: '2022', poster: require('@/assets/a_firecracker_story.png'), id:12 },
+            { title: 'Go Fishing', director: 'XIN NAN', year: '2022', poster: require('@/assets/summer_swing.png'), id: 13 },
+          ],
+          heading: "Kids no more",
+          subheading: "Nov. 4 2022, 5:00pm | OmeU NEWGEN 2022",
+          id: 4
+        },
+        // ... additional sections ...
+      ],
+    desiredColor: "#FFF8EE"
+    }
+  }
+};
+
+</script>
+
+<style scoped>
+
+</style>

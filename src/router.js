@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue';
 import About from '@/views/About.vue';
 import Festival from '@/views/Festival.vue';
 import MovieDetails from '@/views/MovieDetails.vue';
+import Submissions from '@/views/Submissions.vue';
 
 const routes = [
     {
@@ -25,6 +26,11 @@ const routes = [
       name: 'movieDetails',
       component: MovieDetails,
       props: true
+    },
+    {
+      path: '/submissions',
+      name: 'submissions',
+      component: Submissions
     },
 ];
 
