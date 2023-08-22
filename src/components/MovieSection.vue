@@ -23,9 +23,25 @@
     <div class="">
       <img :src="movie.director_foto" alt="Still Shot" class="h-full min-w-full"/>
     </div>
-    <div>
-      {{ movie.director.toLowerCase() }}
+    <div class="flex justify-between mb-4">
+      <div class="font-medium">
+        {{ movie.director }}
+      </div>
+      <div>
+        <span v-if="!showModal" class="text-main underline font-medium cursor-pointer" @click="toggleModal">Read more</span>
+        <span v-else class="text-main underline font-medium cursor-pointer" @click="toggleModal">Close</span>
+      </div>
     </div>
+
+    <!-- Modal overlay -->
+    <div v-if="showModal" class="w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white">
+        <p>
+          {{ movie.description }}
+        </p>
+      </div>
+    </div>
+
   </section>
 </template>
 
@@ -35,10 +51,13 @@ export default {
   props: ['button', 'movie'],
   data() {
     return {
+      showModal: false
     };
   },
   methods: {
-
+    toggleModal() {
+      this.showModal = !this.showModal;
+    }
   },
   computed: {
 
