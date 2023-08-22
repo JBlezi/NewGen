@@ -1,6 +1,8 @@
 <template>
   <HeroSection :bgImage="festivalImage">
+    <template v-slot:heading>
       Berlin <br>NewGen <br>Chinese <br>Film Festival <br><span class="text-main">2023</span>
+    </template>
   </HeroSection>
   <HomeSection button="LEARN MORE" :bgImage="bgImagePath3">
     <template v-slot:heading>
