@@ -31,7 +31,7 @@
       Discover the entries and winners of past NewGen Film Festivals
     </template>
   </HomeSection>
-  <SponsorSlider></SponsorSlider>
+  <SponsorSlider :sponsors="images"></SponsorSlider>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
@@ -52,7 +52,18 @@ export default {
       festivalImage: require('@/assets/newgen_2023.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
-      bgImagePath3: require('@/assets/projector.png')
+      bgImagePath3: require('@/assets/projector.png'),
+      images: [
+        require('@/assets/acce-transparent.png'),
+        require('@/assets/btd.png'),
+        require('@/assets/bunterpanda.png'),
+        require('@/assets/cathayplay.png'),
+        require('@/assets/gotiger-red.png'),
+        require('@/assets/qizhihua.png'),
+        require('@/assets/tingsong.png'),
+        require('@/assets/touchthelimit.png'),
+        // ... add more images as required
+      ],
     };
   }
 }

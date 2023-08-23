@@ -4,6 +4,7 @@ import About from '@/views/About.vue';
 import Festival from '@/views/Festival.vue';
 import MovieDetails from '@/views/MovieDetails.vue';
 import Submissions from '@/views/Submissions.vue';
+import SpecialEvent from '@/views/SpecialEvent.vue';
 
 const routes = [
     {
@@ -31,6 +32,11 @@ const routes = [
       path: '/submissions',
       name: 'submissions',
       component: Submissions
+    },
+    {
+      path: '/special-event',
+      name: 'special-event',
+      component: SpecialEvent
     },
 ];
 

@@ -4,7 +4,7 @@
     @touchend="handleTouchEnd">
     <div class="h-32 top-0 left-0">
       <div class="h-full flex transition-transform" :style="{ transform: `translateX(-${currentSlide}px)` }">
-        <img class="h-full mx-8 py-2" v-for="image in images" :key="image" :src="image">
+        <img class="h-full mx-8 py-2" v-for="sponsor in sponsors" :key="sponsor" :src="sponsor">
 
       </div>
     </div>
@@ -15,22 +15,12 @@
 <script>
 export default {
   name: 'SponsorSlider',
+  props: ['sponsors'],
   data() {
     return {
-      images: [
-        require('@/assets/acce-transparent.png'),
-        require('@/assets/btd.png'),
-        require('@/assets/bunterpanda.png'),
-        require('@/assets/cathayplay.png'),
-        require('@/assets/gotiger-red.png'),
-        require('@/assets/qizhihua.png'),
-        require('@/assets/tingsong.png'),
-        require('@/assets/touchthelimit.png'),
-        // ... add more images as required
-      ],
       currentSlide: 0,
       speed: 2,
-      imageWidthIncludingMargin: 240,  // estimate width of each image including its margins. Adjust this value as per actual width + margins.
+      imageWidth: 240,  // estimate width of each image including its margins. Adjust this value as per actual width + margins.
       intervalId: null,
       isDragging: false,
       startDragX: null,
@@ -65,7 +55,7 @@ export default {
         if (!this.isDragging) {
           this.currentSlide += this.speed;
 
-          if (this.currentSlide >= (this.images.length - 1) * this.imageWidthIncludingMargin) {
+          if (this.currentSlide >= (this.sponsors.length - 1) * this.imageWidth) {
             clearInterval(this.intervalId);
             setTimeout(() => {
               this.currentSlide = 0;

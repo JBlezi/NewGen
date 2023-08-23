@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="h-screen bg-cover" :style="backgroundStyle">
-      <div class="bg-white h-screen bg-opacity-90 relative">
+      <div class="bg-white h-screen bg-gradient relative">
         <div class="flex items-center h-screen">
           <div class="flex flex-col">
             <h1 class="text-5xl px-8 font-bold text-main mb-4">
@@ -42,4 +42,12 @@
 </script>
 
 <style scoped>
-</style>
+.bg-gradient {
+/*   background: linear-gradient(180deg, rgba(0, 106, 106, 0.50) 0%, rgba(49, 106, 106, 0.70) 40.63%, #FFF 100%);
+ */
+ /* background: var(--linear-light, linear-gradient(180deg, #D39C49 0%, rgba(255, 255, 255, 0.50) 40.63%, rgba(255, 255, 255, 0.70) 73.96%, #FFF 100%)); */
+/*  background: linear-gradient(180deg, #FFBD59 0%, rgba(255, 255, 255, 0.50) 40.63%, rgba(255, 255, 255, 0.70) 73.96%, #FFF 100%); */
+/*  background: linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%);
+ */ background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%);
+}
+ </style>
