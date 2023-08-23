@@ -5,6 +5,7 @@ import Festival from '@/views/Festival.vue';
 import MovieDetails from '@/views/MovieDetails.vue';
 import Submissions from '@/views/Submissions.vue';
 import SpecialEvent from '@/views/SpecialEvent.vue';
+import JoinUs from '@/views/JoinUs.vue';
 
 const routes = [
     {
@@ -37,6 +38,11 @@ const routes = [
       path: '/special-event',
       name: 'special-event',
       component: SpecialEvent
+    },
+    {
+      path: '/join-us',
+      name: 'join-us',
+      component: JoinUs
     },
 ];
 

@@ -28,7 +28,7 @@
         {{ movie.director }}
       </div>
       <div>
-        <span v-if="!showModal" class="text-main underline font-medium cursor-pointer" @click="toggleModal">Read more</span>
+        <span v-if="!showModal" class="text-main underline font-medium cursor-pointer" @click="toggleModal">Read Bio</span>
         <span v-else class="text-main underline font-medium cursor-pointer" @click="toggleModal">Close</span>
       </div>
     </div>
