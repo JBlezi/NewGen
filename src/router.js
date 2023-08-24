@@ -10,6 +10,7 @@ import ContactForm from '@/views/Contact.vue';
 import PressReleases from '@/views/PressReleases.vue';
 import Sponsors from '@/views/Sponsors.vue';
 import Partners from '@/views/Partners.vue';
+import Archive from '@/views/Archive.vue';
 
 const routes = [
     {
@@ -67,6 +68,11 @@ const routes = [
       path: '/partners',
       name: 'partners',
       component: Partners
+    },
+    {
+      path: '/archive',
+      name: 'archive',
+      component: Archive
     },
 ];
 
