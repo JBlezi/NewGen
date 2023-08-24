@@ -9,6 +9,7 @@ import JoinUs from '@/views/JoinUs.vue';
 import ContactForm from '@/views/Contact.vue';
 import PressReleases from '@/views/PressReleases.vue';
 import Sponsors from '@/views/Sponsors.vue';
+import Partners from '@/views/Partners.vue';
 
 const routes = [
     {
@@ -61,6 +62,11 @@ const routes = [
       path: '/sponsors',
       name: 'sponsors',
       component: Sponsors
+    },
+    {
+      path: '/partners',
+      name: 'partners',
+      component: Partners
     },
 ];
 
