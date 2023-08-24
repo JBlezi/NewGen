@@ -6,6 +6,11 @@ import MovieDetails from '@/views/MovieDetails.vue';
 import Submissions from '@/views/Submissions.vue';
 import SpecialEvent from '@/views/SpecialEvent.vue';
 import JoinUs from '@/views/JoinUs.vue';
+import ContactForm from '@/views/Contact.vue';
+import PressReleases from '@/views/PressReleases.vue';
+import Sponsors from '@/views/Sponsors.vue';
+import Partners from '@/views/Partners.vue';
+import Archive from '@/views/Archive.vue';
 
 const routes = [
     {
@@ -43,6 +48,31 @@ const routes = [
       path: '/join-us',
       name: 'join-us',
       component: JoinUs
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: ContactForm
+    },
+    {
+      path: '/press-releases',
+      name: 'press-releases',
+      component: PressReleases
+    },
+    {
+      path: '/sponsors',
+      name: 'sponsors',
+      component: Sponsors
+    },
+    {
+      path: '/partners',
+      name: 'partners',
+      component: Partners
+    },
+    {
+      path: '/archive',
+      name: 'archive',
+      component: Archive
     },
 ];
 

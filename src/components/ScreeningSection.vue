@@ -1,8 +1,8 @@
 <template>
   <section>
-    <div class="h-screen bg-cover" :style="{ backgroundColor: bgColor }">
-      <div class="h-screen relative">
-        <div class="flex h-screen">
+    <div class="bg-cover" :style="{ backgroundColor: bgColor }">
+      <div class="relative">
+        <div class="flex">
 
             <div class="mt-8 flex flex-col px-8 h-full">
               <h2 class="text-4xl font-bold text-main">
@@ -11,11 +11,13 @@
               <h3 class="font-medium mb-4">
                 <slot name="subheading"></slot>
               </h3>
-              <font-awesome-icon :icon="['fas', 'chevron-right']" class="h-6 w-6 absolute bottom-1/2 right-5 transform translate-y-1/2" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRight"/>
-              <font-awesome-icon :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-1/2 left-5 transform translate-y-1/2" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
+              <font-awesome-icon v-if="movieList.movies.length > 1 && !button" :icon="['fas', 'chevron-right']" class="h-6 w-6 absolute bottom-[42%] right-5 transform translate-y-1/2" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRight"/>
+              <font-awesome-icon v-if="movieList.movies.length > 1 && button" :icon="['fas', 'chevron-right']" class="h-6 w-6 absolute bottom-1/2 right-5 transform translate-y-1/2" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRight"/>
+              <font-awesome-icon v-if="movieList.movies.length > 1 && !button" :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-[42%] left-5 transform translate-y-1/2" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
+              <font-awesome-icon v-if="movieList.movies.length > 1 && button" :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-1/2 left-5 transform translate-y-1/2" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
               <div class="h-4/5">
                 <router-link :to="`/movie/${movieList.id}`" class="flex flex-col justify-center">
-                  <img :src="movieList.movies[this.counter].poster" alt="" class="h-full max-h-[22rem] self-center">
+                  <img :src="movieList.movies[this.counter].poster" alt="" class="h-full max-h-[22rem] min-h-[22rem] self-center">
                   <h4 class="font-medium text-lg flex justify-center text-main">
                     {{ movieList.movies[this.counter].title }}
                   </h4>
@@ -24,7 +26,7 @@
                   </h4>
                 </router-link>
               </div>
-              <div class="mb-16 flex justify-center">
+              <div v-if="button" class="my-8 flex justify-center">
                 <button class="border border-main font-bold rounded-full p-4">{{ button }}</button>
               </div>
             </div>
@@ -47,7 +49,7 @@ export default {
   },
   methods: {
     handleGalleryRight() {
-      if (this.counter < this.movieList.length -1) {
+      if (this.counter < this.movieList.movies.length -1) {
         this.counter += 1;
       }
     },
@@ -62,7 +64,7 @@ export default {
     return this.counter === 0;
     },
     isRightArrowDisabled() {
-      return this.counter === this.movieList.length - 1;
+      return this.counter === this.movieList.movies.length - 1;
     },
     backgroundStyle() {
       return {
