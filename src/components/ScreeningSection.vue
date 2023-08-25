@@ -4,8 +4,8 @@
       <div class="relative">
         <div class="flex">
 
-            <div class="mt-8 flex flex-col px-8 h-full">
-              <h2 class="text-4xl font-bold text-main">
+            <div class="mt-8 flex flex-col px-8 h-full w-full">
+              <h2 class="text-3xl font-bold text-main">
                 <slot name="heading"></slot>
               </h2>
               <h3 class="font-medium mb-4">
