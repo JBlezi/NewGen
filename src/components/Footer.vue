@@ -9,9 +9,9 @@
           <li class="mb-2"><router-link to="/contact">CONTACT</router-link></li>
         </ul>
         <ul class="list-none text-left p-8">
-          <li class="mb-2"><router-link to="/contact">SPONSORS</router-link></li>
-          <li class="mb-2"><router-link to="/contact">PRESS RELEASES</router-link></li>
-          <li class="mb-2"><router-link to="/contact">PARTNERS</router-link></li>
+          <li class="mb-2"><router-link to="/sponsors">SPONSORS</router-link></li>
+          <li class="mb-2"><router-link to="/press-releases">PRESS RELEASES</router-link></li>
+          <li class="mb-2"><router-link to="/partners">PARTNERS</router-link></li>
         </ul>
       </div>
       <div class="flex px-8 justify-between align-text-bottom">
@@ -19,9 +19,9 @@
           © 2022 Berlin NewGen Chinese Film Festival. All rights reserved.
         </div>
         <div class="text-center space-x-4 mt-4">
-          <font-awesome-icon :icon="['fab', 'facebook-f']" class="h-6 w-6"/>
-          <font-awesome-icon :icon="['fab', 'instagram']" class="h-6 w-6"/>
-          <font-awesome-icon :icon="['fab', 'youtube']" class="h-6 w-6"/>
+          <a href="https://www.facebook.com/NEW.GEN.BERLIN" target="_blank"><font-awesome-icon :icon="['fab', 'facebook-f']" class="h-6 w-6"/></a>
+          <a href="https://www.instagram.com/new_gen_berlin/" target="_blank"><font-awesome-icon :icon="['fab', 'instagram']" class="h-6 w-6"/></a>
+          <a href="https://www.youtube.com/channel/UCIZrq3i32Tt56IAGWWWFZqA" target="_blank"><font-awesome-icon :icon="['fab', 'youtube']" class="h-6 w-6"/></a>
         </div>
       </div>
     </div>

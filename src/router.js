@@ -19,7 +19,7 @@ const routes = [
       component: Home
     },
     {
-      path: '/about',
+      path: '/about-us',
       name: 'about',
       component: About
     },
@@ -77,6 +77,9 @@ const routes = [
 ];
 
 const router = createRouter({
+  scrollBehavior () {
+    return { top: 0, left: 0 }
+  },
   history: createWebHistory(),
   routes
 });

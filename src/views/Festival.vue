@@ -9,6 +9,7 @@
     :key="index"
     button="GET TICKETS"
     :movieList="section"
+    :button_link="button_link"
     :bgColor="index % 2 ? desiredColor : 'white'">
     <template v-slot:heading>
       {{ section.heading }}
@@ -36,6 +37,7 @@ export default {
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
       bgImagePath3: require('@/assets/projector.png'),
+      button_link: 'https://moviemento.de/',
       screeningSections: [
         {
           movies: [

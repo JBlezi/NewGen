@@ -1,9 +1,11 @@
 <template>
   <nav class="fixed w-full bg-white top-0 h-16 z-10">
     <div>
-      <div class="flex flex-row">
-        <img :src="logoImage" alt="Logo" class="h-8 w-8 m-4">
-        <span class="self-center">NewGen</span>
+      <div class="">
+        <router-link to="/" class="flex flex-row" @click="isOpen = false">
+          <img :src="logoImage" alt="Logo" class="h-8 w-8 m-4">
+          <span class="self-center">NewGen</span>
+        </router-link>
       </div>
       <div>
         <!-- Hamburger & Close Icon -->
@@ -19,18 +21,18 @@
         <!-- Navigation Links -->
         <div v-if="isOpen" class="bg-white fixed top-12 text-center w-full h-full">
           <ul class="list-none p-8 mt-12">
-            <li class="text-2xl mb-4"><router-link to="/festival">FESTIVAL</router-link></li>
-            <li class="text-2xl mb-4"><router-link to="/about-us">ABOUT US</router-link></li>
-            <li class="text-2xl mb-4"><router-link to="/join-us">JOIN US</router-link></li>
-            <li class="text-2xl mb-4"><router-link to="/submission">SUBMISSION</router-link></li>
-            <li class="text-2xl mb-4"><router-link to="/contact">CONTACT</router-link></li>
+            <li class="text-2xl mb-4" @click="isOpen = !isOpen"><router-link to="/festival">FESTIVAL</router-link></li>
+            <li class="text-2xl mb-4" @click="isOpen = !isOpen"><router-link to="/about-us">ABOUT US</router-link></li>
+            <li class="text-2xl mb-4" @click="isOpen = !isOpen"><router-link to="/join-us">JOIN US</router-link></li>
+            <li class="text-2xl mb-4" @click="isOpen = !isOpen"><router-link to="/submissions">SUBMISSIONS</router-link></li>
+            <li class="text-2xl mb-4" @click="isOpen = !isOpen"><router-link to="/contact">CONTACT</router-link></li>
           </ul>
 
           <!-- Social Media Links -->
           <div class="text-center space-x-8">
-            <font-awesome-icon :icon="['fab', 'facebook-f']" class="h-6 w-6"/>
-            <font-awesome-icon :icon="['fab', 'instagram']" class="h-6 w-6"/>
-            <font-awesome-icon :icon="['fab', 'youtube']" class="h-6 w-6"/>
+            <a href="https://www.facebook.com/NEW.GEN.BERLIN" target="_blank"><font-awesome-icon :icon="['fab', 'facebook-f']" class="h-6 w-6"/></a>
+            <a href="https://www.instagram.com/new_gen_berlin/" target="_blank"><font-awesome-icon :icon="['fab', 'instagram']" class="h-6 w-6"/></a>
+            <a href="https://www.youtube.com/channel/UCIZrq3i32Tt56IAGWWWFZqA" target="_blank"><font-awesome-icon :icon="['fab', 'youtube']" class="h-6 w-6"/></a>
           </div>
         </div>
       </div>

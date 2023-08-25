@@ -10,7 +10,7 @@
       Moviemento Kino, Kottbusser Damm 22, 10967 Berlin
     </template>
     <template v-slot:button>
-      <Button>GET TICKETS</Button>
+      <Button :link="button_link">GET TICKETS</Button>
     </template>
   </HeroSection>
   <MovieSection
@@ -18,7 +18,7 @@
     :key="index"
     :movie="movie">
   </MovieSection>
-  <Button>GET TICKETS</Button>
+  <Button :link="button_link">GET TICKETS</Button>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
@@ -39,6 +39,7 @@ export default {
     return {
       movieImage: require('@/assets/singing_in_the_widerness.png'),
       screening: {},
+      button_link: 'https://moviemento.de/',
       screeningSections: [
         {
           movies: [

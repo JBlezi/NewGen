@@ -49,7 +49,7 @@
     <p class="mb-2 font-medium">Submit on:</p>
     <button class="bg-main rounded-lg"><a href="https://filmfreeway.com/" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
   </div>
-  <SponsorSlider></SponsorSlider>
+  <SponsorSlider :sponsors="images"></SponsorSlider>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
@@ -114,6 +114,17 @@ export default {
           id: 4
         },
         // ... additional sections ...
+      ],
+      images: [
+        require('@/assets/acce-transparent.png'),
+        require('@/assets/btd.png'),
+        require('@/assets/bunterpanda.png'),
+        require('@/assets/cathayplay.png'),
+        require('@/assets/gotiger-red.png'),
+        require('@/assets/qizhihua.png'),
+        require('@/assets/tingsong.png'),
+        require('@/assets/touchthelimit.png'),
+        // ... add more images as required
       ],
     desiredColor: "#FFF8EE"
     }

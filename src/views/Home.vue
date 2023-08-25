@@ -1,12 +1,12 @@
 <template>
   <HeroSection :bgImage="festivalImage">
     <template v-slot:heading>
-      Berlin <br>NewGen <br>Chinese <br>Film Festival <br><span class="text-main">2023</span>
+      Berlin <br>NewGen <br>Chinese <br>Film Festival
     </template>
   </HeroSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath3">
+  <HomeSection button="LEARN MORE" :bgImage="bgImagePath3" :button_link="buttonLink">
     <template v-slot:heading>
-      Special <br><span class="pl-8">Summer</span> <br><span class="pl-16">Screening</span>
+      Special <br><span class="pl-3">Summer</span> <br><span class="pl-6">Screening</span>
     </template>
     <template v-slot:subheading>
       Classic Animation Collection<br> Shanghai Animation Film Studio Retro
@@ -15,7 +15,7 @@
       Join us for a special summer screening of Chinese Animation Classics in collaboration with the China Contemporary Animation Art Archive Museum.
     </template>
   </HomeSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath">
+  <HomeSection button="LEARN MORE" :bgImage="bgImagePath" :button_link="buttonLink2">
     <template v-slot:heading>
       Film Festival 2023
     </template>
@@ -23,9 +23,9 @@
       Discover the entries for this years edition of NewGen Chinese Film Festival
     </template>
   </HomeSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath2">
+  <HomeSection button="LEARN MORE" :bgImage="bgImagePath2" :button_link="buttonLink3">
     <template v-slot:heading>
-      Film Festival Impressions 2021-2022
+      Film Festival Archive
     </template>
     <template v-slot:description>
       Discover the entries and winners of past NewGen Film Festivals
@@ -53,6 +53,9 @@ export default {
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
       bgImagePath3: require('@/assets/projector.png'),
+      buttonLink: '/special-event',
+      buttonLink2: '/festival',
+      buttonLink3: '/archive',
       images: [
         require('@/assets/acce-transparent.png'),
         require('@/assets/btd.png'),

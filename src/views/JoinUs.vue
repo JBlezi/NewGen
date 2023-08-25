@@ -36,7 +36,7 @@
         </ol>
         <p class="text-main underline font-medium cursor-pointer mb-4" @click="toggleModal">Close</p>
         <p class="text-main text-lg font-medium mb-8">For more information please reach out to us.</p>
-        <Button>GET IN TOUCH</Button>
+        <Button :link="button_link">GET IN TOUCH</Button>
       </div>
       <div>
       </div>
@@ -61,7 +61,7 @@
         </ol>
         <p class="text-main underline font-medium cursor-pointer mb-4" @click="toggleModal2">Close</p>
         <p class="text-main text-lg font-medium mb-8">For more information please reach out to us.</p>
-        <Button>GET IN TOUCH</Button>
+        <Button :link="button_link">GET IN TOUCH</Button>
       </div>
       <div>
       </div>
@@ -105,7 +105,7 @@
         </ol>
         <p class="text-main underline font-medium cursor-pointer mb-4" @click="toggleModal2">Close</p>
         <p class="text-main text-lg font-medium mb-8">For more information please reach out to us.</p>
-        <Button>GET IN TOUCH</Button>
+        <Button :link="button_link">GET IN TOUCH</Button>
       </div>
       <div>
       </div>
@@ -136,6 +136,7 @@ export default {
       showModal: false,
       showModal2: false,
       showModal3: false,
+      button_link: 'contact',
       images: [
         require('@/assets/acce-transparent.png'),
         require('@/assets/btd.png'),

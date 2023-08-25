@@ -26,9 +26,9 @@
                   </h4>
                 </router-link>
               </div>
-              <div v-if="button" class="my-8 flex justify-center">
+              <a v-if="button" class="my-8 flex justify-center" :href="button_link" target="_blank">
                 <button class="border border-main font-bold rounded-full p-4">{{ button }}</button>
-              </div>
+              </a>
             </div>
 
         </div>
@@ -40,7 +40,7 @@
 <script>
 export default {
   name: 'ScreeningSection',
-  props: ['button', 'bgColor', 'movieList'],
+  props: ['button', 'bgColor', 'movieList', 'button_link'],
   data() {
     return {
       counter: 0,

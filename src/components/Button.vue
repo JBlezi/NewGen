@@ -1,6 +1,8 @@
 <template>
   <div class="flex justify-center mb-16">
-    <button class="border border-main font-bold rounded-full p-4"><slot></slot></button>
+    <a :href="link" target="_blank">
+      <button class="border border-main font-bold rounded-full p-4"><slot></slot></button>
+    </a>
   </div>
 </template>
 

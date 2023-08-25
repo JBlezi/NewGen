@@ -5,7 +5,7 @@
         <div class="flex h-screen">
           <div class="flex flex-col justify-between">
             <div class="mt-16">
-              <h2 class="text-5xl px-8 font-bold text-main mb-4">
+              <h2 class="text-5xl px-8 font-bold text-main mb-4 break-words">
                 <slot name="heading"></slot>
               </h2>
 
@@ -16,9 +16,9 @@
                 <slot name="description"></slot>
               </h4>
             </div>
-            <div class="flex justify-center mb-16">
+            <router-link :to="button_link" class="flex justify-center mb-16">
               <button class="border border-main font-bold rounded-full p-4">{{ button }}</button>
-            </div>
+            </router-link>
           </div>
         </div>
       </div>
@@ -29,7 +29,7 @@
 <script>
   export default {
     name: 'HomeSection',
-    props: ['button', 'bgImage'],
+    props: ['button', 'bgImage', 'button_link'],
     data() {
       return {
         festivalImage: require('@/assets/newgen_2023.png'),

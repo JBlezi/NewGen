@@ -10,7 +10,7 @@
       Shanghai Animation Film Studio Retro
     </template>
     <template v-slot:button>
-      <Button>GET TICKETS</Button>
+      <Button :link="link">GET TICKETS</Button>
     </template>
   </HeroSection>
   <section class="mt-12 mb-12">
@@ -26,20 +26,19 @@
     </div>
   </section>
   <section class="mt-12 mb-12">
-      <h3 class="text-main text-3xl italic font-bold mb-4 px-8">Films</h3>
-
+    <h3 class="text-main text-3xl italic font-bold mb-4 px-8">Films</h3>
     <MovieSectionClassic
       v-for="(movie, index) in movies"
       :key="index"
       :movie="movie">
     </MovieSectionClassic>
   </section>
-  <Button>GET TICKETS</Button>
+  <Button :link="link">GET TICKETS</Button>
   <section class="flex flex-wrap items-center">
     <div class="w-1/2" v-for="image of images" :key="image">
       <img :src="image" alt="" class="w-full">
     </div>
-</section>
+  </section>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
@@ -59,6 +58,7 @@ export default {
     return {
       festivalImage: require('@/assets/newgen_2023.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
+      link: 'https://moviemento.de/',
       movies: [
         { title: 'What can I hold you with', director: 'DI SHEN', year: '2021', poster: require('@/assets/childrens_corner.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:8, duration: '20:21', language: 'Mandarin Chinese', subtitles: 'Chineses/English' },
         { title: 'Everything near becomes distant', director: 'YUNYI ZHU', year: '2022', poster: require('@/assets/Egg-Hair-Tie-Homework-Books.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', duration: '20:21', language: 'Mandarin Chinese', subtitles: 'Chineses/English', id:9 },
