@@ -1,5 +1,5 @@
 <template>
-  <HeroSection :bgImage="festivalImage" :video="video">
+  <HeroSection :bgImage="bgGif" :video="video">
     <template v-slot:heading>
       Berlin NewGen Chinese Film Festival
     </template>
@@ -53,6 +53,7 @@ export default {
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
       bgImagePath3: require('@/assets/projector.png'),
+      bgGif: require('@/assets/NewGen2023trailer.gif'),
       buttonLink: '/special-event',
       buttonLink2: '/festival',
       buttonLink3: '/archive',
