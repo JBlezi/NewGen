@@ -1,7 +1,7 @@
 <template>
-  <section class="px-8 my-24">
-    <h1 class="text-main font-bold text-5xl">Partners</h1>
-    <img v-for="image in images" :key="image" :src="image" alt="" class="mx-auto my-8">
+  <section class="px-8 my-24 h-screen">
+    <h1 class="text-main font-bold text-5xl md:mb-16">Partners</h1>
+    <img v-for="image in images" :key="image" :src="image" alt="" class="mx-auto md:px-[25%] my-8">
   </section>
 </template>
 

@@ -7,7 +7,7 @@
             <h1 v-if="hasHeadingSlot" class="text-5xl px-8 md:px-16 font-bold text-main mb-4 md:w-full">
                 <slot name="heading"></slot>
             </h1>
-            <h2 v-if="hasSubheadingSlot" class="px-8 md:px-16 font-medium text-lg md:text-3xl mb-4 md:mb-8">
+            <h2 v-if="hasSubheadingSlot" class="px-8 md:px-16 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
               <slot name="subheading"></slot>
             </h2>
             <h3 v-if="hasDescriptionSlot" class="px-8 md:px-16 font-medium text-lg mb-4 md:text-3xl md:mb-12">

@@ -1,7 +1,7 @@
 <template>
   <section class="px-8 my-24">
     <h1 class="text-main font-bold text-5xl">Sponsors</h1>
-    <img v-for="image in images" :key="image" :src="image" alt="" class="mx-auto my-8">
+    <img v-for="image in images" :key="image" :src="image" alt="" class="mx-auto my-8 md:my-16">
   </section>
 </template>
 

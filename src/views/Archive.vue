@@ -1,5 +1,5 @@
 <template>
-  <HeroSection :bgImage="festivalImage">
+  <HeroSection :bgImage="festivalImage" class="md:mb-8">
     <template v-slot:heading>
       NewGen Archive
     </template>
@@ -10,12 +10,12 @@
       Nominees {{ category.movies[0].ran }}
     </template>
   </ScreeningSection>
-  <p class="flex justify-center mb-8 underline text-main" @click="toggleAdditionalEntries">{{ showAdditionalWinners ? 'Hide past editions nominees' : 'See past editions nominees' }}</p>
-  <section class="my-16">
-    <h2 class="px-8 text-main mb-4 text-3xl font-medium">NewGen Jury</h2>
+  <p class="flex justify-center mb-8 md:text-2xl underline text-main" @click="toggleAdditionalEntries">{{ showAdditionalWinners ? 'Hide past editions nominees' : 'See past editions nominees' }}</p>
+  <section class="my-16 md:my-32">
+    <h2 class="px-8 md:px-16 text-main mb-4 md:mb-16 text-3xl md:text-4xl md:font-bold font-medium">NewGen Jury</h2>
     <div class="flex flex-wrap mx-8 relative">
       <div v-for="(member) in staff" :key="member.id" class="w-1/2 text-center mb-8" @click="toggleModal(member.id)">
-        <img :src="member.poster" :alt="member.name" class="w-32 h-48 mx-auto object-cover">
+        <img :src="member.poster" :alt="member.name" class="w-32 md:w-64 h-48 md:h-96 mx-auto object-cover">
         <p class="mt-2 font-medium ">{{ member.name }}</p>
         <p class="italic">{{ member.position }}</p>
         <div v-if="modalMember === member.id" class="w-full h-full text-left absolute opacity-90 bottom-0 left-0">
@@ -53,8 +53,8 @@ export default {
       categories: [
         {
           movies: [
-            { title: 'Will you look at me', director: 'SHULI HUANG', year: '2022', poster: require('@/assets/will_you_look_at_me.png'), id:1, ran: 2022 },
-            { title: 'Will you look at me', director: 'SHULI HUANG', year: '2022', poster: require('@/assets/will_you_look_at_me.png'), id:2, ran: 2021 },
+            { title: 'Will you look at me', director: 'SHULI HUANG', year: '2022', poster: require('@/assets/will_you_look_at_me.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:1, ran: 2022 },
+            { title: 'Will you look at me', director: 'SHULI HUANG', year: '2022', poster: require('@/assets/will_you_look_at_me.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:2, ran: 2021 },
           ],
           heading: "Love is Love",
           subheading: "Nov. 3 2022, 7:30pm | OmeU OPENING FILM",

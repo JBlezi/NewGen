@@ -9,7 +9,7 @@
     <template v-slot:description>
       Moviemento Kino, Kottbusser Damm 22, 10967 Berlin
     </template>
-    <template v-slot:button>
+    <template v-slot:middle-button>
       <Button :link="button_link">GET TICKETS</Button>
     </template>
   </HeroSection>

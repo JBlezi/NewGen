@@ -1,16 +1,19 @@
 <template>
-  <section class="px-8">
-    <div v-for="movie in filteredMovies" :key="movie.id">
-      <div class="text-main text-3xl font-bold mb-4">
+  <section class="px-8 md:px-16">
+    <div v-for="movie in filteredMovies" :key="movie.id" class="mb-8 md:mb-16">
+      <div class="text-main text-3xl md:text-4xl font-bold mb-4">
         <h2>Winner {{ movie.ran }}</h2>
       </div>
-      <img :src="movie.poster" alt="" class="mb-4">
-      <div class="mb-4">
-        <h3 class="flex justify-center text-main text-lg font-medium">{{ movie.title }}</h3>
-        <h3 class="flex justify-center text-lg font-medium">{{ movie.director }} {{ movie.year }}</h3>
+      <div class="md:flex">
+        <img :src="movie.poster" alt="" class="mb-4 md:w-1/2">
+        <div class="mb-4 md:w-1/2 md:ml-16">
+          <h3 class="flex justify-center text-main text-lg font-medium md:font-bold md:text-2xl md:justify-start">{{ movie.title }}</h3>
+          <h3 class="flex justify-center text-lg font-medium md:font-bold md:text-2xl md:justify-start md:mb-8">{{ movie.director }} | {{ movie.year }}</h3>
+          <p class="flex justify-center text-lg font-medium hidden md:block">{{ movie.description }}</p>
+        </div>
       </div>
     </div>
-    <p class="flex justify-center mb-8 underline text-main" @click="toggleAdditionalEntries">{{ showAdditionalWinners ? 'Hide past editions winners' : 'See past editions winners' }}</p>
+    <p class="flex justify-center mb-8 md:text-2xl underline text-main" @click="toggleAdditionalEntries">{{ showAdditionalWinners ? 'Hide past editions winners' : 'See past editions winners' }}</p>
   </section>
 </template>
 
