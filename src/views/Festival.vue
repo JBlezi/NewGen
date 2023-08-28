@@ -1,5 +1,5 @@
 <template>
-  <HeroSection :bgImage="festivalImage">
+  <HeroSection :bgImage="festivalImage" :video="video">
     <template v-slot:heading>
       Festival Lineup 2023
     </template>
@@ -38,6 +38,7 @@ export default {
       bgImagePath2: require('@/assets/moviemento.png'),
       bgImagePath3: require('@/assets/projector.png'),
       button_link: 'https://moviemento.de/',
+      video: 'https://www.youtube.com/embed/h42hPO34D-4?si=4qJpD0h0tCQqE2um',
       screeningSections: [
         {
           movies: [

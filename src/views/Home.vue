@@ -1,12 +1,12 @@
 <template>
-  <HeroSection :bgImage="festivalImage">
+  <HeroSection :bgImage="festivalImage" :video="video">
     <template v-slot:heading>
-      Berlin <br>NewGen <br>Chinese <br>Film Festival
+      Berlin NewGen Chinese Film Festival
     </template>
   </HeroSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath3" :button_link="buttonLink">
+  <HomeSection button="LEARN MORE" :bgImage="bgImagePath3" :button_link="buttonLink" :image="festivalImage">
     <template v-slot:heading>
-      Special <br><span class="pl-3">Summer</span> <br><span class="pl-6">Screening</span>
+      Special Summer Screening
     </template>
     <template v-slot:subheading>
       Classic Animation Collection<br> Shanghai Animation Film Studio Retro
@@ -15,7 +15,7 @@
       Join us for a special summer screening of Chinese Animation Classics in collaboration with the China Contemporary Animation Art Archive Museum.
     </template>
   </HomeSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath" :button_link="buttonLink2">
+  <HomeSection button="LEARN MORE" :bgImage="bgImagePath" :button_link="buttonLink2" :image="festivalImage">
     <template v-slot:heading>
       Film Festival 2023
     </template>
@@ -23,7 +23,7 @@
       Discover the entries for this years edition of NewGen Chinese Film Festival
     </template>
   </HomeSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath2" :button_link="buttonLink3">
+  <HomeSection button="LEARN MORE" :bgImage="bgImagePath2" :button_link="buttonLink3" :image="festivalImage">
     <template v-slot:heading>
       Film Festival Archive
     </template>
@@ -56,6 +56,7 @@ export default {
       buttonLink: '/special-event',
       buttonLink2: '/festival',
       buttonLink3: '/archive',
+      video: 'https://www.youtube.com/embed/h42hPO34D-4?si=4qJpD0h0tCQqE2um',
       images: [
         require('@/assets/acce-transparent.png'),
         require('@/assets/btd.png'),
