@@ -16,12 +16,20 @@
     <div class="flex flex-wrap mx-8 relative">
       <div v-for="(member) in staff" :key="member.id" class="w-1/2 text-center mb-8" @click="toggleModal(member.id)">
         <img :src="member.poster" :alt="member.name" class="w-32 md:w-64 h-48 md:h-96 mx-auto object-cover">
-        <p class="mt-2 font-medium ">{{ member.name }}</p>
-        <p class="italic">{{ member.position }}</p>
-        <div v-if="modalMember === member.id" class="w-full h-full text-left absolute opacity-90 bottom-0 left-0">
-          <div class="bg-white p-4 border border-slate-500">
-            <h3 class="font-medium mb-2">{{ member.name }}, {{ member.position }}</h3>
-            <p>
+        <p class="mt-2 font-medium md:text-2xl">{{ member.name }}</p>
+        <p class="italic md:text-2xl">{{ member.position }}</p>
+        <div v-if="modalMember === member.id && member.id % 2 == 0" class="text-left absolute opacity-90 md:opacity-100 top-0 left-0 md:left-14">
+          <div class="bg-white p-4 border border-slate-500 md:min-h-[28rem] md:w-80">
+            <h3 class="font-medium mb-2 md:text-2xl">{{ member.name }}, {{ member.position }}</h3>
+            <p class="md:text-2xl">
+              {{ member.description }}
+            </p>
+          </div>
+        </div>
+        <div v-if="modalMember === member.id && member.id % 2 != 0" class="text-left absolute opacity-90 md:opacity-100 top-0 right-0 md:right-14">
+          <div class="bg-white p-4 border border-slate-500 md:min-h-[28.5rem] md:w-80">
+            <h3 class="font-medium mb-2 md:text-2xl">{{ member.name }}, {{ member.position }}</h3>
+            <p class="md:text-2xl">
               {{ member.description }}
             </p>
           </div>

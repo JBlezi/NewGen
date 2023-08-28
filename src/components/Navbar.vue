@@ -26,6 +26,7 @@
             <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/join-us">JOIN US</router-link></li>
             <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/submissions">SUBMISSIONS</router-link></li>
             <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/contact">CONTACT</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/archive">ARCHIVE</router-link></li>
           </ul>
 
           <!-- Social Media Links -->

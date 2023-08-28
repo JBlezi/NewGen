@@ -27,8 +27,8 @@
     <div class="flex flex-wrap mx-8">
       <div v-for="(member) in staff" :key="member.id" class="w-1/2 text-center mb-8">
         <img :src="member.poster" :alt="member.name" class="w-32 h-48 md:w-64 md:h-96 mx-auto object-cover">
-        <p class="mt-2 font-medium ">{{ member.name }}</p>
-        <p class="italic">{{ member.position }}</p>
+        <p class="mt-2 font-medium md:text-2xl">{{ member.name }}</p>
+        <p class="italic md:text-2xl">{{ member.position }}</p>
       </div>
     </div>
 
