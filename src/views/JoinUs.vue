@@ -9,21 +9,22 @@
       <p>Donate to our Mission.</p>
     </template>
   </HeroSection>
-  <section class="bg-main-light py-12">
-    <div class="px-8">
-      <h3 class="text-main text-3xl italic font-medium mb-4">Become a Sponsor</h3>
+  <section class="bg-white py-12">
+    <div class="px-8 md:px-16">
+      <h3 class="text-main text-3xl md:text-4xl md:font-semibold italic font-medium mb-4">Become a Sponsor</h3>
       <div v-if="!showModal">
-        <ol class="font-medium text-lg">
+        <ol class="font-medium text-lg md:text-xl md:text-xl">
           <li>Logo placement on website</li>
           <li>Merchandise & social media</li>
           <li>Press Release of Sponsorship</li>
+          <li><br></li>
         </ol>
-        <span class="text-main underline font-medium cursor-pointer" @click="toggleModal">Read more</span>
+        <span class="text-main text-lg md:text-xl underline text-lg md:text-xl font-medium cursor-pointer" @click="toggleModal">Read more</span>
       </div>
       <div v-else>
-        <h4 class="underline text-lg font-medium">Headline Sponsor</h4>
-        <h5 class="text-main text-lg font-medium mb-2">Minimum Amount: 1.500€</h5>
-        <ol class="font-medium text-lg list-disc px-8 mb-2">
+        <h4 class="underline text-lg md:text-xl font-medium">Headline Sponsor</h4>
+        <h5 class="text-main text-lg md:text-xl font-medium mb-2">Minimum Amount: 1.500€</h5>
+        <ol class="font-medium text-lg md:text-xl list-disc px-8 mb-2">
           <li>Recognition as “Headline Sponsor” in the event-related press release</li>
           <li>The sponsor will be invited to present awards at the closing ceremony</li>
           <li>Prominent logo placement on the website and all marketing materials included but not limited to posters, flyers, booklets, roll-up, etc.</li>
@@ -34,33 +35,8 @@
           <li>Name announcement at the event</li>
           <li>Other reasonable requests from the sponsor</li>
         </ol>
-        <p class="text-main underline font-medium cursor-pointer mb-4" @click="toggleModal">Close</p>
-        <p class="text-main text-lg font-medium mb-8">For more information please reach out to us.</p>
-        <Button :link="button_link">GET IN TOUCH</Button>
-      </div>
-      <div>
-      </div>
-    </div>
-  </section>
-  <section class="py-12">
-    <div class="px-8">
-      <h3 class="text-main text-3xl italic font-medium mb-4">Become Advertiser</h3>
-      <div v-if="!showModal2">
-        <ol class="font-medium text-lg">
-          <li>Be part of our Pre-Screening Slideshow</li>
-          <li>Digital Program Guide</li>
-          <li>Advertise on our Website</li>
-        </ol>
-        <span class="text-main underline font-medium cursor-pointer" @click="toggleModal2">Read more</span>
-      </div>
-      <div v-else>
-        <ol class="font-medium text-lg mb-2">
-          <li>Be part of our Pre-Screening Slideshow</li>
-          <li>Digital Program Guide</li>
-          <li>Advertise on our Website</li>
-        </ol>
-        <p class="text-main underline font-medium cursor-pointer mb-4" @click="toggleModal2">Close</p>
-        <p class="text-main text-lg font-medium mb-8">For more information please reach out to us.</p>
+        <p class="text-main text-lg md:text-xl underline text-lg md:text-xl font-medium cursor-pointer mb-4" @click="toggleModal">Close</p>
+        <p class="text-main text-lg md:text-xl font-medium mb-8">For more information please reach out to us.</p>
         <Button :link="button_link">GET IN TOUCH</Button>
       </div>
       <div>
@@ -68,21 +44,48 @@
     </div>
   </section>
   <section class="py-12 bg-main-light">
-    <div class="px-8">
-      <h3 class="text-main text-3xl italic font-medium mb-4">Donate To Us</h3>
-      <div v-if="!showModal3">
-        <ol class="font-medium text-lg">
-          <li>Official mention of Donation on our Website with name and amount</li>
+    <div class="px-8 md:px-16">
+      <h3 class="text-main text-3xl md:text-4xl md:font-semibold italic font-medium mb-4">Become Advertiser</h3>
+      <div v-if="!showModal2">
+        <ol class="font-medium text-lg md:text-xl">
+          <li>Be part of our Pre-Screening Slideshow</li>
+          <li>Digital Program Guide</li>
+          <li>Advertise on our Website</li>
+          <li><br></li>
         </ol>
-        <span class="text-main underline font-medium cursor-pointer" @click="toggleModal3">Read more</span>
+        <span class="text-main underline text-lg md:text-xl font-medium cursor-pointer" @click="toggleModal2">Read more</span>
       </div>
       <div v-else>
-        <ol class="font-medium text-lg mb-2">
+        <ol class="font-medium text-lg md:text-xl mb-2">
+          <li>Be part of our Pre-Screening Slideshow</li>
+          <li>Digital Program Guide</li>
+          <li>Advertise on our Website</li>
+        </ol>
+        <p class="text-main underline text-lg md:text-xl font-medium cursor-pointer mb-4" @click="toggleModal2">Close</p>
+        <p class="text-main text-lg md:text-xl font-medium mb-8">For more information please reach out to us.</p>
+        <Button :link="button_link">GET IN TOUCH</Button>
+      </div>
+      <div>
+      </div>
+    </div>
+  </section>
+  <section class="py-12">
+    <div class="px-8 md:px-16">
+      <h3 class="text-main text-3xl md:text-4xl md:font-semibold italic font-medium mb-4">Donate To Us</h3>
+      <div v-if="!showModal3">
+        <ol class="font-medium text-lg md:text-xl">
+          <li>Official mention of Donation on our Website with name and amount</li>
+          <li><br></li>
+        </ol>
+        <span class="text-main underline text-lg md:text-xl font-medium cursor-pointer" @click="toggleModal3">Read more</span>
+      </div>
+      <div v-else>
+        <ol class="font-medium text-lg md:text-xl mb-2">
           <li class="mb-2">Above 100€: <br>Official Mention of your Donation on our social media</li>
           <li class="mb-2">Above 250€: <br>Official mention of your Donation on our social media and on our Website</li>
           <li class="mb-2">Above 1.000€: <br>Official mention of your Donation on our social media, on our website and honourable mention at the Main Screening event.</li>
         </ol>
-        <p class="text-main underline font-medium cursor-pointer mb-8" @click="toggleModal3">Close</p>
+        <p class="text-main underline text-lg md:text-xl font-medium cursor-pointer mb-8" @click="toggleModal3">Close</p>
         <p class="text-xl font-medium">Donate with PayPal:</p>
         <img src="@/assets/paypal.png" alt="" class="">
       </div>
@@ -90,21 +93,22 @@
       </div>
     </div>
   </section>
-  <section class="py-12">
-    <div class="px-8">
-      <h3 class="text-main text-3xl italic font-medium mb-4">Join The Team</h3>
+  <section class="py-12 bg-main-light">
+    <div class="px-8 md:px-16">
+      <h3 class="text-main text-3xl md:text-4xl md:font-semibold italic font-medium mb-4">Join The Team</h3>
       <div v-if="!showModal2">
-        <ol class="font-medium text-lg">
+        <ol class="font-medium text-lg md:text-xl">
           <li>Become part of our Team and help make Berlin NewGen Film Festival a continuous success!</li>
+          <li><br></li>
         </ol>
-        <span class="text-main underline font-medium cursor-pointer" @click="toggleModal2">Read more</span>
+        <span class="text-main underline text-lg md:text-xl font-medium cursor-pointer" @click="toggleModal2">Read more</span>
       </div>
       <div v-else>
-        <ol class="font-medium text-lg mb-2">
+        <ol class="font-medium text-lg md:text-xl mb-2">
           <li>Become part of our Team and help make Berlin NewGen Film Festival a continuous success!</li>
         </ol>
-        <p class="text-main underline font-medium cursor-pointer mb-4" @click="toggleModal2">Close</p>
-        <p class="text-main text-lg font-medium mb-8">For more information please reach out to us.</p>
+        <p class="text-main underline text-lg md:text-xl font-medium cursor-pointer mb-4" @click="toggleModal2">Close</p>
+        <p class="text-main text-lg md:text-xl font-medium mb-8">For more information please reach out to us.</p>
         <Button :link="button_link">GET IN TOUCH</Button>
       </div>
       <div>

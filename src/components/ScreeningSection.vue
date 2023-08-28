@@ -5,18 +5,18 @@
         <div class="flex">
 
             <div class="mt-8 flex flex-col px-8 h-full w-full">
-              <h2 class="text-3xl font-bold text-main">
+              <h2 class="text-3xl md:text-4xl font-bold text-main">
                 <slot name="heading"></slot>
               </h2>
-              <h3 class="font-medium mb-4">
+              <h3 class="font-medium mb-4 md:text-lg">
                 <slot name="subheading"></slot>
               </h3>
               <font-awesome-icon v-if="movieList.movies.length > 1 && !button" :icon="['fas', 'chevron-right']" class="h-6 w-6 absolute bottom-[42%] right-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRight"/>
               <font-awesome-icon v-if="movieList.movies.length > 1 && button" :icon="['fas', 'chevron-right']" class="h-6 w-6 absolute bottom-1/2 right-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRight"/>
               <font-awesome-icon v-if="movieList.movies.length > 1 && !button" :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-[42%] left-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
               <font-awesome-icon v-if="movieList.movies.length > 1 && button" :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-1/2 left-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
-              <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-right']" class="h-6 w-6 absolute bottom-1/2 right-5 transform translate-y-1/2 hidden md:block" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRightTablet"/>
-              <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-1/2 left-5 transform translate-y-1/2 hidden md:block" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
+              <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-1/2 right-5 transform translate-y-1/2 hidden md:block" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRightTablet"/>
+              <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-1/2 left-5 transform translate-y-1/2 hidden md:block" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
               <div class="md:flex md:justify-around md:mt-8">
                 <div class="h-4/5">
                   <router-link :to="`/movie/${movieList.id}`" class="flex flex-col justify-center">
@@ -42,7 +42,8 @@
                 </div>
               </div>
               <a v-if="button" class="my-8 flex justify-center" :href="button_link" target="_blank">
-                <button class="border border-main font-bold rounded-full p-4">{{ button }}</button>
+                <button v-if="bgColor == 'white'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-main-light">{{ button }}</button>
+                <button v-if="bgColor == '#FFF8EE'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-white">{{ button }}</button>
               </a>
             </div>
 
@@ -96,7 +97,7 @@ export default {
     return this.counter === 0;
     },
     isRightArrowDisabled() {
-      return this.counter === this.movieList.movies.length - 1;
+      return this.counterTablet === this.movieList.movies.length - 1;
     },
     backgroundStyle() {
       return {

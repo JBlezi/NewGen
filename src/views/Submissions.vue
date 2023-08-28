@@ -10,17 +10,17 @@
       <button class="bg-main rounded-lg"><a href="https://filmfreeway.com/" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
     </template>
   </HeroSection>
-  <section class="mt-8 mb-8">
-    <div class="px-8">
-      <h3 class="text-main text-3xl italic font-medium mb-2">Submission Deadlines & Fees</h3>
-      <p class="font-medium text-lg">May 7, 2023 (CET) - 1€</p>
-      <p class="font-medium text-lg">June 30, 2023 (CET) - 3€</p>
+  <section class="mt-8 mb-8 md:my-16">
+    <div class="px-8 md:px-16">
+      <h3 class="text-main text-3xl md:text-4xl md:font-semibold  italic font-medium mb-2">Submission Deadlines & Fees</h3>
+      <p class="font-medium text-lg md:text-xl">May 7, 2023 (CET) - 1€</p>
+      <p class="font-medium text-lg md:text-xl">June 30, 2023 (CET) - 3€</p>
     </div>
   </section>
-  <section class="mt-8 mb-8">
-    <div class="px-8">
-      <h3 class="text-main text-3xl italic font-medium mb-2">Terms & Conditions</h3>
-      <ol class="font-medium text-lg list-decimal px-6">
+  <section class="mt-8 mb-8 md:my-16">
+    <div class="px-8 md:px-16">
+      <h3 class="text-main text-3xl md:text-4xl md:font-semibold  italic font-medium mb-2">Terms & Conditions</h3>
+      <ol class="font-medium text-lg md:text-xl list-decimal px-6">
         <li>
           <div>The submitted film must</div>
           <ol class="list-decimal pl-6 mt-2">
@@ -38,15 +38,15 @@
       </ol>
     </div>
   </section>
-  <section class="mt-8 mb-8">
-    <div class="px-8">
-      <h3 class="text-main text-3xl italic font-medium mb-2">How To Submit</h3>
-      <p class="font-medium text-lg">To apply, please fill out the application form and submit your film on <a href="https://filmfreeway.com/" target="_blank">FilmFreeway</a>.<br><br></p>
-      <p class="font-medium text-lg">In principle, we do not accept new versions after your successful submission. In case of major changes, please contact info@bngcff.com before the regular submission deadline.</p>
+  <section class="mt-8 mb-8 md:my-16">
+    <div class="px-8 md:px-16">
+      <h3 class="text-main text-3xl md:text-4xl md:font-semibold  italic font-medium mb-2">How To Submit</h3>
+      <p class="font-medium text-lg md:text-xl">To apply, please fill out the application form and submit your film on <a href="https://filmfreeway.com/" target="_blank">FilmFreeway</a>.<br><br></p>
+      <p class="font-medium text-lg md:text-xl">In principle, we do not accept new versions after your successful submission. In case of major changes, please contact info@bngcff.com before the regular submission deadline.</p>
     </div>
   </section>
-  <div class="px-8 mb-16">
-    <p class="mb-2 font-medium">Submit on:</p>
+  <div class="px-8 md:px-16 mb-16">
+    <p class="mb-2 font-medium text-lg md:text-xl md:font-bold">Submit on:</p>
     <button class="bg-main rounded-lg"><a href="https://filmfreeway.com/" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
   </div>
   <SponsorSlider :sponsors="images"></SponsorSlider>

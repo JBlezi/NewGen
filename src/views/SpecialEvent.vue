@@ -9,24 +9,24 @@
     <template v-slot:description>
       Shanghai Animation Film Studio Retro
     </template>
-    <template v-slot:button>
+    <template v-slot:middle-button>
       <Button :link="link">GET TICKETS</Button>
     </template>
   </HeroSection>
-  <section class="mt-12 mb-12">
-    <div class="px-8">
-      <h3 class="text-main text-3xl italic font-bold mb-4">What is it?</h3>
-      <p class="font-medium text-lg">Join us for a special summer screening of Chinese animation classics in collaboration with the China Contemporary Animation Art Archive Museum. This event will showcase four titles produced by the renowned Shanghai Animation Film Studio.</p>
+  <section class="mt-12 mb-12 md:my-24">
+    <div class="px-8 md:px-16">
+      <h3 class="text-main text-3xl md:text-4xl md:font-semibold italic font-bold mb-4">What is it?</h3>
+      <p class="font-medium text-lg md:text-xl">Join us for a special summer screening of Chinese animation classics in collaboration with the China Contemporary Animation Art Archive Museum. This event will showcase four titles produced by the renowned Shanghai Animation Film Studio.</p>
     </div>
   </section>
-  <section class="mt-12 mb-12">
-    <div class="px-8">
-      <h3 class="text-main text-3xl italic font-bold mb-4">Time and Date</h3>
-      <p class="font-medium text-lg">The Special Summer Screening will take place on <span class="font-bold">Friday 14th July 2023 2:00pm at Moviemento Kino, Kottbusser Damm 22, Berlin.</span></p>
+  <section class="mt-12 mb-12 md:my-24">
+    <div class="px-8 md:px-16">
+      <h3 class="text-main text-3xl md:text-4xl md:font-semibold italic font-bold mb-4">Time and Date</h3>
+      <p class="font-medium text-lg md:text-xl">The Special Summer Screening will take place on <span class="font-bold">Friday 14th July 2023 2:00pm at Moviemento Kino, Kottbusser Damm 22, Berlin.</span></p>
     </div>
   </section>
-  <section class="mt-12 mb-12">
-    <h3 class="text-main text-3xl italic font-bold mb-4 px-8">Films</h3>
+  <section class="mt-12 mb-12 md:my-24">
+    <h3 class="text-main text-3xl md:text-4xl md:font-semibold italic font-bold mb-4 px-8 md:px-16 md:mb-8">Films</h3>
     <MovieSectionClassic
       v-for="(movie, index) in movies"
       :key="index"
