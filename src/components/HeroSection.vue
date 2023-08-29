@@ -16,15 +16,12 @@
             <h3 v-if="hasMiddleButtonSlot" class="px-8 md:px-16 font-medium text-lg md:text-xl mb-16 md:mb-0">
               <slot name="middle-button"></slot>
             </h3>
-            <div v-if="video" class="relative px-16 hidden w-full" style="padding-top: 56.25%;">
-              <iframe  class="absolute top-0 left-0 w-full h-full" :src="video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
           </div>
         </div>
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <slot name="button"></slot>
         </div>
-        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-5 left-1/2 transform -translate-x-1/2"/>
+        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-5 text-white left-1/2 transform -translate-x-1/2"/>
       </div>
       <div v-else class="bg-white h-screen md:h-[50vh] bg-gradient relative">
         <div class="flex items-center md:h-[50vh] h-screen">
@@ -41,8 +38,8 @@
             <h3 v-if="hasMiddleButtonSlot" class="px-8 md:px-16 font-medium text-lg md:text-xl mb-16 md:mb-0">
               <slot name="middle-button"></slot>
             </h3>
-            <div v-if="video" class="relative px-16 hidden w-full" style="padding-top: 56.25%;">
-              <iframe  class="absolute top-0 left-0 w-full h-full" :src="video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div v-if="video" class="px-16 hidden md:block w-full h-3/5">
+              <iframe  class="w-full h-full" :src="video" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
           </div>
         </div>

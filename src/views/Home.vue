@@ -1,5 +1,5 @@
 <template>
-  <HeroSection :bgImage="bgGif" :video="video">
+  <HeroSection :bgImage="bgGif">
     <template v-slot:heading>
       Berlin NewGen Chinese Film Festival
     </template>

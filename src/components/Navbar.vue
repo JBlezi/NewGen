@@ -21,12 +21,12 @@
         <!-- Navigation Links -->
         <div v-if="isOpen" class="bg-white fixed top-16 text-center w-full h-full">
           <ul class="list-none p-8 mt-12">
-            <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/festival">FESTIVAL</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/about-us">ABOUT US</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/join-us">JOIN US</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/submissions">SUBMISSIONS</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/contact">CONTACT</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-8" @click="isOpen = !isOpen"><router-link to="/archive">ARCHIVE</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/festival">FESTIVAL</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/about-us">ABOUT US</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/join-us">JOIN US</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/submissions">SUBMISSIONS</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/contact">CONTACT</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/archive">ARCHIVE</router-link></li>
           </ul>
 
           <!-- Social Media Links -->
