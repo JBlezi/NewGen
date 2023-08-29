@@ -1,15 +1,15 @@
 <template>
-  <nav class="fixed w-full bg-white top-0 md:h-20 h-16 z-10">
+  <nav class="fixed w-full bg-white top-0 md:h-20 h-16 lg:h-16 z-10">
     <div>
       <div class="">
         <router-link to="/" class="flex flex-row" @click="isOpen = false">
-          <img :src="logoImage" alt="Logo" class="md:h-12 md:w-12 h-8 w-8 m-4">
+          <img :src="logoImage" alt="Logo" class="md:h-12 md:w-12 h-8 w-8 lg:h-8 lg:w-8 m-4">
           <span class="self-center text-xl">NewGen</span>
         </router-link>
       </div>
       <div>
         <!-- Hamburger & Close Icon -->
-        <div @click="isOpen = !isOpen" class="cursor-pointer">
+        <div @click="isOpen = !isOpen" class="cursor-pointer lg:hidden">
           <div class="z-10 absolute top-5 right-5" v-if="!isOpen">
             <img :src="hamburgerSvg" alt="Logo" class="md:h-10 md:w-10 h-6 w-6">
           </div> <!-- You can replace this with a hamburger SVG/icon -->
