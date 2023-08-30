@@ -1,10 +1,10 @@
 <template>
-  <section class="px-8 md:px-16 my-24">
+  <section class="px-8 md:px-16 my-24 lg:px-24">
     <h1 class="text-main font-bold text-5xl">Press Releases</h1>
   </section>
-  <PressRelease v-for="release in pressReleases" :key="release.title" :release="release">
-
-  </PressRelease>
+  <section class="lg:flex lg:px-24 lg:space-x-16">
+    <PressRelease v-for="release in pressReleases" :key="release.title" :release="release" class="mb-16"></PressRelease>
+  </section>
 </template>
 
 <script>
