@@ -1,10 +1,10 @@
 <template>
-  <HeroSection :bgImage="festivalImage" :video="video">
+  <HeroSection :bgImage="bgGif">
     <template v-slot:heading>
-      Berlin NewGen Chinese Film Festival
+      <span class="text-black">Berlin</span> NewGen <br class="hidden lg:block"><span class="text-black">Chinese Film Festival</span>
     </template>
   </HeroSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath3" :button_link="buttonLink" :image="festivalImage">
+  <HomeSection button="LEARN MORE" :button_link="buttonLink" :image="festivalImage">
     <template v-slot:heading>
       Special Summer Screening
     </template>
@@ -15,7 +15,7 @@
       Join us for a special summer screening of Chinese Animation Classics in collaboration with the China Contemporary Animation Art Archive Museum.
     </template>
   </HomeSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath" :button_link="buttonLink2" :image="festivalImage">
+  <HomeSection button="LEARN MORE" :bgImage="bgImagePath" :button_link="buttonLink2" :video="video" :background="background2">
     <template v-slot:heading>
       Film Festival 2023
     </template>
@@ -23,7 +23,7 @@
       Discover the entries for this years edition of NewGen Chinese Film Festival
     </template>
   </HomeSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath2" :button_link="buttonLink3" :image="festivalImage">
+  <HomeSection button="LEARN MORE" :bgImage="bgImagePath2" :button_link="buttonLink3" :image="festivalImage" :background="background3">
     <template v-slot:heading>
       Film Festival Archive
     </template>
@@ -31,7 +31,7 @@
       Discover the entries and winners of past NewGen Film Festivals
     </template>
   </HomeSection>
-  <SponsorSlider :sponsors="images"></SponsorSlider>
+  <SponsorSlider :sponsors="images" class="hidden"></SponsorSlider>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
@@ -53,6 +53,10 @@ export default {
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
       bgImagePath3: require('@/assets/projector.png'),
+      bgGif: require('@/assets/NewGen2023trailer.gif'),
+      background: 'bg-white',
+      background2: 'bg-gradient',
+      background3: 'bg-white/80',
       buttonLink: '/special-event',
       buttonLink2: '/festival',
       buttonLink3: '/archive',

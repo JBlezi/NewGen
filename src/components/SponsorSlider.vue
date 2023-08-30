@@ -1,5 +1,5 @@
 <template>
-  <section class="w-screen h-32 overflow-x-hidden" id="sponsor-slider" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp" @touchstart="handleTouchStart"
+  <section class="w-full h-32 my-8 overflow-x-hidden" id="sponsor-slider" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp" @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
     @touchend="handleTouchEnd">
     <div class="h-32 top-0 left-0">

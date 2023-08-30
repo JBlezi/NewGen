@@ -1,6 +1,6 @@
 <template>
-  <section class="px-8 md:px-16 my-24 h-screen">
-    <h1 class="text-main font-bold text-5xl md:mb-16">Partners</h1>
+  <section class=" my-24 h-screen">
+    <h1 class="text-main px-8 md:px-16 lg:px-24 font-bold text-5xl md:mb-16">Partners</h1>
     <img v-for="image in images" :key="image" :src="image" alt="" class="mx-auto md:px-[25%] my-8">
   </section>
 </template>
