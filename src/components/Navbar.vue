@@ -1,12 +1,12 @@
 <template>
-  <nav class="fixed w-full bg-white top-0 md:h-20 h-16 lg:h-16 z-10">
+  <nav class="fixed w-full bg-white top-0 md:h-20 h-16 lg:h-14 z-10">
     <div>
       <div class="lg:flex lg:justify-between">
         <router-link to="/" class="flex flex-row" @click="isOpen = false">
-          <img :src="logoImage" alt="Logo" class="md:h-12 md:w-12 h-8 w-8 lg:h-8 lg:w-8 m-4">
-          <span class="self-center text-xl lg:py-5 lg:font-medium">NewGen</span>
+          <img :src="logoImage" alt="Logo" class="md:h-12 md:w-12 h-8 w-8 lg:h-8 lg:w-8 m-3">
+          <span class="self-center text-lg lg:font-medium">NewGen</span>
         </router-link>
-        <div class="flex hidden lg:block p-8 space-x-8 py-5 font-medium">
+        <div class="flex hidden lg:block p-8 space-x-8 py-4 font-medium">
           <router-link active-class="text-main" to="/">HOME</router-link>
           <router-link active-class="text-main" to="/festival">FESTIVAL</router-link>
           <router-link active-class="text-main" to="/about-us">ABOUT US</router-link>

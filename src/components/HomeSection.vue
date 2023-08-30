@@ -1,27 +1,30 @@
 <template>
   <section>
-    <div class="h-screen md:h-[50vh] bg-cover" :style="backgroundStyle">
-      <div class="h-screen md:h-[50vh] relative bg-gradient">
-        <div class="flex h-screen md:h-[50vh]">
+    <div class="h-screen md:h-[50vh] lg:h-[75vh] bg-cover" :style="backgroundStyle">
+      <div :class="['h-screen', 'md:h-[50vh]', 'lg:h-[75vh]', 'relative', `${background}`]">
+        <div class="flex h-screen md:h-[50vh] lg:h-[75vh]">
           <div class="flex flex-col justify-between w-full">
-            <div class="mt-16">
-              <h2 class="text-5xl md:text-4xl px-8 md:px-16 font-bold text-main mb-4 md:mb-8">
+            <div class="mt-16 lg:mt-24">
+              <h2 class="text-5xl md:text-4xl px-8 md:px-16 lg:px-24 font-bold text-main mb-4 md:mb-8 lg:mb-12">
                 <slot name="heading"></slot>
               </h2>
               <div class="md:flex">
-                <div class="md:w-1/2 md:flex md:flex-col md:h-[28rem] md:justify-between">
-                  <h3 class="px-8 md:px-16 font-medium text-lg underline mb-4">
-                    <slot name="subheading"></slot>
-                  </h3>
-                  <h4 class="px-8 md:px-16 font-medium text-lg mb-16">
-                    <slot name="description"></slot>
-                  </h4>
+                <div class="md:w-1/2 md:flex md:flex-col md:h-[28rem] lg:h-[25rem] md:justify-between">
+                  <div>
+                    <h3 class="px-8 md:px-16 lg:px-24 font-medium text-lg underline mb-4">
+                      <slot name="subheading"></slot>
+                    </h3>
+                    <h4 class="px-8 md:px-16 lg:px-24 font-medium text-lg mb-16">
+                      <slot name="description"></slot>
+                    </h4>
+                  </div>
                   <router-link :to="button_link" class="flex justify-center mb-16 absolute bottom-0 left-0 right-0 md:static">
-                    <button class="border border-main font-bold rounded-full p-4">{{ button }}</button>
+                    <button class="border border-main bg-white lg:border-2 font-bold rounded-full p-4 lg:p-6 lg:text-xl">{{ button }}</button>
                   </router-link>
                 </div>
-                <div class="md:w-1/2 md:pr-16 md:h-[48rem]">
-                  <img :src="image" alt="" class="hidden md:block md:h-1/2 md:w-full object-cover">
+                <div class="md:w-1/2 md:pr-16 lg:pr-24 md:h-[48rem] lg:pb-24">
+                  <img v-if="image" :src="image" alt="" class="hidden md:block md:h-1/2 md:w-full object-cover">
+                  <iframe v-if="video" :src="video" alt="" class="hidden md:block md:h-1/2 md:w-full object-cover"></iframe>
                 </div>
               </div>
             </div>
@@ -35,7 +38,7 @@
 <script>
   export default {
     name: 'HomeSection',
-    props: ['button', 'bgImage', 'button_link', 'image'],
+    props: ['button', 'bgImage', 'button_link', 'image', 'background', 'video'],
     data() {
       return {
         festivalImage: require('@/assets/newgen_2023.png'),
