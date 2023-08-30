@@ -1,5 +1,5 @@
 <template>
-  <HeroSection :bgImage="festivalImage">
+  <HeroSection :bgImage="festivalImage" class="md:mb-24">
     <template v-slot:heading>
       Festival Lineup 2023
     </template>

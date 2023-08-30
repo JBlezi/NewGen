@@ -31,7 +31,7 @@
       Discover the entries and winners of past NewGen Film Festivals
     </template>
   </HomeSection>
-  <SponsorSlider :sponsors="images"></SponsorSlider>
+  <SponsorSlider :sponsors="images" class="hidden"></SponsorSlider>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->

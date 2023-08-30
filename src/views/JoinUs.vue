@@ -107,7 +107,7 @@
       </div>
     </div>
   </section>
-  <SponsorSlider :sponsors="images"></SponsorSlider>
+  <SponsorSlider :sponsors="images" class="hidden"></SponsorSlider>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->

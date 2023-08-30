@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="text-main bg-footer flex p-8 md:p-16 h-80 flex-col justify-between">
-      <div class="flex mb-12">
+      <div class="flex mb-12 lg:mb-16">
         <ul class="list-none text-left ">
           <li class="mb-2"><router-link to="/festival">FESTIVAL</router-link></li>
           <li class="mb-2"><router-link to="/about-us">ABOUT US</router-link></li>

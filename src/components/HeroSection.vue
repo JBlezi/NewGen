@@ -1,7 +1,7 @@
 <template>
-  <section>
-    <div class="h-screen md:h-[50vh] lg:h-[75vh] bg-cover lg:mb-16" :style="backgroundStyle">
-      <div v-if="isGif" class="bg-white h-screen md:h-[50vh] lg:h-[75vh] bg-opacity-50 relative">
+  <section class="bg-cover bg-gradient" :style="{ marginLeft: marginLeftAndRight, marginRight: marginLeftAndRight, ...backgroundStyle }">
+    <div class="h-screen md:h-[50vh] lg:h-[75vh]" :style="{ paddingLeft: paddingLeftAndRight, paddingRight: paddingLeftAndRight }">
+      <div v-if="isGif" class=" h-screen md:h-[50vh] lg:h-[75vh] bg-opacity-50 relative">
         <div class="flex items-center md:h-[50vh] h-screen lg:h-[75vh]">
           <div class="flex flex-col md:h-[50vh] lg:h-[75vh] md:mt-32 lg:my-24 md:w-full">
             <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-16 lg:mt-32 font-bold text-main mb-4 md:w-full">
@@ -23,7 +23,7 @@
         </div>
         <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-5 text-white left-1/2 transform -translate-x-1/2"/>
       </div>
-      <div v-else class="bg-white h-screen md:h-[50vh] lg:h-[75vh] bg-gradient relative">
+      <div v-else class="h-screen md:h-[50vh] lg:h-[75vh] relative">
         <div class="flex items-center md:h-[50vh] lg:h-[75vh] h-screen">
           <div class="flex flex-col md:h-[50vh] lg:h-[75vh] md:mt-32 lg:mt-24 md:w-full">
             <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-24 lg:mt-40 font-bold text-main mb-4 lg:mb-8 md:w-full">
@@ -75,9 +75,16 @@
     computed: {
     backgroundStyle() {
       return {
-        backgroundImage: `url(${this.bgImage})`,
-        backgroundPosition: 'center center'
+        backgroundImage: `linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%), url(${this.bgImage})`,
+        backgroundPosition: 'center center',
+        backgroundSize: 'cover'
       }
+    },
+    marginLeftAndRight() {
+      return `-${(window.innerWidth - 1300) / 2}px`;
+    },
+    paddingLeftAndRight() {
+      return `${(window.innerWidth - 1300) / 2}px`;
     },
     isGif() {
     return this.bgImage && this.bgImage.endsWith('.gif');
@@ -107,4 +114,6 @@
 /*  background: linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%);
  */ background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%);
 }
+
+
  </style>

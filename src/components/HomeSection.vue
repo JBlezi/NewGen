@@ -5,16 +5,16 @@
         <div class="flex h-screen md:h-[50vh] lg:h-[75vh]">
           <div class="flex flex-col justify-between w-full">
             <div class="mt-16 lg:mt-24">
-              <h2 class="text-5xl md:text-4xl px-8 md:px-16 lg:px-24 font-bold text-main mb-4 md:mb-8 lg:mb-12">
+              <h2 class="text-5xl md:text-4xl lg:text-5xl px-8 md:px-16 lg:px-24 font-bold text-main mb-4 md:mb-8 lg:mb-12">
                 <slot name="heading"></slot>
               </h2>
               <div class="md:flex">
                 <div class="md:w-1/2 md:flex md:flex-col md:h-[28rem] lg:h-[25rem] md:justify-between">
                   <div>
-                    <h3 class="px-8 md:px-16 lg:px-24 font-medium text-lg underline mb-4">
+                    <h3 class="px-8 md:px-16 lg:px-24 font-medium text-lg md:text-xl lg:text-2xl underline mb-4">
                       <slot name="subheading"></slot>
                     </h3>
-                    <h4 class="px-8 md:px-16 lg:px-24 font-medium text-lg mb-16">
+                    <h4 class="px-8 md:px-16 lg:px-24 font-medium text-lg lg:text-xl mb-16">
                       <slot name="description"></slot>
                     </h4>
                   </div>

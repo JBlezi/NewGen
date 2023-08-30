@@ -49,7 +49,7 @@
     <p class="mb-2 font-medium text-lg md:text-xl md:font-bold">Submit on:</p>
     <button class="bg-main rounded-lg"><a href="https://filmfreeway.com/" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
   </div>
-  <SponsorSlider :sponsors="images"></SponsorSlider>
+  <SponsorSlider :sponsors="images" class="hidden"></SponsorSlider>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
