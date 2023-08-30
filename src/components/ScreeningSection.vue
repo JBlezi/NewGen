@@ -14,24 +14,30 @@
             <font-awesome-icon v-if="movieList.movies.length > 1 && button" :icon="['fas', 'chevron-right']" class="h-6 w-6 absolute bottom-1/2 right-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRight"/>
             <font-awesome-icon v-if="movieList.movies.length > 1 && !button" :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-[42%] left-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
             <font-awesome-icon v-if="movieList.movies.length > 1 && button" :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-1/2 left-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
-            <font-awesome-icon v-if="movieList.movies.length > 2" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-1/2 right-5 transform translate-y-1/2 hidden md:block xl:hidden" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
-            <font-awesome-icon v-if="movieList.movies.length > 2" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-1/2 left-5 transform translate-y-1/2 hidden md:block xl:hidden" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
-            <font-awesome-icon v-if="movieList.movies.length > 3" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-1/2 right-5 transform translate-y-1/2 hidden xl:block" :class="{'opacity-50': isRightArrowDisabledDesktop}" @click="handleGalleryRightDesktop"/>
-            <font-awesome-icon v-if="movieList.movies.length > 3" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-1/2 left-5 transform translate-y-1/2 hidden xl:block" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftDesktop"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[42%] right-5 transform translate-y-1/2 hidden md:block cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[42%] left-5 transform translate-y-1/2 hidden md:block cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
             <div class="md:flex md:justify-around md:mt-8 md:-mx-8 lg:mx-0">
               <div class="h-4/5">
                 <div class="lg:flex">
                   <router-link :to="`/movie/${movieList.id}`" class="flex flex-col justify-center">
                     <img :src="movieList.movies[this.counter].poster" alt="" class="h-full max-h-[22rem] md:max-h-[26rem] min-h-[22rem] md:min-h-[26rem] self-center md:mb-4">
-                    <h4 class="font-medium text-xl flex justify-center text-main">
+                    <h4 class="font-medium text-xl flex justify-center text-main lg:hidden">
                       {{ movieList.movies[this.counter].title }}
                     </h4>
-                    <h4 class="font-medium text-xl flex justify-center">
+                    <h4 class="font-medium text-xl flex justify-center lg:hidden">
                       {{ movieList.movies[this.counter].director }} | {{ movieList.movies[this.counter].year }}
                     </h4>
                   </router-link>
-                  <div class="hidden lg:block w-56 pl-8 font-medium">
-                    {{ movieList.movies[this.counter].description }}
+                  <div class="flex flex-col max-h-96 overflow-y-scroll">
+                    <h4 class="font-medium text-xl lg:text-2xl flex justify-center text-main hidden lg:block pl-8">
+                      {{ movieList.movies[this.counter].title }}
+                    </h4>
+                    <h4 class="font-medium text-xl lg:text-2xl flex justify-center hidden lg:block pl-8 lg:mb-8">
+                      {{ movieList.movies[this.counter].director }} | {{ movieList.movies[this.counter].year }}
+                    </h4>
+                    <div class="hidden lg:block w-56 pl-8 font-medium lg:text-xl">
+                      {{ movieList.movies[this.counter].description }}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -39,31 +45,23 @@
                 <div class="lg:flex">
                   <router-link :to="`/movie/${movieList.id}`" class="flex flex-col justify-center">
                     <img :src="movieList.movies[this.counterTablet].poster" alt="" class="h-full max-h-[22rem] md:max-h-[26rem] min-h-[22rem] md:min-h-[26rem] self-center md:mb-4">
-                    <h4 class="font-medium text-xl flex justify-center text-main">
+                    <h4 class="font-medium text-xl flex justify-center text-main lg:hidden">
                       {{ movieList.movies[this.counterTablet].title }}
                     </h4>
-                    <h4 class="font-medium text-xl flex justify-center">
+                    <h4 class="font-medium text-xl flex justify-center lg:hidden">
                       {{ movieList.movies[this.counterTablet].director }} | {{ movieList.movies[this.counterTablet].year }}
                     </h4>
                   </router-link>
-                  <div class="hidden lg:block w-56 pl-8 font-medium">
-                    {{ movieList.movies[this.counter].description }}
-                  </div>
-                </div>
-              </div>
-              <div v-if="movieList.movies.length > 2" class="h-4/5 hidden xl:block">
-                <div class="lg:flex">
-                  <router-link :to="`/movie/${movieList.id}`" class="flex flex-col justify-center">
-                    <img :src="movieList.movies[this.counterDesktop].poster" alt="" class="h-full max-h-[22rem] md:max-h-[26rem] min-h-[22rem] md:min-h-[26rem] self-center md:mb-4">
-                    <h4 class="font-medium text-xl flex justify-center text-main">
-                      {{ movieList.movies[this.counterDesktop].title }}
+                  <div class="flex flex-col max-h-96 overflow-y-scroll">
+                    <h4 class="font-medium text-xl lg:text-2xl flex justify-center text-main hidden lg:block pl-8">
+                      {{ movieList.movies[this.counterTablet].title }}
                     </h4>
-                    <h4 class="font-medium text-xl flex justify-center">
-                      {{ movieList.movies[this.counterDesktop].director }} | {{ movieList.movies[this.counterDesktop].year }}
+                    <h4 class="font-medium text-xl lg:text-2xl flex justify-center hidden lg:block pl-8 lg:mb-8">
+                      {{ movieList.movies[this.counterTablet].director }} | {{ movieList.movies[this.counterTablet].year }}
                     </h4>
-                  </router-link>
-                  <div class="hidden lg:block w-56 pl-8 font-medium">
-                    {{ movieList.movies[this.counter].description }}
+                    <div class="hidden lg:block w-56 pl-8 font-medium lg:text-xl">
+                      {{ movieList.movies[this.counterTablet].description }}
+                    </div>
                   </div>
                 </div>
               </div>
