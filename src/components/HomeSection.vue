@@ -1,8 +1,8 @@
 <template>
   <section>
-    <div class="h-screen md:h-[50vh] lg:h-[75vh] bg-cover" :style="backgroundStyle">
-      <div :class="['h-screen', 'md:h-[50vh]', 'lg:h-[75vh]', 'relative', `${background}`]">
-        <div class="flex h-screen md:h-[50vh] lg:h-[75vh]">
+    <div class="h-[80vh] md:h-[50vh] lg:h-[75vh] bg-cover" :style="backgroundStyle">
+      <div :class="['h-[80vh]', 'md:h-[50vh]', 'lg:h-[75vh]', 'relative', `${background}`]">
+        <div class="flex h-[80vh] md:h-[50vh] lg:h-[75vh]">
           <div class="flex flex-col justify-between w-full">
             <div class="mt-16 lg:mt-24">
               <h2 class="text-5xl md:text-4xl lg:text-5xl px-8 md:px-16 lg:px-24 font-bold text-main mb-4 md:mb-8 lg:mb-12">

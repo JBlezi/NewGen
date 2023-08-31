@@ -41,6 +41,7 @@ export default {
   },
   data() {
     return {
+      entry: {},
       festivalImage: require('@/assets/newgen_2023.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
