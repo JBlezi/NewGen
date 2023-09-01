@@ -1,7 +1,7 @@
 <template>
   <HeroSection :bgImage="bgGif">
     <template v-slot:heading>
-      <span class="text-black">Berlin</span> NewGen <br class="hidden lg:block"><span class="text-black">Chinese Film Festival</span>
+      {{ heroHeading }}
     </template>
   </HeroSection>
   <HomeSection button="LEARN MORE" :button_link="buttonLink" :image="festivalImage">
@@ -39,6 +39,8 @@
 import HomeSection from '@/components/HomeSection.vue';
 import SponsorSlider from '@/components/SponsorSlider.vue';
 import HeroSection from '@/components/HeroSection.vue'
+import { getEntry } from '@/api/contentful'
+import { getAllMovies } from '@/api/contentful'
 
 export default {
   name: 'Home',
@@ -47,13 +49,32 @@ export default {
     SponsorSlider,
     HeroSection,
   },
+  created() {
+    getEntry('15qnx6qHbz8xDGX72GI3eO')
+    .then((response) => {
+      this.entry = response;
+      this.heroHeading = this.entry.fields.heading;
+      this.bgGif = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
+      console.log("Received entry:", response);
+    })
+    .catch(console.error);
+
+    getAllMovies()
+      .then((response) => {
+        this.movies = response.items; // Store all fetched movie entries in the movies array
+        console.log("Received movies:", response.items);
+      })
+      .catch(console.error)
+  },
   data() {
     return {
+      entry: {},
+      heroHeading: '',
       festivalImage: require('@/assets/newgen_2023.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
       bgImagePath3: require('@/assets/projector.png'),
-      bgGif: require('@/assets/NewGen2023trailer.gif'),
+      bgGif: '',
       background: 'bg-white',
       background2: 'bg-gradient',
       background3: 'bg-white/80',

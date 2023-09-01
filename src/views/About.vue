@@ -1,10 +1,10 @@
 <template>
   <HeroSection :bgImage="bgImagePath">
     <template v-slot:heading>
-      About Us
+     {{heroHeading}}
     </template>
     <template v-slot:description>
-      New Generation International Film Festival (NewGen) is a Berlin-based nonprofit organisation celebrating high-quality Chinese films with new and distinguished filmmakers, film enthusiasts, film industry professionals, related-field scholars and audiences around the world.
+      {{ heroDescription }}
     </template>
   </HeroSection>
   <section class="mt-12 mb-12 md:mb-24">
@@ -38,15 +38,38 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script>
 import HeroSection from '@/components/HeroSection.vue';
+import { getEntry } from '@/api/contentful'
+import { getAllMovies } from '@/api/contentful'
 
 export default {
   name: 'About',
   components: {
     HeroSection
   },
+  created() {
+    getEntry('9iD7ADjNwwwDA87ZWjSdl')
+    .then((response) => {
+      this.entry = response;
+      this.heroDescription = this.entry.fields.description;
+      this.heroHeading = this.entry.fields.heading;
+      this.bgImagePath = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
+      console.log("Received entry:", response);
+    })
+    .catch(console.error);
+
+    getAllMovies()
+      .then((response) => {
+        this.movies = response.items; // Store all fetched movie entries in the movies array
+        console.log("Received movies:", response.items);
+      })
+      .catch(console.error)
+  },
   data() {
     return {
-      bgImagePath: require('@/assets/moviemento.png'),
+      entry: {},
+      heroDescription: '',
+      heroHeading: '',
+      bgImagePath: '',
       staff: [
             { name: 'Huangan Zhao', position: 'Founder',  poster: require('@/assets/ZhaoHuangdan-edited.png'), id:1 },
             { name: 'Wu Zhilin', position: 'Marketing Director',  poster: require('@/assets/WuZhilin.png'), id:2 },

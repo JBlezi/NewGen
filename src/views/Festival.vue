@@ -1,15 +1,15 @@
 <template>
   <HeroSection :bgImage="festivalImage" class="md:mb-24">
     <template v-slot:heading>
-      Festival Lineup 2023
+      {{heroHeading}}
     </template>
     <template v-slot:subheading>
-      <span class="text-main">Festival Days:</span><br>Friday 14th - Thursday 20th September 2023
+      <span class="text-main">Festival Days:</span><br>{{heroDays}}
       <br><br>
-      <span class="text-main">Cinema:</span><br>Moviemento Kino, Kottbusser Damm 22, Berlin.
+      <span class="text-main">Cinema:</span><br>{{heroLocation}}
     </template>
     <template v-slot:description>
-      Join us for a very special Festival this year full  of Chinese animation classics in collaboration with the China Contemporary Animation Art Archive Museum. This event will showcase four titles produced by the renowned Shanghai Animation Film Studio.
+      {{ heroDescription }}
     </template>
   </HeroSection>
   <ScreeningSection
@@ -32,6 +32,8 @@
 <script>
 import HeroSection from '@/components/HeroSection.vue';
 import ScreeningSection from '@/components/ScreeningSection.vue'
+import { getEntry } from '@/api/contentful'
+import { getAllMovies } from '@/api/contentful'
 
 export default {
   name: 'Festival',
@@ -39,9 +41,34 @@ export default {
     HeroSection,
     ScreeningSection,
   },
+  created() {
+    getEntry('4ZD3OG28KgbjRUTOLVFGfM')
+    .then((response) => {
+      this.entry = response;
+      this.heroDays = this.entry.fields.festivalDays;
+      this.heroDescription = this.entry.fields.description;
+      this.heroLocation = this.entry.fields.location;
+      this.heroHeading = this.entry.fields.heading;
+      this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
+      console.log("Received entry:", response);
+    })
+    .catch(console.error);
+
+    getAllMovies()
+      .then((response) => {
+        this.movies = response.items; // Store all fetched movie entries in the movies array
+        console.log("Received movies:", response.items);
+      })
+      .catch(console.error)
+  },
   data() {
     return {
       entry: {},
+      heroDescription: '',
+      heroHeading: '',
+      heroBackground: '',
+      heroLocation: '',
+      heroDays: '',
       festivalImage: require('@/assets/newgen_2023.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),

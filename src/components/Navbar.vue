@@ -4,7 +4,7 @@
       <div class="lg:flex lg:justify-between">
         <router-link to="/" class="flex flex-row" @click="isOpen = false">
           <img :src="logoImage" alt="Logo" class="md:h-12 md:w-12 h-8 w-8 lg:h-8 lg:w-8 m-4 xl:m-3">
-          <span class="self-center text-lg md:text-2xl lg:font-medium">NewGen</span>
+          <span class="self-center text-lg xl:text-2xl lg:font-medium">NewGen</span>
         </router-link>
         <div class="flex hidden lg:block xl:text-lg p-8 space-x-8 py-4 font-medium">
           <router-link active-class="text-main" to="/">HOME</router-link>

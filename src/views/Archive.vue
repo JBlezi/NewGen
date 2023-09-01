@@ -1,7 +1,7 @@
 <template>
-  <HeroSection :bgImage="festivalImage" class="md:mb-8">
+  <HeroSection :bgImage="heroBackground" class="md:mb-8">
     <template v-slot:heading>
-      NewGen Archive
+      {{heroHeading}}
     </template>
   </HeroSection>
   <WinnerSection :movies="categories[0].movies"></WinnerSection>
@@ -35,6 +35,8 @@
 import HeroSection from '@/components/HeroSection.vue';
 import WinnerSection from '@/components/WinnerSection.vue';
 import ScreeningSection from '@/components/ScreeningSection.vue';
+import { getEntry } from '@/api/contentful'
+import { getAllMovies } from '@/api/contentful'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -44,8 +46,28 @@ export default {
     WinnerSection,
     ScreeningSection
   },
+  created() {
+    getEntry('3qn3mLo8zczF2QZLgEQBif')
+    .then((response) => {
+      this.entry = response;
+      this.heroHeading = this.entry.fields.heading;
+      this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
+      console.log("Received entry:", response);
+    })
+    .catch(console.error);
+
+    getAllMovies()
+      .then((response) => {
+        this.movies = response.items; // Store all fetched movie entries in the movies array
+        console.log("Received movies:", response.items);
+      })
+      .catch(console.error)
+  },
   data() {
     return {
+      entry: {},
+      heroHeading: '',
+      heroBackground: '',
       festivalImage: require('@/assets/newgen_2023.png'),
       showAdditionalWinners: false,
       showModal: false,

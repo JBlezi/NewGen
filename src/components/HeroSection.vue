@@ -21,7 +21,7 @@
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <slot name="button"></slot>
         </div>
-        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-5 left-1/2 transform -translate-x-1/2"/>
+        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-2 left-1/2 transform -translate-x-1/2"/>
       </div>
       <div v-else class="h-screen md:h-full md:min-h-[40vh] lg:h-[75vh] relative">
         <div class="flex items-center md:h-full md:min-h-[40vh] lg:h-[75vh] h-screen">
@@ -31,12 +31,12 @@
             </h1>
             <div class="lg:flex">
               <div v-if="hasSubheadingSlot && hasDescriptionSlot" class="lg:w-2/5">
-                <h2 class="px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl lg:text-4xl mb-4 md:mb-8">
+                <h2 class="px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
                   <slot name="subheading"></slot>
                 </h2>
               </div>
               <div v-if="hasSubheadingSlot && !hasDescriptionSlot" class="lg:w-full">
-                <h2 class="px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl lg:text-4xl mb-4 md:mb-8">
+                <h2 class="px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
                   <slot name="subheading"></slot>
                 </h2>
               </div>
@@ -62,7 +62,7 @@
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <slot name="button"></slot>
         </div>
-        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-5 left-1/2 transform -translate-x-1/2 lg:hidden"/>
+        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-2 left-1/2 transform -translate-x-1/2 lg:hidden"/>
       </div>
     </div>
   </section>
