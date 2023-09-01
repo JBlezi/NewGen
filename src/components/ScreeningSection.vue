@@ -80,7 +80,25 @@
 <script>
 export default {
   name: 'ScreeningSection',
-  props: ['button', 'bgColor', 'movieList', 'button_link'],
+  props: {
+    button: String,
+    bgColor: String,
+    movieList:{
+      type: Object,
+      required: true,
+      validator(value) {
+        return value && Array.isArray(value.movies);
+      }
+    },
+    button_link: String
+  },
+  mounted() {
+    console.log("BIG LOGGER", this.movieList);
+  },
+  created() {
+    console.log("Component is created");
+    console.log("BIG LOGGER", this.movieList);
+  },
   data() {
     return {
       counter: 0,

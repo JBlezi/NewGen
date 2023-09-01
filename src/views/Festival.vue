@@ -13,7 +13,7 @@
     </template>
   </HeroSection>
   <ScreeningSection
-    v-for="(section, index) in screeningSections"
+    v-for="(section, index) in screeningSections2"
     :key="index"
     button="GET TICKETS"
     :movieList="section"
@@ -33,7 +33,9 @@
 import HeroSection from '@/components/HeroSection.vue';
 import ScreeningSection from '@/components/ScreeningSection.vue'
 import { getEntry } from '@/api/contentful'
-import { getAllMovies } from '@/api/contentful'
+import { getMoviesByCategory } from '@/api/contentful'
+import { getAllScreenings } from '@/api/contentful'
+
 
 export default {
   name: 'Festival',
@@ -54,12 +56,43 @@ export default {
     })
     .catch(console.error);
 
-    getAllMovies()
+    getMoviesByCategory('Festival')
+    .then((response) => {
+      this.movies = response.items;
+      console.log("Received festival movies:", response.items);
+    })
+    .catch(console.error)
+
+    getAllScreenings()
       .then((response) => {
-        this.movies = response.items; // Store all fetched movie entries in the movies array
-        console.log("Received movies:", response.items);
-      })
-      .catch(console.error)
+        this.screenings = response.items;
+        console.log("Received Screenings:", response.items);
+
+        const sectionsWithMovies = this.screenings.map(screening => {
+          return {
+            heading: screening.fields.heading,
+            subheading: screening.fields.subheading,
+            id: screening.sys.id,
+            movies: this.movies.filter(movie => {
+              return movie.fields.screeningSection && movie.fields.screeningSection.fields.heading === screening.fields.heading;
+            }).map(movie => {
+              return {
+                title: movie.fields.title,
+                director: movie.fields.director,
+                year: movie.fields.competitionYear,
+                poster: movie.fields.poster.fields.file.url, // Assuming poster has the structure as you've shown
+                description: movie.fields.description,
+                id: movie.sys.id
+              }
+            })
+          };
+        });
+
+        // Filter out sections that don't have movies
+        this.screeningSections2 = sectionsWithMovies.filter(section => section.movies.length > 0);
+  })
+  .catch(console.error);
+
   },
   data() {
     return {
@@ -69,12 +102,15 @@ export default {
       heroBackground: '',
       heroLocation: '',
       heroDays: '',
+      movies: [],
+      screenings: [],
       festivalImage: require('@/assets/newgen_2023.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
       bgImagePath3: require('@/assets/projector.png'),
       button_link: 'https://moviemento.de/',
       video: 'https://www.youtube.com/embed/h42hPO34D-4?si=4qJpD0h0tCQqE2um',
+      screeningSections2: [],
       screeningSections: [
         {
           movies: [

@@ -21,5 +21,24 @@ export const getAllMovies = () => {
   });
 }
 
+export const getAllScreenings = () => {
+  return client.getEntries({
+    content_type: 'screening'
+  });
+}
+
+export function getMoviesByCategory(category) {
+  const client = createClient({
+    space: '2ak89u21jz0r',
+    accessToken: 'UCH3iicmuukSOBZvdF7uXkBtweVgha1JHgLrhe6bESY',
+  });
+
+  return client.getEntries({
+    content_type: 'movies',  // assuming 'movie' is the content type ID for movies
+    'fields.category': category
+  });
+}
+
+
 
 // And so on...
