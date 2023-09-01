@@ -1,16 +1,16 @@
 <template>
-  <HeroSection :bgImage="bgImagePath">
+  <HeroSection :bgImage="heroBackground">
     <template v-slot:heading>
-      Special Event
+      {{heroHeading}}
     </template>
     <template v-slot:subheading>
-      Classic Animation Collection
+      {{heroSubheading}}
     </template>
     <template v-slot:description>
-      Shanghai Animation Film Studio Retro
+      {{heroDescription}}
     </template>
     <template v-slot:middle-button>
-      <Button :link="link">GET TICKETS</Button>
+      <Button :link="heroButtonLink">{{heroButtonText}}</Button>
     </template>
   </HeroSection>
   <section class="mt-12 mb-12 md:my-24">
@@ -46,6 +46,8 @@
 import HeroSection from '@/components/HeroSection.vue';
 import MovieSectionClassic from '@/components/MovieSectionClassic.vue'
 import Button from '@/components/Button.vue'
+import { getEntry } from '@/api/contentful'
+import { getAllMovies } from '@/api/contentful'
 
 export default {
   name: 'SpecialEvent',
@@ -54,8 +56,36 @@ export default {
     MovieSectionClassic,
     Button
   },
+  created() {
+    getEntry('3jRld98dBbx1MTeYUnSk00')
+    .then((response) => {
+      this.entry = response;
+      this.heroSubheading = this.entry.fields.subheading;
+      this.heroDescription = this.entry.fields.description;
+      this.heroHeading = this.entry.fields.heading;
+      this.heroButtonLink = this.entry.fields.middleButtonLink;
+      this.heroButtonText = this.entry.fields.middleButton;
+      this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
+      console.log("Received entry:", response);
+    })
+    .catch(console.error);
+
+    getAllMovies()
+      .then((response) => {
+        this.movies = response.items; // Store all fetched movie entries in the movies array
+        console.log("Received movies:", response.items);
+      })
+      .catch(console.error)
+  },
   data() {
     return {
+      entry: {},
+      heroDescription: '',
+      heroHeading: '',
+      heroBackground: '',
+      heroSubheading: '',
+      heroButtonLink: '',
+      heroButtonText: '',
       festivalImage: require('@/assets/newgen_2023.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
       link: 'https://moviemento.de/',
