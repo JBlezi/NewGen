@@ -12,12 +12,20 @@
         <div class="mb-4 md:mb-16 lg:mb-12 hidden lg:block lg:h-1/2">
           <img :src="movie.still" alt="Still Shot" class="h-full min-w-full object-cover"/>
         </div>
-        <div class="md:mb-4 hidden lg:block lg:h-1/2 lg:flex">
-          <img :src="movie.director_foto" alt="Still Shot" class="h-full min-w-full lg:min-w-0 object-cover"/>
-          <div class="px-8 w-1/2">
-            <div class="mb-2">Duration: {{ movie.duration }}</div>
-            <div class="mb-2">Year: {{ movie.year }}</div>
-            <div class="mb-2">Director: {{ movie.director }}</div>
+        <div class="md:mb-4 hidden lg:block lg:h-1/2 lg:flex cursor-pointer" @click="toggleModal">
+          <img :src="movie.director_foto" alt="Still Shot" class="h-full w-1/2 min-w-full lg:min-w-0 object-cover"/>
+          <div v-if="!showModal" class="pl-8 w-1/2">
+            <div class="mb-2"><span class="text-main">Duration:</span><br>{{ movie.duration }}</div>
+            <div class="mb-2"><span class="text-main">Year:</span><br>{{ movie.year }}</div>
+            <div class="mb-2"><span class="text-main">Director:</span><br>{{ movie.director }}</div>
+          </div>
+              <!-- Modal overlay -->
+          <div v-if="showModal" class="w-1/2 h-1/2 font-medium text-lg pl-8">
+            <div class="bg-white">
+              <p>
+                {{ movie.description }}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -43,7 +51,7 @@
       <img :src="movie.director_foto" alt="Still Shot" class="h-full min-w-full"/>
     </div>
     <div class="flex justify-between mb-4 md:mb-8 font-medium md:font-semibold md:text-2xl lg:hidden">
-      <div class="">
+      <div>
         {{ movie.director }}
       </div>
       <div>
@@ -53,7 +61,7 @@
     </div>
 
     <!-- Modal overlay -->
-    <div v-if="showModal" class="w-full h-full bg-black bg-opacity-50 flex items-center justify-center font-medium md:font-semibold md:text-2xl">
+    <div v-if="showModal" class="w-full h-full bg-black bg-opacity-50 flex items-center justify-center font-medium md:font-semibold md:text-2xl lg:hidden">
       <div class="bg-white">
         <p>
           {{ movie.description }}
