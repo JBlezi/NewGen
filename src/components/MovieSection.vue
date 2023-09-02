@@ -10,10 +10,10 @@
       <div class="font-medium md:font-semibold md:text-2xl flex md:flex-col justify-between md:justify-start mb-4 md:mb-12 md:w-1/2 md:pl-8">
 
         <div class="mb-4 md:mb-16 lg:mb-12 hidden lg:block lg:h-1/2">
-          <img :src="movie.still" alt="Still Shot" class="h-full min-w-full object-cover"/>
+          <img :src="movie.movieScene" alt="Still Shot" class="h-full min-w-full object-cover"/>
         </div>
         <div class="md:mb-4 hidden lg:block lg:h-1/2 lg:flex cursor-pointer" @click="toggleModal">
-          <img :src="movie.director_foto" alt="Still Shot" class="h-full w-1/2 min-w-full lg:min-w-0 object-cover"/>
+          <img :src="movie.directorFoto" alt="Director Foto" class="h-full w-1/2 min-w-full lg:min-w-0 object-cover"/>
           <div v-if="!showModal" class="pl-8 w-1/2">
             <div class="mb-2"><span class="text-main">Duration:</span><br>{{ movie.duration }}</div>
             <div class="mb-2"><span class="text-main">Year:</span><br>{{ movie.year }}</div>
@@ -42,13 +42,13 @@
     </div>
 
     <div class="mb-4 md:mb-16 lg:hidden">
-      <img :src="movie.still" alt="Still Shot" class="h-full min-w-full"/>
+      <img :src="movie.movieScene" alt="Still Shot" class="h-full min-w-full"/>
     </div>
     <div class="font-medium md:font-semibold md:text-2xl text-lg mb-4 md:mb-8 md:hidden lg:block mt-16">
       {{ movie.description }}
     </div>
     <div class="md:mb-4 lg:hidden">
-      <img :src="movie.director_foto" alt="Still Shot" class="h-full min-w-full"/>
+      <img :src="movie.directorFoto" alt="Still Shot" class="h-full min-w-full"/>
     </div>
     <div class="flex justify-between mb-4 md:mb-8 font-medium md:font-semibold md:text-2xl lg:hidden">
       <div>
@@ -86,9 +86,9 @@ export default {
       this.showModal = !this.showModal;
     }
   },
-  computed: {
-
-  },
+  created() {
+    console.log("Movie in MovieSection:", this.movie);
+  }
 };
 </script>
 

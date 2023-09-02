@@ -1,5 +1,5 @@
 <template>
-  <HeroSection :bgImage="screening[0].movies[0].poster">
+  <HeroSection  v-if="screening && screening.length && screening[0].movies" :bgImage="screening[0].movies[0].poster">
     <template v-slot:heading>
       <span class="break-all">{{ screening[0].heading }}</span>
     </template>
@@ -10,15 +10,17 @@
       Moviemento Kino, Kottbusser Damm 22, 10967 Berlin
     </template>
     <template v-slot:middle-button>
-      <Button :link="button_link">GET TICKETS</Button>
+      <Button :link="screening[0].buttonLink">GET TICKETS</Button>
     </template>
   </HeroSection>
-  <MovieSection
-    v-for="(movie, index) in screening[0].movies"
-    :key="index"
-    :movie="movie">
-  </MovieSection>
-  <Button :link="button_link">GET TICKETS</Button>
+  <div v-if="screening && screening.length && screening[0].movies">
+    <MovieSection
+      v-for="(movie, index) in screening[0].movies"
+      :key="index"
+      :movie="movie">
+    </MovieSection>
+    <Button :link="screening[0].buttonLink">GET TICKETS</Button>
+  </div>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
@@ -26,6 +28,8 @@
 import HeroSection from '@/components/HeroSection.vue';
 import Button from '@/components/Button.vue';
 import MovieSection from '@/components/MovieSection.vue';
+import { getMoviesByCategory } from '@/api/contentful'
+import { getAllScreenings } from '@/api/contentful'
 
 export default {
   name: 'MovieDetails',
@@ -37,62 +41,85 @@ export default {
   },
   data() {
     return {
+      isLoading: true, // Add this
+      sectionsWithMovies: [],
       movieImage: require('@/assets/singing_in_the_widerness.png'),
-      screening: {},
+      screening: [],
       button_link: 'https://moviemento.de/',
-      screeningSections: [
-        {
-          movies: [
-            { title: 'Will you look at me', director: 'SHULI HUANG', year: '2022', poster: require('@/assets/will_you_look_at_me.png'), director_foto: require('@/assets/lin_yihan.png'), still: require('@/assets/moon.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', duration: '20:23', id:1 },
-            { title: 'Lan Yu', director: 'STANLEY KWANG', year: '2001', poster: require('@/assets/lan_yu.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', duration: '20:23', id:2 },
-          ],
-          heading: "Love is Love",
-          subheading: "Nov. 3 2022, 7:30pm | OmeU OPENING FILM",
-          id: 1
-        },
-        {
-          movies: [
-            { title: 'What can I hold you with', director: 'DI SHEN', year: '2021', poster: require('@/assets/what_can_i_hold_you_with.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:3 },
-            { title: 'Everything near becomes distant', director: 'YUNYI ZHU', year: '2022', poster: require('@/assets/everything_near_becomes_distant.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.',id:4 },
-            { title: 'Go Fishing', director: 'XIN NAN', year: '2022', poster: require('@/assets/go_fishing.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), id:5 },
-          ],
-          heading: "On Your Own",
-          subheading: "Nov. 4 2022, 5:00pm | OmeU NEWGEN 2022",
-          id: 2
-        },
-        {
-          movies: [
-            { title: 'Reconstructing Rural China', director: 'DI SHEN', year: '2021', poster: require('@/assets/yesterday_i_was_the_moon.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:6 },
-            { title: 'Everything near becomes distant', director: 'YUNYI ZHU', year: '2022', poster: require('@/assets/singing_in_the_widerness.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:7 },
-          ],
-          heading: "Reconstructing Rural China",
-          subheading: "Nov. 4 2022, 5:00pm | OmeU NEWGEN 2022",
-          id: 3
-        },
-        {
-          movies: [
-            { title: 'What can I hold you with', director: 'DI SHEN', year: '2021', poster: require('@/assets/childrens_corner.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:8 },
-            { title: 'Everything near becomes distant', director: 'YUNYI ZHU', year: '2022', poster: require('@/assets/Egg-Hair-Tie-Homework-Books.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:9 },
-            { title: 'Go Fishing', director: 'XIN NAN', year: '2022', poster: require('@/assets/nanhai_girls.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:10 },
-            { title: 'What can I hold you with', director: 'DI SHEN', year: '2021', poster: require('@/assets/secrets_at_the_intermissions.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:11 },
-            { title: 'Everything near becomes distant', director: 'YUNYI ZHU', year: '2022', poster: require('@/assets/a_firecracker_story.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id:12 },
-            { title: 'Go Fishing', director: 'XIN NAN', year: '2022', poster: require('@/assets/summer_swing.png'), director_foto: require('@/assets/chen_dongnan.png'), still: require('@/assets/SingingStill.png'), description: 'After hiding in the mountains for a century, a Miao ethnic village choir is discovered by an outsider and becomes a national sensation. Two young Miaos and all the villagers must reconcile their faith, identity, and love with the real world of China.', id: 13 },
-          ],
-          heading: "Kids no more",
-          subheading: "Nov. 4 2022, 5:00pm | OmeU NEWGEN 2022",
-          id: 4
-        },
-        // ... additional sections ...
-      ],
+      entry: {},
+      heroDescription: '',
+      heroHeading: '',
+      heroBackground: '',
+      heroLocation: '',
+      heroDays: '',
+      movies: [],
+      screenings: [],
+      festivalImage: require('@/assets/newgen_2023.png'),
+      bgImagePath: require('@/assets/palm_trees.png'),
+      bgImagePath2: require('@/assets/moviemento.png'),
+      bgImagePath3: require('@/assets/projector.png'),
+      video: 'https://www.youtube.com/embed/h42hPO34D-4?si=4qJpD0h0tCQqE2um',
+      screeningSections2: [],
     }
   },
-  created() {
-    this.screening = this.fetchScreeningById(this.id);
+  watch: {
+    '$route.params.id': function(newId) {
+      this.screening = this.fetchScreeningById(newId);
+    }
   },
   methods: {
     fetchScreeningById(id) {
-      return this.screeningSections.filter((section) => section.id == id)
-    }
+      return this.screeningSections2.filter((section) => section.id == id)
+    },
+  },
+  created() {
+    Promise.all([
+        getMoviesByCategory('Festival'),
+        getAllScreenings()
+    ]).then(([moviesResponse, screeningsResponse]) => {
+        this.movies = moviesResponse.items;
+
+        this.screenings = screeningsResponse.items;
+
+        this.sectionsWithMovies = this.screenings.map(screening => {
+        return {
+          heading: screening.fields.heading,
+          subheading: screening.fields.subheading,
+          button_link: screening.fields.buttonLink,
+          id: screening.sys.id,
+          movies: this.movies.filter(movie => {
+
+            return movie.fields.screeningSection && movie.fields.screeningSection.fields.heading === screening.fields.heading;
+          }).map(movie => {
+            return {
+              title: movie.fields.title,
+              director: movie.fields.director,
+              year: movie.fields.competitionYear,
+              poster: movie.fields.poster.fields.file.url, // Assuming poster has the structure as you've shown
+              description: movie.fields.description,
+              competitionYear: movie.fields.competitionYear,
+              duration: movie.fields.duration,
+              languages: movie.fields.languages,
+              subtitles: movie.fields.subtitles,
+              directorFoto: movie.fields.directorFoto.fields.file.url,
+              movieScene: movie.fields.movieScene.fields.file.url,
+              directorBio: movie.fields.directorBio,
+              id: movie.sys.id
+            }
+          })
+        };
+      });
+
+        // Filter out sections that don't have movies
+        this.screeningSections2 = this.sectionsWithMovies.filter(section => section.movies.length > 0);
+        this.screening = this.fetchScreeningById(this.$route.params.id);
+
+        this.isLoading = false; // Set to false once everything is loaded
+    })
+    .catch(error => {
+        console.error(error);
+        this.isLoading = false; // Set to false even on error, but handle this better in a real-world scenario
+    });
   }
 }
 
