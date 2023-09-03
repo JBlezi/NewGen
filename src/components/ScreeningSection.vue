@@ -20,7 +20,7 @@
               <div class="h-4/5">
                 <div class="lg:flex">
                   <router-link :to="`/movie/${movieList.id}`" class="flex flex-col justify-center">
-                    <img :src="movieList.movies[this.counter].poster" alt="" class="h-full max-h-[22rem] md:max-h-[26rem] min-h-[22rem] md:min-h-[26rem] self-center md:mb-4">
+                    <img :src="movieList.movies[this.counter].poster" alt="" class="h-full max-h-[22rem] md:max-h-[26rem] lg:min-w-[18rem] min-h-[22rem] md:min-h-[26rem] self-center md:mb-4">
                     <h4 class="font-medium text-xl flex justify-center text-main lg:hidden">
                       {{ movieList.movies[this.counter].title }}
                     </h4>
@@ -44,7 +44,7 @@
               <div v-if="movieList.movies.length > 1" class="h-4/5 hidden md:block lg:ml-8">
                 <div class="lg:flex">
                   <router-link :to="`/movie/${movieList.id}`" class="flex flex-col justify-center">
-                    <img :src="movieList.movies[this.counterTablet].poster" alt="" class="h-full max-h-[22rem] md:max-h-[26rem] min-h-[22rem] md:min-h-[26rem] self-center md:mb-4">
+                    <img :src="movieList.movies[this.counterTablet].poster" alt="" class="h-full max-h-[22rem] md:max-h-[26rem] lg:min-w-[18rem] min-h-[22rem] md:min-h-[26rem] self-center md:mb-4">
                     <h4 class="font-medium text-xl flex justify-center text-main lg:hidden">
                       {{ movieList.movies[this.counterTablet].title }}
                     </h4>
