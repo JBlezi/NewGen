@@ -1,5 +1,5 @@
 <template>
-  <section class="px-8 md:px-16 my-16 lg:my-32">
+  <section class="px-8 md:px-16 my-16 lg:my-32 md:my-24">
     <div class="text-3xl md:text-4xl font-bold text-main mb-4 md:mb-8 italic">
       {{ movie.title }}
     </div>
@@ -23,7 +23,7 @@
           <div v-if="showModal" class="w-1/2 h-1/2 font-medium text-lg pl-8">
             <div class="bg-white">
               <p>
-                {{ movie.description }}
+                {{ movie.directorBio }}
               </p>
             </div>
           </div>
@@ -35,7 +35,7 @@
         <div class="lg:hidden">
           <span class="text-main">Year:</span> {{ movie.year }}
         </div>
-        <div class="hidden md:block mt-4 lg:hidden">
+        <div class="hidden md:block md:font-medium mt-4 lg:hidden">
           {{ movie.description }}
         </div>
       </div>
@@ -44,27 +44,37 @@
     <div class="mb-4 md:mb-16 lg:hidden">
       <img :src="movie.movieScene" alt="Still Shot" class="h-full min-w-full"/>
     </div>
-    <div class="font-medium md:font-semibold md:text-2xl text-lg mb-4 md:mb-8 md:hidden lg:block mt-16">
+    <div class="font-medium md:font-semibold md:text-2xl text-lg mb-4 md:mb-8 md:hidden lg:block md:mt-16">
       {{ movie.description }}
     </div>
-    <div class="md:mb-4 lg:hidden">
-      <img :src="movie.directorFoto" alt="Still Shot" class="h-full min-w-full"/>
-    </div>
-    <div class="flex justify-between mb-4 md:mb-8 font-medium md:font-semibold md:text-2xl lg:hidden">
-      <div>
-        {{ movie.director }}
+    <div class="md:flex">
+      <div class="md:w-1/2 hidden md:block lg:hidden pr-8">
+        <div class="text-2xl">
+          <div class="mb-4 font-semibold">{{ movie.director }}</div>
+          <div class="md:font-medium">{{ movie.directorBio }}</div>
+        </div>
       </div>
-      <div>
-        <span v-if="!showModal" class="text-main underline font-medium cursor-pointer" @click="toggleModal">Read Bio</span>
-        <span v-else class="text-main underline font-medium cursor-pointer" @click="toggleModal">Close</span>
+      <div class="md:w-1/2">
+        <div class="md:mb-4 lg:hidden">
+          <img :src="movie.directorFoto" alt="Still Shot" class="h-full min-w-1/2"/>
+        </div>
+        <div class="flex justify-between mb-4 md:mb-8 font-medium md:font-semibold md:text-2xl lg:hidden">
+          <div class="md:hidden">
+            {{ movie.director }}
+          </div>
+          <div>
+            <span v-if="!showModal" class="text-main underline font-medium cursor-pointer md:hidden" @click="toggleModal">Read Bio</span>
+            <span v-else class="text-main underline font-medium cursor-pointer" @click="toggleModal">Close</span>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Modal overlay -->
     <div v-if="showModal" class="w-full h-full bg-black bg-opacity-50 flex items-center justify-center font-medium md:font-semibold md:text-2xl lg:hidden">
-      <div class="bg-white">
+      <div class="bg-white font-medium text-lg">
         <p>
-          {{ movie.description }}
+          {{ movie.directorBio }}
         </p>
       </div>
     </div>

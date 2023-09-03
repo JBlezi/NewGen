@@ -19,7 +19,7 @@
       :key="index"
       :movie="movie">
     </MovieSection>
-    <Button :link="screening[0].buttonLink">GET TICKETS</Button>
+    <Button class="mb-32" :link="screening[0].buttonLink">GET TICKETS</Button>
   </div>
 </template>
 

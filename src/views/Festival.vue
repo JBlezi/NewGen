@@ -1,31 +1,33 @@
 <template>
-  <HeroSection :bgImage="heroBackground" class="md:mb-24">
-    <template v-slot:heading>
-      {{heroHeading}}
-    </template>
-    <template v-slot:subheading>
-      <span class="text-main">Festival Days:</span><br>{{heroDays}}
-      <br><br>
-      <span class="text-main">Cinema:</span><br>{{heroLocation}}
-    </template>
-    <template v-slot:description>
-      {{ heroDescription }}
-    </template>
-  </HeroSection>
-  <ScreeningSection
-    v-for="(section, index) in screeningSections2"
-    :key="index"
-    button="GET TICKETS"
-    :movieList="section"
-    :button_link="button_link"
-    :bgColor="index % 2 ? desiredColor : 'white'">
-    <template v-slot:heading>
-      {{ section.heading }}
-    </template>
-    <template v-slot:subheading>
-      {{ section.subheading }}
-    </template>
-  </ScreeningSection>
+  <div v-if="!isLoading"> <!-- Wrap your components in this condition to ensure everything is loaded -->
+    <HeroSection :bgImage="heroBackground" class="md:mb-24">
+      <template v-slot:heading>
+        {{heroHeading}}
+      </template>
+      <template v-slot:subheading>
+        <span class="text-main">Festival Days:</span><br>{{heroDays}}
+        <br><br>
+        <span class="text-main">Cinema:</span><br>{{heroLocation}}
+      </template>
+      <template v-slot:description>
+        {{ heroDescription }}
+      </template>
+    </HeroSection>
+    <ScreeningSection
+      v-for="(section, index) in screeningSections2"
+      :key="index"
+      button="GET TICKETS"
+      :movieList="section"
+      :button_link="button_link"
+      :bgColor="index % 2 ? desiredColor : 'white'">
+      <template v-slot:heading>
+        {{ section.heading }}
+      </template>
+      <template v-slot:subheading>
+        {{ section.subheading }}
+      </template>
+    </ScreeningSection>
+  </div>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
@@ -44,29 +46,23 @@ export default {
     ScreeningSection,
   },
   created() {
-    getEntry('4ZD3OG28KgbjRUTOLVFGfM')
-    .then((response) => {
-      this.entry = response;
+    Promise.all([
+      getEntry('4ZD3OG28KgbjRUTOLVFGfM'),
+      getMoviesByCategory('Festival'),
+      getAllScreenings()
+    ])
+    .then(([entryResponse, moviesResponse, screeningsResponse]) => {
+      this.entry = entryResponse;
       this.heroDays = this.entry.fields.festivalDays;
       this.heroDescription = this.entry.fields.description;
       this.heroLocation = this.entry.fields.location;
       this.heroHeading = this.entry.fields.heading;
-      this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
-      console.log("Received entry:", response);
-    })
-    .catch(console.error);
+      this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;
 
-    getMoviesByCategory('Festival')
-    .then((response) => {
-      this.movies = response.items;
-      console.log("Received festival movies:", response.items);
-    })
-    .catch(console.error)
+      this.movies = moviesResponse.items;
 
-    getAllScreenings()
-      .then((response) => {
-        this.screenings = response.items;
-        console.log("Received Screenings:", response.items);
+      this.screenings = screeningsResponse.items;
+
 
         this.sectionsWithMovies = this.screenings.map(screening => {
         return {
@@ -96,16 +92,21 @@ export default {
           })
         };
       });
+      // Filter out sections that don't have movies
+      this.screeningSections2 = this.sectionsWithMovies.filter(section => section.movies.length > 0);
 
-        // Filter out sections that don't have movies
-        this.screeningSections2 = this.sectionsWithMovies.filter(section => section.movies.length > 0);
-        console.log("AAAAAAA", this.sectionsWithMovies)
-  })
-  .catch(console.error);
+      this.isLoading = false; // Set this to false after all data has been loaded
+    })
+    .catch(error => {
+      console.error(error);
+      this.isLoading = false; // Set this to false even on error, but consider some error handling in real scenarios
+    });
+
 
   },
   data() {
     return {
+      isLoading: true, // This indicates if the content is being loaded
       sectionsWithMovies: [],
       id: 0,
       entry: {},

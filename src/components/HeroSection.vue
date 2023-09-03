@@ -21,7 +21,7 @@
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <slot name="button"></slot>
         </div>
-        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-2 left-1/2 transform -translate-x-1/2"/>
+        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute md:hidden bottom-2 left-1/2 transform -translate-x-1/2"/>
       </div>
       <div v-else class="h-screen md:h-full md:min-h-[40vh] lg:h-[75vh] relative">
         <div class="flex items-center md:h-full md:min-h-[40vh] lg:h-[75vh] h-screen">
@@ -62,7 +62,7 @@
         <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <slot name="button"></slot>
         </div>
-        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-2 left-1/2 transform -translate-x-1/2 lg:hidden"/>
+        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-2 left-1/2 transform -translate-x-1/2 md:hidden"/>
       </div>
     </div>
   </section>
