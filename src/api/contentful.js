@@ -47,6 +47,20 @@ export const getAllJuryMembers = () => {
   })
 }
 
+export const getAllSpecialEventMovies = () => {
+  return client.getEntries({
+    content_type: 'movies',
+    'fields.category': 'Special Event'
+  })
+}
+
+export const getAllFestivalMovies = () => {
+  return client.getEntries({
+    content_type: 'movies',
+    'fields.category': 'Festival'
+  })
+}
+
 export function getMoviesByCategory(category) {
   const client = createClient({
     space: '2ak89u21jz0r',
