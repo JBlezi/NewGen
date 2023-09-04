@@ -27,6 +27,20 @@ export const getAllScreenings = () => {
   });
 }
 
+export const getAllWinners = () => {
+  return client.getEntries({
+    content_type: 'movies',
+    'fields.winner': 'yes'
+  })
+}
+
+export const getAllNominees = () => {
+  return client.getEntries({
+    content_type: 'movies',
+    'fields.nominee': 'yes'
+  })
+}
+
 export function getMoviesByCategory(category) {
   const client = createClient({
     space: '2ak89u21jz0r',

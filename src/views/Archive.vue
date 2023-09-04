@@ -4,7 +4,7 @@
       {{heroHeading}}
     </template>
   </HeroSection>
-  <WinnerSection :movies="categories[0].movies"></WinnerSection>
+  <WinnerSection v-if="isLoading" :movies="winners2"></WinnerSection>
   <ScreeningSection v-for="category in filteredCategories" :key="category.id" :movieList="category" class="mb-8">
     <template v-slot:heading>
       Nominees {{ category.movies[0].ran }}
@@ -37,6 +37,8 @@ import WinnerSection from '@/components/WinnerSection.vue';
 import ScreeningSection from '@/components/ScreeningSection.vue';
 import { getEntry } from '@/api/contentful'
 import { getAllMovies } from '@/api/contentful'
+import { getAllWinners } from '@/api/contentful'
+import { getAllNominees } from '@/api/contentful'
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -46,25 +48,42 @@ export default {
     WinnerSection,
     ScreeningSection
   },
+  beforeMount() {
+    console.log("WINNERS FROM BEFORE MOUNT", this.winners);
+  },
   created() {
-    getEntry('3qn3mLo8zczF2QZLgEQBif')
-    .then((response) => {
-      this.entry = response;
+  Promise.all([
+    getEntry('3qn3mLo8zczF2QZLgEQBif'),
+    getAllMovies(),
+    getAllNominees(),
+    getAllWinners()
+    ]).then(([entryResponse, moviesResponse, nomineesResponse, winnersResponse]) => {
+      // Handling getEntry response
+      this.entry = entryResponse;
       this.heroHeading = this.entry.fields.heading;
-      this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
-      console.log("Received entry:", response);
-    })
-    .catch(console.error);
+      this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;
+      console.log("Received entry:", entryResponse);
 
-    getAllMovies()
-      .then((response) => {
-        this.movies = response.items; // Store all fetched movie entries in the movies array
-        console.log("Received movies:", response.items);
-      })
-      .catch(console.error)
+      // Handling getAllMovies response
+      this.movies = moviesResponse.items;
+      console.log("Received movies:", moviesResponse.items);
+
+      // Handling getAllNominees and getAllWinners responses
+      this.nominees = nomineesResponse.items;
+      this.winners2 = winnersResponse.items;
+      console.log("NOMINEES", this.nominees);
+      console.log("WINNERS FROM CREATED", this.winners2);
+      this.isLoading = true;
+
+    }).catch(error => {
+      console.error(error);
+      this.isLoading = true; // Set this to false even on error, but consider some error handling in real scenarios
+    });
+    console.log("WINNERS FROM CREATED BOTTOM", this.winners2);
   },
   data() {
     return {
+      winners2: [],
       entry: {},
       heroHeading: '',
       heroBackground: '',
@@ -72,6 +91,7 @@ export default {
       showAdditionalWinners: false,
       showModal: false,
       modalMember: null,
+      isLoading: false,
       categories: [
         {
           movies: [
@@ -116,6 +136,11 @@ export default {
         this.modalMember = null;
     }
   },
+  mounted() {
+    this.$nextTick(() => {
+    console.log("WINNERS FROM ARCHIVE", this.winners);
+  });
+},
   computed: {
     filteredCategories() {
       if (this.showAdditionalWinners) {

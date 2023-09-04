@@ -93,11 +93,9 @@ export default {
     button_link: String
   },
   mounted() {
-    console.log("BIG LOGGER", this.movieList);
   },
   created() {
-    console.log("Component is created");
-    console.log("BIG LOGGER", this.movieList);
+
   },
   data() {
     return {
