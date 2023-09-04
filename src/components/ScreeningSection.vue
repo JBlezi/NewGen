@@ -95,7 +95,7 @@ export default {
   mounted() {
   },
   created() {
-
+    console.log("NOMINEES FROM SCREENING SECTION", this.movieList)
   },
   data() {
     return {

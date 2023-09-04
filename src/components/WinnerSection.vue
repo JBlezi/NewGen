@@ -32,7 +32,6 @@ export default {
     }
   },
   mounted() {
-    console.log("WINNERS FROM WINNERSECTION", this.movies);
   },
   created() {
   },

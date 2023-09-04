@@ -5,9 +5,9 @@
     </template>
   </HeroSection>
   <WinnerSection v-if="isLoading" :movies="winners2"></WinnerSection>
-  <ScreeningSection v-for="category in filteredCategories" :key="category.id" :movieList="category" class="mb-8">
+  <ScreeningSection v-for="nominee in filteredCategories" :key="nominee" :movieList="nominee" class="mb-8">
     <template v-slot:heading>
-      Nominees {{ category.movies[0].ran }}
+      Nominees {{ nominee.competitionYear }}
     </template>
   </ScreeningSection>
   <p class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer" @click="toggleAdditionalEntries">{{ showAdditionalWinners ? 'Hide past editions nominees' : 'See past editions nominees' }}</p>
@@ -48,9 +48,6 @@ export default {
     WinnerSection,
     ScreeningSection
   },
-  beforeMount() {
-    console.log("WINNERS FROM BEFORE MOUNT", this.winners);
-  },
   created() {
   Promise.all([
     getEntry('3qn3mLo8zczF2QZLgEQBif'),
@@ -66,24 +63,55 @@ export default {
 
       // Handling getAllMovies response
       this.movies = moviesResponse.items;
-      console.log("Received movies:", moviesResponse.items);
 
       // Handling getAllNominees and getAllWinners responses
-      this.nominees = nomineesResponse.items;
+      // Group movies by competitionYear
+      const groupedByYear = nomineesResponse.items.reduce((accumulator, movie) => {
+        const transformedMovie = {
+          title: movie.fields.title,
+          director: movie.fields.director,
+          year: movie.fields.competitionYear,
+          poster: movie.fields.poster.fields.file.url,
+          description: movie.fields.description,
+          competitionYear: movie.fields.competitionYear,
+          duration: movie.fields.duration,
+          languages: movie.fields.languages,
+          subtitles: movie.fields.subtitles,
+          directorFoto: movie.fields.directorFoto.fields.file.url,
+          movieScene: movie.fields.movieScene.fields.file.url,
+          directorBio: movie.fields.directorBio,
+          id: movie.sys.id
+        };
+
+        if (!accumulator[transformedMovie.competitionYear]) {
+          accumulator[transformedMovie.competitionYear] = [];
+        }
+
+        accumulator[transformedMovie.competitionYear].push(transformedMovie);
+        return accumulator;
+      }, {});
+
+      // Convert the grouped object into the desired array format
+      this.nominees2 = Object.keys(groupedByYear).sort((a, b) => b - a).map(year => {
+        return {
+          competitionYear: year,
+          movies: groupedByYear[year]
+        };
+      });
+
       this.winners2 = winnersResponse.items;
-      console.log("NOMINEES", this.nominees);
-      console.log("WINNERS FROM CREATED", this.winners2);
+      console.log("NOMINEES FROM CREATED", this.nominees2);
       this.isLoading = true;
 
     }).catch(error => {
       console.error(error);
       this.isLoading = true; // Set this to false even on error, but consider some error handling in real scenarios
     });
-    console.log("WINNERS FROM CREATED BOTTOM", this.winners2);
   },
   data() {
     return {
       winners2: [],
+      nominees2: { movies: [] },
       entry: {},
       heroHeading: '',
       heroBackground: '',
@@ -144,9 +172,10 @@ export default {
   computed: {
     filteredCategories() {
       if (this.showAdditionalWinners) {
-        return this.categories;
+        return this.nominees2;
       }
-      return this.categories.slice(0, 1); // returns only the first movie
+      console.log("SLCIE", this.nominees2[0].movies)
+      return [this.nominees2[0]];
     }
   }
 };
