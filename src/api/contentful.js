@@ -41,6 +41,12 @@ export const getAllNominees = () => {
   })
 }
 
+export const getAllJuryMembers = () => {
+  return client.getEntries({
+    content_type: 'juryMember',
+  })
+}
+
 export function getMoviesByCategory(category) {
   const client = createClient({
     space: '2ak89u21jz0r',
