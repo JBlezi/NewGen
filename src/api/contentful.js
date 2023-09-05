@@ -61,6 +61,20 @@ export const getAllFestivalMovies = () => {
   })
 }
 
+export const getAllFestivalSponsors = () => {
+  return client.getEntries({
+    content_type: 'sponsor',
+    'fields.category': 'Festival'
+  })
+}
+
+export const getAllSpecialEventSponsors = () => {
+  return client.getEntries({
+    content_type: 'sponsor',
+    'fields.category': 'Special Event'
+  })
+}
+
 export function getMoviesByCategory(category) {
   const client = createClient({
     space: '2ak89u21jz0r',
