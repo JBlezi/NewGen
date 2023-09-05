@@ -3,7 +3,7 @@
   <div class="max-w-[1300px] mx-auto">
     <router-view />
   </div>
-  <SponsorSlider :sponsors="sponsors"></SponsorSlider>
+  <SponsorSlider v-if="isLoaded" :sponsors="sponsors"></SponsorSlider>
   <MainFooter />
 </template>
 
@@ -25,9 +25,6 @@ export default {
     getAllFestivalSponsors()
       .then((response) => {
         this.sponsors = response.items.map(item => item.fields.logo.fields.file.url);
-        console.log("SPONSORS",  this.sponsors)
-
-
       })
       .catch(console.error)
       .finally(() => {

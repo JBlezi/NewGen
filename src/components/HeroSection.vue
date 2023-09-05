@@ -18,7 +18,7 @@
             </h3>
           </div>
         </div>
-        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+        <div v-if="hasButtonSlot" class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <slot name="button"></slot>
         </div>
         <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute md:hidden bottom-2 left-1/2 transform -translate-x-1/2"/>
@@ -59,7 +59,7 @@
             </div>
           </div>
         </div>
-        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
+        <div v-if="hasButtonSlot" class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <slot name="button"></slot>
         </div>
         <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-2 left-1/2 transform -translate-x-1/2 md:hidden"/>
@@ -76,7 +76,6 @@
     backgroundStyle() {
       return {
         backgroundImage: `linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%), url(${this.bgImage})`,
-        backgroundPosition: 'center center',
         backgroundSize: 'cover'
       }
     },
@@ -98,6 +97,9 @@
     hasDescriptionSlot() {
       return !!this.$slots.description;
     },
+    hasButtonSlot() {
+      return !!this.$slots['button'];
+    },
     hasMiddleButtonSlot() {
       return !!this.$slots['middle-button'];
     },
@@ -115,5 +117,9 @@
  */ background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%);
 }
 
-
+@media screen and (max-width: 640px) {
+  .bg-gradient {
+    background-position: center center;
+  }
+}
  </style>

@@ -1,7 +1,7 @@
 <template>
   <HeroSection :bgImage="bgGif">
     <template v-slot:heading>
-      {{ heroHeading }}
+      <span class="text-black">Berlin</span> NewGen <br> <span class="text-black">Chinese Film Festival</span>
     </template>
   </HeroSection>
   <HomeSection button="LEARN MORE" :button_link="buttonLink" :image="festivalImage">
@@ -55,14 +55,12 @@ export default {
       this.entry = response;
       this.heroHeading = this.entry.fields.heading;
       this.bgGif = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
-      console.log("Received entry:", response);
     })
     .catch(console.error);
 
     getAllMovies()
       .then((response) => {
         this.movies = response.items; // Store all fetched movie entries in the movies array
-        console.log("Received movies:", response.items);
       })
       .catch(console.error)
   },
