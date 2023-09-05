@@ -83,7 +83,9 @@
         </ol>
         <p class="text-main underline text-lg md:text-2xl font-medium cursor-pointer mb-8" @click="toggleModal3">Close</p>
         <p class="text-xl font-medium lg:text-2xl">Donate with PayPal:</p>
-        <img src="@/assets/paypal.png" alt="" class="md:max-w-[24rem]">
+        <a :href="paypalLink" target="_blank">
+          <img src="@/assets/paypal.png" alt="" class="md:max-w-[24rem]">
+        </a>
       </div>
     </div>
   </section>
@@ -115,6 +117,7 @@
 import SponsorSlider from '@/components/SponsorSlider.vue';
 import HeroSection from '@/components/HeroSection.vue'
 import Button from '@/components/Button.vue'
+import { getEntry } from '@/api/contentful';
 
 export default {
   name: 'JoinUs',
@@ -123,8 +126,18 @@ export default {
     HeroSection,
     Button
   },
+  created() {
+    getEntry('2BLfZ4hV6vUdypz8xV3qTT')
+    .then((response) => {
+      this.entry = response;
+      this.paypalLink = this.entry.fields.middleButtonLink;
+      console.log("Received entry:", response);
+    })
+    .catch(console.error);
+  },
   data() {
     return {
+      paypalLink: '',
       festivalImage: require('@/assets/newgen_2023.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),

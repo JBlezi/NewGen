@@ -7,7 +7,7 @@
       Submit your movie now on:
     </template>
     <template v-slot:middle-button>
-      <button class="bg-main rounded-lg"><a href="https://filmfreeway.com/" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
+      <button class="bg-main rounded-lg"><a :href="heroButtonLink" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
     </template>
   </HeroSection>
   <section class="mt-8 mb-8 md:my-16">
@@ -47,7 +47,7 @@
   </section>
   <div class="px-8 md:px-16 lg:px-24 mb-16 lg:mb-32">
     <p class="mb-2 font-medium text-lg md:text-xl md:font-bold">Submit on:</p>
-    <button class="bg-main rounded-lg"><a href="https://filmfreeway.com/" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
+    <button class="bg-main rounded-lg"><a :href="heroButtonLink" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
   </div>
   <SponsorSlider :sponsors="images" class="hidden"></SponsorSlider>
 </template>
@@ -72,6 +72,7 @@ export default {
     .then((response) => {
       this.entry = response;
       this.heroHeading = this.entry.fields.heading;
+      this.heroButtonLink = this.entry.fields.middleButtonLink;
       this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;
       console.log("Received entry:", response);
     })
@@ -89,6 +90,7 @@ export default {
       entry: {},
       heroHeading: '',
       heroBackground: '',
+      heroButtonLink: '',
       bgImagePath0: require('@/assets/Film-bg.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
