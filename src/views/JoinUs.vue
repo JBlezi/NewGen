@@ -73,7 +73,7 @@
           <li>Official mention of Donation on our Website with name and amount</li>
           <li><br></li>
         </ol>
-        <span class="text-main underline text-lg md:text-2xl font-medium cursor-pointer" @click="toggleModal3">Read more</span>
+        <span class="text-main underline text-lg md:text-2xl lg:text-3xl font-medium cursor-pointer" @click="toggleModal3">Read more</span>
       </div>
       <div v-else>
         <ol class="font-medium text-lg md:text-2xl mb-2">
