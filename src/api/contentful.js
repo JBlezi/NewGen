@@ -15,6 +15,13 @@ export const getEntry = (entryId) => {
   return client.getEntry(entryId);
 }
 
+export const getLocalizedEntry = (entryId, locale) => {
+  return client.getEntry(entryId, {
+    locale: locale
+  });
+}
+
+
 export const getAllMovies = () => {
   return client.getEntries({
     content_type: 'movies'

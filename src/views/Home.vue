@@ -1,7 +1,10 @@
 <template>
   <HeroSection :bgImage="bgGif">
-    <template v-slot:heading>
-      <span class="text-black">Berlin</span> NewGen <br> <span class="text-black">Chinese Film Festival</span>
+    <template v-if="userLanguage == 'en'" v-slot:heading>
+    <span class="text-black">Berlin</span> NewGen <br> <span class="text-black">Chinese Film Festival</span>
+    </template>
+    <template v-else v-slot:heading>
+    <span class="text-main">NewGen</span>  <br> <span class="text-black">柏林华语青年电影节</span>
     </template>
   </HeroSection>
   <HomeSection button="LEARN MORE" :button_link="buttonLink" :image="festivalImage">
@@ -39,7 +42,7 @@
 import HomeSection from '@/components/HomeSection.vue';
 import SponsorSlider from '@/components/SponsorSlider.vue';
 import HeroSection from '@/components/HeroSection.vue'
-import { getEntry } from '@/api/contentful'
+import { getLocalizedEntry } from '@/api/contentful'
 import { getAllMovies } from '@/api/contentful'
 
 export default {
@@ -50,7 +53,9 @@ export default {
     HeroSection,
   },
   created() {
-    getEntry('15qnx6qHbz8xDGX72GI3eO')
+    this.userLanguage = localStorage.getItem('userLanguage');
+
+    getLocalizedEntry('15qnx6qHbz8xDGX72GI3eO', this.userLanguage)
     .then((response) => {
       this.entry = response;
       this.heroHeading = this.entry.fields.heading;
@@ -66,6 +71,7 @@ export default {
   },
   data() {
     return {
+      userLanguage: 'en',
       entry: {},
       heroHeading: '',
       festivalImage: require('@/assets/newgen_2023.png'),
