@@ -39,11 +39,12 @@
 <script>
 import HeroSection from '@/components/HeroSection.vue';
 import ScreeningSection from '@/components/ScreeningSection.vue';
-import { getEntry } from '@/api/contentful'
 import { getAllMovies } from '@/api/contentful'
-import { getAllWinners } from '@/api/contentful'
-import { getAllNominees } from '@/api/contentful'
-import { getAllJuryMembers } from '@/api/contentful'
+import { getLocalizedEntry } from '@/api/contentful'
+import { getAllLocalizedWinners } from '@/api/contentful'
+import { getAllLocalizedNominees } from '@/api/contentful'
+import { getAllLocalizedJuryMembers } from '@/api/contentful'
+
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -53,12 +54,14 @@ export default {
     ScreeningSection
   },
   created() {
+    this.userLanguage = localStorage.getItem('userLanguage');
+
   Promise.all([
-    getEntry('3qn3mLo8zczF2QZLgEQBif'),
+    getLocalizedEntry('3qn3mLo8zczF2QZLgEQBif', this.userLanguage),
     getAllMovies(),
-    getAllNominees(),
-    getAllWinners(),
-    getAllJuryMembers()
+    getAllLocalizedNominees(this.userLanguage),
+    getAllLocalizedWinners(this.userLanguage),
+    getAllLocalizedJuryMembers(this.userLanguage)
     ]).then(([entryResponse, moviesResponse, nomineesResponse, winnersResponse, juryMembersResponse]) => {
       // Handling getEntry response
       this.juryMembers = juryMembersResponse.items;
@@ -147,6 +150,7 @@ export default {
   },
   data() {
     return {
+      userLanguage: '',
       juryMembers: [],
       winners2: { movies: [] },
       nominees2: { movies: [] },

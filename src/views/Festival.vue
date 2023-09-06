@@ -34,9 +34,11 @@
 <script>
 import HeroSection from '@/components/HeroSection.vue';
 import ScreeningSection from '@/components/ScreeningSection.vue'
-import { getEntry } from '@/api/contentful'
-import { getMoviesByCategory } from '@/api/contentful'
-import { getAllScreenings } from '@/api/contentful'
+import { getLocalizedEntry } from '@/api/contentful'
+import { getAllLocalizedScreenings } from '@/api/contentful'
+import { getLocalizedMoviesByCategory } from '@/api/contentful'
+
+
 
 
 export default {
@@ -46,10 +48,12 @@ export default {
     ScreeningSection,
   },
   created() {
+    this.userLanguage = localStorage.getItem('userLanguage');
+
     Promise.all([
-      getEntry('4ZD3OG28KgbjRUTOLVFGfM'),
-      getMoviesByCategory('Festival'),
-      getAllScreenings()
+      getLocalizedEntry('4ZD3OG28KgbjRUTOLVFGfM', this.userLanguage),
+      getLocalizedMoviesByCategory('Festival', this.userLanguage),
+      getAllLocalizedScreenings(this.userLanguage)
     ])
     .then(([entryResponse, moviesResponse, screeningsResponse]) => {
       this.entry = entryResponse;
@@ -106,6 +110,7 @@ export default {
   },
   data() {
     return {
+      userLanguage: '',
       isLoading: true, // This indicates if the content is being loaded
       sectionsWithMovies: [],
       id: 0,

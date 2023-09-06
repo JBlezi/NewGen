@@ -34,13 +34,11 @@
       {{ archiveSubheading }}
     </template>
   </HomeSection>
-  <SponsorSlider :sponsors="images" class="hidden"></SponsorSlider>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
 <script>
 import HomeSection from '@/components/HomeSection.vue';
-import SponsorSlider from '@/components/SponsorSlider.vue';
 import HeroSection from '@/components/HeroSection.vue'
 import { getLocalizedEntry } from '@/api/contentful'
 import { getAllMovies } from '@/api/contentful'
@@ -49,7 +47,6 @@ export default {
   name: 'Home',
   components: {
     HomeSection,
-    SponsorSlider,
     HeroSection,
   },
   created() {
@@ -158,18 +155,6 @@ export default {
       buttonLink: '/special-event',
       buttonLink2: '/festival',
       buttonLink3: '/archive',
-      video: 'https://www.youtube.com/embed/h42hPO34D-4?si=4qJpD0h0tCQqE2um',
-      images: [
-        require('@/assets/acce-transparent.png'),
-        require('@/assets/btd.png'),
-        require('@/assets/bunterpanda.png'),
-        require('@/assets/cathayplay.png'),
-        require('@/assets/gotiger-red.png'),
-        require('@/assets/qizhihua.png'),
-        require('@/assets/tingsong.png'),
-        require('@/assets/touchthelimit.png'),
-        // ... add more images as required
-      ],
     };
   }
 }

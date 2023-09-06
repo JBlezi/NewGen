@@ -38,9 +38,9 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script>
 import HeroSection from '@/components/HeroSection.vue';
-import { getEntry } from '@/api/contentful'
 import { getAllMovies } from '@/api/contentful'
 import { getAllLocalizedStaffMembers } from '@/api/contentful';
+import { getLocalizedEntry } from '@/api/contentful';
 
 export default {
   name: 'About',
@@ -50,7 +50,7 @@ export default {
   created() {
     this.userLanguage = localStorage.getItem('userLanguage');
 
-    getEntry('9iD7ADjNwwwDA87ZWjSdl')
+    getLocalizedEntry('9iD7ADjNwwwDA87ZWjSdl', this.userLanguage)
     .then((response) => {
       this.entry = response;
       this.heroDescription = this.entry.fields.description;
@@ -79,22 +79,6 @@ export default {
       bgImagePath: '',
       userLanguage: 'en',
       staffMembers: '',
-      staff: [
-            { name: 'Huangan Zhao', position: 'Founder',  poster: require('@/assets/ZhaoHuangdan-edited.png'), id:1 },
-            { name: 'Wu Zhilin', position: 'Marketing Director',  poster: require('@/assets/WuZhilin.png'), id:2 },
-            { name: 'Huangan Zhao', position: 'Founder',  poster: require('@/assets/Zijiao.png'), id:3 },
-            { name: 'Wu Zhilin', position: 'Marketing Director',  poster: require('@/assets/YuZehui.png'), id:4 },
-            { name: 'Huangan Zhao', position: 'Founder',  poster: require('@/assets/ZhangYunxi.png'), id:5 },
-            { name: 'Wu Zhilin', position: 'Marketing Director',  poster: require('@/assets/YanXiaoyi.png'), id:6 },
-            { name: 'Huangan Zhao', position: 'Founder',  poster: require('@/assets/WuYueqi.png'), id:7 },
-            { name: 'Wu Zhilin', position: 'Marketing Director',  poster: require('@/assets/XuXinyi.png'), id:8},
-            { name: 'Huangan Zhao', position: 'Founder',  poster: require('@/assets/JuliusBlezinger.png'), id:9 },
-            { name: 'Wu Zhilin', position: 'Marketing Director',  poster: require('@/assets/HuangBo.png'), id:10 },
-            { name: 'Huangan Zhao', position: 'Founder',  poster: require('@/assets/Hanson.png'), id:11 },
-            { name: 'Wu Zhilin', position: 'Marketing Director',  poster: require('@/assets/GuanShuqin.png'), id:12 },
-            { name: 'Huangan Zhao', position: 'Founder',  poster: require('@/assets/ChenXi.png'), id:13 },
-            { name: 'Wu Zhilin', position: 'Marketing Director',  poster: require('@/assets/ChengYumo.png'), id:14 },
-          ],
     }
   }
 }
