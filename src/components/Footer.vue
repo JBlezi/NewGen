@@ -16,7 +16,7 @@
       </div>
       <div class="flex mb-4 justify-between align-text-bottom">
         <div class="text-xs text-left w-1/2">
-          © 2022 Berlin NewGen Chinese Film Festival. All rights reserved.
+          {{ this.footer }}
         </div>
         <div class="text-center space-x-4 md:space-x-8 mt-4 md:mt-0">
           <a href="https://www.facebook.com/NEW.GEN.BERLIN" target="_blank"><font-awesome-icon :icon="['fab', 'facebook-f']" class="h-6 w-6"/></a>
@@ -29,8 +29,23 @@
 </template>
 
 <script>
+  import { getLocalizedEntry } from '@/api/contentful';
+
   export default {
-    name: 'MainFooter'
+    name: 'MainFooter',
+    created() {
+      getLocalizedEntry('5f8XDmLlfhVMn6Wfscjm01', this.userLanguage)
+        .then((response) => {
+          this.entry = response;
+          this.footer = this.entry.fields.content;
+        })
+        .catch(console.error);
+    },
+    data() {
+      return {
+        footer: '',
+      }
+    }
   }
 </script>
 
