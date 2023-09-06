@@ -25,10 +25,10 @@
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl italic font-medium font-semibold mb-4 md:mb-16">Meet The Team</h3>
     </div>
     <div class="flex flex-wrap mx-8 md:mx-16 lg:mx-24 justify-around">
-      <div v-for="(member) in staff" :key="member.id" class="text-center mb-8">
-        <img :src="member.poster" :alt="member.name" class="w-32 h-48 md:w-64 md:h-96 mx-auto object-cover">
-        <p class="mt-2 font-medium md:text-2xl">{{ member.name }}</p>
-        <p class="italic md:text-2xl">{{ member.position }}</p>
+      <div v-for="(member) in staffMembers" :key="member.sys.id" class="text-center mb-8">
+        <img :src="member.fields.picture.fields.file.url" :alt="member.fields.name" class="w-32 h-48 md:w-64 md:h-96 mx-auto object-cover">
+        <p class="mt-2 font-medium md:text-2xl">{{ member.fields.name }}</p>
+        <p class="italic md:text-2xl">{{ member.fields.title }}</p>
       </div>
     </div>
 
@@ -40,6 +40,7 @@
 import HeroSection from '@/components/HeroSection.vue';
 import { getEntry } from '@/api/contentful'
 import { getAllMovies } from '@/api/contentful'
+import { getAllLocalizedStaffMembers } from '@/api/contentful';
 
 export default {
   name: 'About',
@@ -47,6 +48,8 @@ export default {
     HeroSection
   },
   created() {
+    this.userLanguage = localStorage.getItem('userLanguage');
+
     getEntry('9iD7ADjNwwwDA87ZWjSdl')
     .then((response) => {
       this.entry = response;
@@ -63,6 +66,10 @@ export default {
         console.log("Received movies:", response.items);
       })
       .catch(console.error)
+
+    getAllLocalizedStaffMembers(this.userLanguage).then((response) => {
+      this.staffMembers = response.items;
+    })
   },
   data() {
     return {
@@ -70,6 +77,8 @@ export default {
       heroDescription: '',
       heroHeading: '',
       bgImagePath: '',
+      userLanguage: 'en',
+      staffMembers: '',
       staff: [
             { name: 'Huangan Zhao', position: 'Founder',  poster: require('@/assets/ZhaoHuangdan-edited.png'), id:1 },
             { name: 'Wu Zhilin', position: 'Marketing Director',  poster: require('@/assets/WuZhilin.png'), id:2 },

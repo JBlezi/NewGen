@@ -31,10 +31,6 @@ export default {
       this.showAdditionalWinners = !this.showAdditionalWinners;
     }
   },
-  mounted() {
-  },
-  created() {
-  },
   computed: {
     filteredMovies() {
       if (this.showAdditionalWinners) {

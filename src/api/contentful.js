@@ -27,6 +27,13 @@ export const getAllPressReleases = () => {
   });
 }
 
+export const getAllLocalizedStaffMembers = (locale) => {
+  return client.getEntries({
+    content_type: 'staffMember',
+    locale: locale
+  });
+}
+
 export const getAllMovies = () => {
   return client.getEntries({
     content_type: 'movies'

@@ -18,7 +18,7 @@
             <font-awesome-icon v-if="movieList.movies.length > 2 && !button" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[48%] left-5 transform translate-y-1/2 hidden md:block lg:hidden cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
             <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[53%] right-5 transform translate-[50%] hidden md:block lg:hidden cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
             <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[53%] left-5 transform translate-y-1/2 hidden md:block lg:hidden cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
-              <font-awesome-icon v-if="movieList.movies.length > 2 && !button" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[40%] right-5 transform translate-y-1/2 hidden lg:block cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2 && !button" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[40%] right-5 transform translate-y-1/2 hidden lg:block cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
             <font-awesome-icon v-if="movieList.movies.length > 2 && !button" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[40%] left-5 transform translate-y-1/2 hidden lg:block cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
             <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[40%] right-5 transform translate-[50%] hidden lg:block cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
             <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[40%] left-5 transform translate-y-1/2 hidden lg:block cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
@@ -97,11 +97,6 @@ export default {
       }
     },
     button_link: String
-  },
-  mounted() {
-  },
-  created() {
-    console.log("NOMINEES FROM SCREENING SECTION", this.movieList)
   },
   data() {
     return {
