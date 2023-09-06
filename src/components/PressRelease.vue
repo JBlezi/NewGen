@@ -1,15 +1,15 @@
 <template>
   <section>
-    <div class="px-8 md:px-16 lg:px-0 lg:w-[40vw]">
+    <div class="px-8 md:px-16 lg:px-0 lg:w-[32rem]">
       <div class="p-6 md:p-9 border border-black border-slate-300">
-        <img :src="release.image" alt="" class="mb-4 md:mb-8">
+        <img :src="release.fields.picture.fields.file.url" alt="" class="mb-4 md:mb-8">
         <h2 class="font-bold text-xl md:text-3xl mb-4">
-          {{ release.title }}
+          {{ release.fields.heading }}
         </h2>
-        <p class="mb-4 md:mb-8 md:text-xl">{{ release.teaser }}</p>
-        <a :href="release.link" class="font-bold flex md:text-2xl">
+        <p class="mb-4 md:mb-8 md:text-xl">{{ release.fields.teaser }}</p>
+        <a :href="release.fields.platformLink" class="font-bold flex md:text-2xl">
           <img v-if="!faviconError" :src="faviconURL" alt="Favicon" class="w-6 md:w-9 h-6 md:h-9 mr-2 md:mr-4 rounded-full" @error="handleFaviconError">
-          {{ release.link_title }}
+          {{ release.fields.platformName }}
         </a>
       </div>
     </div>
@@ -23,7 +23,7 @@ export default {
   props: ['release'],
   computed: {
     faviconURL() {
-      return `https://api.faviconkit.com/${new URL(this.release.link).hostname}/144`;
+      return `https://api.faviconkit.com/${new URL(this.release.fields.platformLink).hostname}/144`;
     }
   },
   data() {

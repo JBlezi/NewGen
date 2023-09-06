@@ -21,6 +21,11 @@ export const getLocalizedEntry = (entryId, locale) => {
   });
 }
 
+export const getAllPressReleases = () => {
+  return client.getEntries({
+    content_type: 'pressRelease'
+  });
+}
 
 export const getAllMovies = () => {
   return client.getEntries({
