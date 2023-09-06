@@ -4,7 +4,12 @@
       {{heroHeading}}
     </template>
   </HeroSection>
-  <WinnerSection v-if="isLoading" :movies="winners2"></WinnerSection>
+  <ScreeningSection v-for="nominee in filteredCategories2" :key="nominee" :movieList="nominee" class="mb-8">
+    <template v-slot:heading>
+      Winners {{ nominee.competitionYear }}
+    </template>
+  </ScreeningSection>
+  <p class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer" @click="toggleAdditionalEntries2">{{ showAdditionalWinners2 ? 'Hide past editions winners' : 'See past editions winners' }}</p>
   <ScreeningSection v-for="nominee in filteredCategories" :key="nominee" :movieList="nominee" class="mb-8">
     <template v-slot:heading>
       Nominees {{ nominee.competitionYear }}
@@ -33,7 +38,6 @@
 
 <script>
 import HeroSection from '@/components/HeroSection.vue';
-import WinnerSection from '@/components/WinnerSection.vue';
 import ScreeningSection from '@/components/ScreeningSection.vue';
 import { getEntry } from '@/api/contentful'
 import { getAllMovies } from '@/api/contentful'
@@ -46,7 +50,6 @@ export default {
   name: 'Archive',
   components: {
     HeroSection,
-    WinnerSection,
     ScreeningSection
   },
   created() {
@@ -102,9 +105,40 @@ export default {
         };
       });
 
-      this.winners2 = winnersResponse.items;
-      console.log("NOMINEES FROM CREATED", this.nominees2);
-      this.isLoading = true;
+      // Handling getAllWinners response
+      // Group movies by competitionYear
+      const groupedByYear2 = winnersResponse.items.reduce((accumulator, movie) => {
+        const transformedMovie = {
+          title: movie.fields.title,
+          director: movie.fields.director,
+          year: movie.fields.competitionYear,
+          poster: movie.fields.poster.fields.file.url,
+          description: movie.fields.description,
+          competitionYear: movie.fields.competitionYear,
+          duration: movie.fields.duration,
+          languages: movie.fields.languages,
+          subtitles: movie.fields.subtitles,
+          directorFoto: movie.fields.directorFoto.fields.file.url,
+          movieScene: movie.fields.movieScene.fields.file.url,
+          directorBio: movie.fields.directorBio,
+          id: movie.sys.id
+        };
+
+        if (!accumulator[transformedMovie.competitionYear]) {
+          accumulator[transformedMovie.competitionYear] = [];
+        }
+
+        accumulator[transformedMovie.competitionYear].push(transformedMovie);
+        return accumulator;
+      }, {});
+
+      // Convert the grouped object into the desired array format
+      this.winners2 = Object.keys(groupedByYear2).sort((a, b) => b - a).map(year => {
+        return {
+          competitionYear: year,
+          movies: groupedByYear2[year]
+        };
+      });
 
     }).catch(error => {
       console.error(error);
@@ -114,13 +148,14 @@ export default {
   data() {
     return {
       juryMembers: [],
-      winners2: [],
+      winners2: { movies: [] },
       nominees2: { movies: [] },
       entry: {},
       heroHeading: '',
       heroBackground: '',
       festivalImage: require('@/assets/newgen_2023.png'),
       showAdditionalWinners: false,
+      showAdditionalWinners2: false,
       showModal: false,
       modalMember: null,
       isLoading: false,
@@ -130,6 +165,9 @@ export default {
   methods: {
     toggleAdditionalEntries() {
       this.showAdditionalWinners = !this.showAdditionalWinners;
+    },
+    toggleAdditionalEntries2() {
+      this.showAdditionalWinners2 = !this.showAdditionalWinners2;
     },
     openModal(memberId) {
       this.modalMember = memberId; // open the clicked member's modal
@@ -151,6 +189,19 @@ export default {
       // Check if nominees2 has at least one element before returning it
       if (this.nominees2.length) {
         return [this.nominees2[0]];
+      }
+
+      // Fallback if nominees2 is empty
+      return [];
+    },
+    filteredCategories2() {
+      if (this.showAdditionalWinners2) {
+        console.log("show additional winners", this.winners2)
+        return this.winners2;
+      }
+      // Check if nominees2 has at least one element before returning it
+      if (this.winners2.length) {
+        return [this.winners2[0]];
       }
 
       // Fallback if nominees2 is empty
