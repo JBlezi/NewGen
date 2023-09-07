@@ -6,7 +6,7 @@ import { createClient } from 'contentful';
 // Initializing the Contentful client with your space and access token
 const client = createClient({
   space: '2ak89u21jz0r',
-  accessToken: 'UCH3iicmuukSOBZvdF7uXkBtweVgha1JHgLrhe6bESY'
+  accessToken: 'gY11j-LmSO853ND31xAYzRT22CespOvmzzBECscPGUU'
 });
 
 // Other functions, methods, or exports related to Contentful might follow here
@@ -30,7 +30,7 @@ export const getAllPressReleases = () => {
 export function getLocalizedMoviesByCategory(category, locale) {
   const client = createClient({
     space: '2ak89u21jz0r',
-    accessToken: 'UCH3iicmuukSOBZvdF7uXkBtweVgha1JHgLrhe6bESY',
+    accessToken: 'gY11j-LmSO853ND31xAYzRT22CespOvmzzBECscPGUU',
   });
 
   return client.getEntries({
@@ -155,7 +155,7 @@ export const getAllPartners = () => {
 export function getMoviesByCategory(category) {
   const client = createClient({
     space: '2ak89u21jz0r',
-    accessToken: 'UCH3iicmuukSOBZvdF7uXkBtweVgha1JHgLrhe6bESY',
+    accessToken: 'gY11j-LmSO853ND31xAYzRT22CespOvmzzBECscPGUU',
   });
 
   return client.getEntries({
