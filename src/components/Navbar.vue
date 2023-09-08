@@ -3,17 +3,17 @@
     <div>
       <div class="lg:flex lg:justify-between">
         <router-link to="/" class="flex flex-row" @click="isOpen = false">
-          <img :src="logoImage" alt="Logo" class="md:h-12 md:w-12 h-8 w-8 lg:h-8 lg:w-8 m-4 xl:m-3">
-          <span class="self-center text-lg xl:text-2xl lg:font-medium">NewGen</span>
+          <img :src="logoImage" alt="Logo" class="md:h-12 md:w-12 h-8 w-8 lg:h-8 lg:w-8 m-4 lg:m-3">
+          <span class="self-center text-lg xl:text-2xl font-medium">NewGen</span>
         </router-link>
         <div class="flex hidden lg:block xl:text-lg p-8 space-x-8 py-4 font-medium">
-          <router-link active-class="text-main" to="/">HOME</router-link>
-          <router-link active-class="text-main" to="/festival">FESTIVAL</router-link>
-          <router-link active-class="text-main" to="/about-us">ABOUT US</router-link>
-          <router-link active-class="text-main" to="/join-us">JOIN US</router-link>
-          <router-link active-class="text-main" to="/submissions">SUBMISSIONS</router-link>
-          <router-link active-class="text-main" to="/contact">CONTACT</router-link>
-          <router-link active-class="text-main" to="/archive">ARCHIVE</router-link>
+          <router-link active-class="text-main" to="/">{{ $t('nav.navbar1') }}</router-link>
+          <router-link active-class="text-main" to="/festival">{{ $t('nav.footer1') }}</router-link>
+          <router-link active-class="text-main" to="/about-us">{{ $t('nav.footer2') }}</router-link>
+          <router-link active-class="text-main" to="/join-us">{{ $t('nav.footer3') }}</router-link>
+          <router-link active-class="text-main" to="/submissions">{{ $t('nav.navbar2') }}</router-link>
+          <router-link active-class="text-main" to="/contact">{{ $t('nav.footer4') }}</router-link>
+          <router-link active-class="text-main" to="/archive">{{ $t('nav.navbar3') }}</router-link>
         </div>
       </div>
       <div>
@@ -31,13 +31,13 @@
         <!-- Navigation Links -->
         <div v-if="isOpen" class="bg-white fixed top-16 text-center w-full h-screen">
           <ul class="list-none p-8 mt-12 bg-white">
-            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/">HOME</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/festival">FESTIVAL</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/about-us">ABOUT US</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/join-us">JOIN US</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/submissions">SUBMISSIONS</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/contact">CONTACT</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/archive">ARCHIVE</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/">{{ $t('nav.navbar1') }}</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/festival">{{ $t('nav.footer1') }}</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/about-us">{{ $t('nav.footer2') }}</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/join-us">{{ $t('nav.footer3') }}</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/submissions">{{ $t('nav.navbar2') }}</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/contact">{{ $t('nav.footer4') }}</router-link></li>
+            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/archive">{{ $t('nav.navbar3') }}</router-link></li>
           </ul>
 
           <!-- Social Media Links -->

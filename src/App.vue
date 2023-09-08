@@ -22,6 +22,7 @@ export default {
     MainFooter  // Registering Footer component
   },
   created() {
+    this.setLanguagePreference();
     getAllFestivalSponsors()
       .then((response) => {
         this.sponsors = response.items.map(item => item.fields.logo.fields.file.url);
@@ -30,9 +31,25 @@ export default {
       .finally(() => {
         this.isLoaded = true;
       });
-    },
+  },
+  methods: {
+    setLanguagePreference() {
+      const supportedLanguages = ['en', 'zh'];
+      let language = localStorage.getItem('userLanguage');
+
+      if (!language) {
+        const browserLanguage = (navigator.languages && navigator.languages[0]) || navigator.language || navigator.userLanguage;
+        language = supportedLanguages.includes(browserLanguage.split('-')[0]) ? browserLanguage.split('-')[0] : 'en';
+        localStorage.setItem('userLanguage', language);
+      }
+
+      // Here, the detected or stored language is set in `language` variable.
+      console.log(language); // You can use this for debugging or further processing.
+    }
+  },
   data() {
     return {
+      userLanguage: 'en',  // Default language
       isLoaded: false,
       sponsors: [],
     }

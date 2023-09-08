@@ -1,56 +1,104 @@
 <template>
   <HeroSection :bgImage="bgGif">
     <template v-slot:heading>
-      <span class="text-black">Berlin</span> NewGen <br> <span class="text-black">Chinese Film Festival</span>
+    <span class="text-black">{{ $t('home1') }}</span> {{ $t('home2') }}<br> <span class="text-black">{{ $t('home3') }}</span>
     </template>
   </HeroSection>
-  <HomeSection button="LEARN MORE" :button_link="buttonLink" :image="festivalImage">
+  <HomeSection v-if="specialEventOnOffSwitch" :button="specialEventButtonText" :button_link="buttonLink" :image="specialEventImage" :bgImage="specialEventBackgroundImage" :background="background2">
     <template v-slot:heading>
-      Special Summer Screening
+      {{specialEventHeading}}
     </template>
     <template v-slot:subheading>
-      Classic Animation Collection<br> Shanghai Animation Film Studio Retro
+      {{specialEventSubheading}}
     </template>
     <template v-slot:description>
-      Join us for a special summer screening of Chinese Animation Classics in collaboration with the China Contemporary Animation Art Archive Museum.
+      {{ specialEventDescription }}
     </template>
   </HomeSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath" :button_link="buttonLink2" :video="video" :background="background2">
+  <HomeSection :button="filmFestivalButtonText" :bgImage="filmFestivalBackgroundImage" :button_link="buttonLink2" :video="filmFestivalVideo" :background="background2">
     <template v-slot:heading>
-      Film Festival 2023
+      {{filmFestivalHeading}}
     </template>
     <template v-slot:description>
-      Discover the entries for this years edition of NewGen Chinese Film Festival
+      {{ filmFestivalSubheading }}
     </template>
   </HomeSection>
-  <HomeSection button="LEARN MORE" :bgImage="bgImagePath2" :button_link="buttonLink3" :image="festivalImage" :background="background3">
+  <HomeSection :button="archiveButtonText" :bgImage="archiveBackgroundImage" :button_link="buttonLink3" :image="archiveImage" :background="background3">
     <template v-slot:heading>
-      Film Festival Archive
+      {{archiveHeading}}
     </template>
     <template v-slot:description>
-      Discover the entries and winners of past NewGen Film Festivals
+      {{ archiveSubheading }}
     </template>
   </HomeSection>
-  <SponsorSlider :sponsors="images" class="hidden"></SponsorSlider>
 </template>
 
 <!-- eslint-disable vue/multi-word-component-names -->
 <script>
 import HomeSection from '@/components/HomeSection.vue';
-import SponsorSlider from '@/components/SponsorSlider.vue';
 import HeroSection from '@/components/HeroSection.vue'
-import { getEntry } from '@/api/contentful'
+import { getLocalizedEntry } from '@/api/contentful'
 import { getAllMovies } from '@/api/contentful'
 
 export default {
   name: 'Home',
   components: {
     HomeSection,
-    SponsorSlider,
     HeroSection,
   },
   created() {
-    getEntry('15qnx6qHbz8xDGX72GI3eO')
+    this.userLanguage = localStorage.getItem('userLanguage');
+
+    getLocalizedEntry('5KU1fkx11HFjnq64UiqMdq', this.userLanguage).then((response) => {
+      this.entry = response;
+      this.specialEventHeading = this.entry.fields.heading;
+      this.specialEventSubheading = this.entry.fields.subheading;
+      this.specialEventDescription = this.entry.fields.description;
+      this.specialEventButtonText = this.entry.fields.buttonText;
+      this.specialEventBackgroundImage = this.entry.fields.backgroundImage.fields.file.url;
+      if (this.entry.fields.image) {
+        this.specialEventImage = this.entry.fields.image.fields.file.url
+      }
+      if (this.entry.fields.youtubeVideoEmbedUrl) {
+        this.specialEventVideo = this.entry.fields.youtubeVideoEmbedUrl
+      }
+      this.specialEventOnOffSwitch = this.entry.fields.onOffSwitch;
+      console.log("on off switch", this.specialEventOnOffSwitch)
+    })
+
+    getLocalizedEntry('7c787EsghBxb1ceUXF4JBD', this.userLanguage).then((response) => {
+      this.entry = response;
+      this.filmFestivalHeading = this.entry.fields.heading;
+      this.filmFestivalSubheading = this.entry.fields.subheading;
+      this.filmFestivalDescription = this.entry.fields.description;
+      this.filmFestivalButtonText = this.entry.fields.buttonText;
+      this.filmFestivalBackgroundImage = this.entry.fields.backgroundImage.fields.file.url;
+      if (this.entry.fields.image) {
+        this.filmFestivalImage = this.entry.fields.image.fields.file.url
+      }
+      if (this.entry.fields.youtubeVideoEmbedUrl) {
+        this.filmFestivalVideo = this.entry.fields.youtubeVideoEmbedUrl
+      }
+      this.filmFestivalOnOffSwitch = this.entry.fields.onOffSwitch;
+    })
+
+    getLocalizedEntry('3IOsSqr65VQ21Y87JXtPIP', this.userLanguage).then((response) => {
+      this.entry = response;
+      this.archiveHeading = this.entry.fields.heading;
+      this.archiveSubheading = this.entry.fields.subheading;
+      this.archiveDescription = this.entry.fields.description;
+      this.archiveButtonText = this.entry.fields.buttonText;
+      this.archiveBackgroundImage = this.entry.fields.backgroundImage.fields.file.url;
+      if (this.entry.fields.image) {
+        this.archiveImage = this.entry.fields.image.fields.file.url
+      }
+      if (this.entry.fields.youtubeVideoEmbedUrl) {
+        this.archiveVideo = this.entry.fields.youtubeVideoEmbedUrl
+      }
+      this.archiveOnOffSwitch = this.entry.fields.onOffSwitch;
+    })
+
+    getLocalizedEntry('15qnx6qHbz8xDGX72GI3eO', this.userLanguage)
     .then((response) => {
       this.entry = response;
       this.heroHeading = this.entry.fields.heading;
@@ -66,6 +114,31 @@ export default {
   },
   data() {
     return {
+      archiveHeading: '',
+      archiveSubheading: '',
+      archiveBackgroundImage: '',
+      archiveButtonText: '',
+      archiveDescription: '',
+      archiveImage: '',
+      archiveVideo: '',
+      archiveOnOffSwitch: '',
+      filmFestivalHeading: '',
+      filmFestivalSubheading: '',
+      filmFestivalBackgroundImage: '',
+      filmFestivalButtonText: '',
+      filmFestivalDescription: '',
+      filmFestivalImage: '',
+      filmFestivalVideo: '',
+      filmFestivalOnOffSwitch: '',
+      specialEventHeading: '',
+      specialEventSubheading: '',
+      specialEventBackgroundImage: '',
+      specialEventButtonText: '',
+      specialEventDescription: '',
+      specialEventImage: '',
+      specialEventVideo: '',
+      specialEventOnOffSwitch: '',
+      userLanguage: 'en',
       entry: {},
       heroHeading: '',
       festivalImage: require('@/assets/newgen_2023.png'),
@@ -79,18 +152,6 @@ export default {
       buttonLink: '/special-event',
       buttonLink2: '/festival',
       buttonLink3: '/archive',
-      video: 'https://www.youtube.com/embed/h42hPO34D-4?si=4qJpD0h0tCQqE2um',
-      images: [
-        require('@/assets/acce-transparent.png'),
-        require('@/assets/btd.png'),
-        require('@/assets/bunterpanda.png'),
-        require('@/assets/cathayplay.png'),
-        require('@/assets/gotiger-red.png'),
-        require('@/assets/qizhihua.png'),
-        require('@/assets/tingsong.png'),
-        require('@/assets/touchthelimit.png'),
-        // ... add more images as required
-      ],
     };
   }
 }

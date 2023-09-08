@@ -24,7 +24,7 @@
                 </div>
                 <div class="md:w-1/2 md:pr-16 lg:pr-24 lg:pb-24">
                   <img v-if="image" :src="image" alt="" class="hidden md:block md:w-full md:h-4/5 lg:h-full object-cover">
-                  <iframe v-if="video" :src="video" alt="" class="hidden md:block md:w-full md:h-4/5 lg:h-full object-cover"></iframe>
+                  <iframe v-else-if="video || (video && image)" :src="video" alt="" class="hidden md:block md:w-full md:h-4/5 lg:h-full object-cover"></iframe>
                 </div>
               </div>
             </div>

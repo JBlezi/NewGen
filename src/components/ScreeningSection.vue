@@ -14,8 +14,14 @@
             <font-awesome-icon v-if="movieList.movies.length > 1 && button" :icon="['fas', 'chevron-right']" class="h-6 w-6 absolute bottom-1/2 right-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isRightArrowDisabled}" @click="handleGalleryRight"/>
             <font-awesome-icon v-if="movieList.movies.length > 1 && !button" :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-[42%] left-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
             <font-awesome-icon v-if="movieList.movies.length > 1 && button" :icon="['fas', 'chevron-left']" class="h-6 w-6 absolute bottom-1/2 left-5 transform translate-y-1/2 md:hidden" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeft"/>
-            <font-awesome-icon v-if="movieList.movies.length > 2" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[42%] right-5 transform translate-y-1/2 hidden md:block cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
-            <font-awesome-icon v-if="movieList.movies.length > 2" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[42%] left-5 transform translate-y-1/2 hidden md:block cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2 && !button" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[48%] right-5 transform translate-y-1/2 hidden md:block lg:hidden cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2 && !button" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[48%] left-5 transform translate-y-1/2 hidden md:block lg:hidden cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[53%] right-5 transform translate-[50%] hidden md:block lg:hidden cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[53%] left-5 transform translate-y-1/2 hidden md:block lg:hidden cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2 && !button" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[40%] right-5 transform translate-y-1/2 hidden lg:block cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2 && !button" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[40%] left-5 transform translate-y-1/2 hidden lg:block cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-right']" class="h-10 w-10 absolute bottom-[40%] right-5 transform translate-[50%] hidden lg:block cursor-pointer" :class="{'opacity-50': isRightArrowDisabledTablet}" @click="handleGalleryRightTablet"/>
+            <font-awesome-icon v-if="movieList.movies.length > 2 && button" :icon="['fas', 'chevron-left']" class="h-10 w-10 absolute bottom-[40%] left-5 transform translate-y-1/2 hidden lg:block cursor-pointer" :class="{'opacity-50': isLeftArrowDisabled}" @click="handleGalleryLeftTablet"/>
             <div class="md:flex md:justify-around md:mt-8 md:-mx-8 lg:mx-0">
               <div class="h-4/5">
                 <div class="lg:flex">
@@ -91,11 +97,6 @@ export default {
       }
     },
     button_link: String
-  },
-  mounted() {
-  },
-  created() {
-    console.log("NOMINEES FROM SCREENING SECTION", this.movieList)
   },
   data() {
     return {

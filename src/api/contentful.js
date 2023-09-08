@@ -15,6 +15,76 @@ export const getEntry = (entryId) => {
   return client.getEntry(entryId);
 }
 
+export const getLocalizedEntry = (entryId, locale) => {
+  return client.getEntry(entryId, {
+    locale: locale
+  });
+}
+
+export const getAllPressReleases = () => {
+  return client.getEntries({
+    content_type: 'pressRelease'
+  });
+}
+
+export function getLocalizedMoviesByCategory(category, locale) {
+  const client = createClient({
+    space: '2ak89u21jz0r',
+    accessToken: 'gY11j-LmSO853ND31xAYzRT22CespOvmzzBECscPGUU',
+  });
+
+  return client.getEntries({
+    content_type: 'movies',  // assuming 'movie' is the content type ID for movies
+    'fields.category': category,
+    locale: locale
+  });
+}
+
+export const getAllLocalizedStaffMembers = (locale) => {
+  return client.getEntries({
+    content_type: 'staffMember',
+    locale: locale
+  });
+}
+
+export const getAllLocalizedSpecialEventMovies = (locale) => {
+  return client.getEntries({
+    content_type: 'movies',
+    'fields.category': 'Special Event',
+    locale: locale
+  })
+}
+
+export const getAllLocalizedJuryMembers = (locale) => {
+  return client.getEntries({
+    content_type: 'juryMember',
+    locale: locale
+  });
+}
+
+export const getAllLocalizedScreenings = (locale) => {
+  return client.getEntries({
+    content_type: 'screening',
+    locale: locale
+  });
+}
+
+export const getAllLocalizedWinners = (locale) => {
+  return client.getEntries({
+    content_type: 'movies',
+    'fields.winner': 'yes',
+    locale: locale
+  });
+}
+
+export const getAllLocalizedNominees = (locale) => {
+  return client.getEntries({
+    content_type: 'movies',
+    'fields.nominee': 'yes',
+    locale: locale
+  });
+}
+
 export const getAllMovies = () => {
   return client.getEntries({
     content_type: 'movies'

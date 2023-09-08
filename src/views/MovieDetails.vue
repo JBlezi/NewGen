@@ -7,10 +7,10 @@
       {{ screening[0].subheading }}
     </template>
     <template v-slot:description>
-      Moviemento Kino, Kottbusser Damm 22, 10967 Berlin
+      {{ $t('movieDetails.movieDetails1') }}
     </template>
     <template v-slot:middle-button>
-      <Button :link="screening[0].button_link">GET TICKETS</Button>
+      <Button :link="screening[0].button_link">{{ $t('movieDetails.movieDetails2') }}</Button>
     </template>
   </HeroSection>
   <div v-if="screening && screening.length && screening[0].movies">
@@ -19,7 +19,7 @@
       :key="index"
       :movie="movie">
     </MovieSection>
-    <Button class="mb-32" :link="screening[0].button_link">GET TICKETS</Button>
+    <Button class="mb-32" :link="screening[0].button_link">{{ $t('movieDetails.movieDetails2') }}</Button>
   </div>
 </template>
 
@@ -28,8 +28,8 @@
 import HeroSection from '@/components/HeroSection.vue';
 import Button from '@/components/Button.vue';
 import MovieSection from '@/components/MovieSection.vue';
-import { getMoviesByCategory } from '@/api/contentful'
-import { getAllScreenings } from '@/api/contentful'
+import { getLocalizedMoviesByCategory } from '@/api/contentful'
+import { getAllLocalizedScreenings } from '@/api/contentful'
 
 export default {
   name: 'MovieDetails',
@@ -41,6 +41,7 @@ export default {
   },
   data() {
     return {
+      userLanguage: '',
       isLoading: true, // Add this
       sectionsWithMovies: [],
       movieImage: require('@/assets/singing_in_the_widerness.png'),
@@ -73,9 +74,11 @@ export default {
     },
   },
   created() {
+    this.userLanguage = localStorage.getItem('userLanguage');
+
     Promise.all([
-        getMoviesByCategory('Festival'),
-        getAllScreenings()
+        getLocalizedMoviesByCategory('Festival', this.userLanguage),
+        getAllLocalizedScreenings(this.userLanguage)
     ]).then(([moviesResponse, screeningsResponse]) => {
         this.movies = moviesResponse.items;
 
