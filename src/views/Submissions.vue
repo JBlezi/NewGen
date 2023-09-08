@@ -7,7 +7,7 @@
       Submit your movie now on:
     </template>
     <template v-slot:middle-button>
-      <button class="bg-main rounded-lg"><a :href="heroButtonLink" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
+      <button class="bg-main rounded-lg"><a :href="heroButtonLink" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt="FilmFreeWay Button"></a></button>
     </template>
   </HeroSection>
   <section class="mt-8 mb-8 md:my-16">
@@ -56,8 +56,8 @@
 <script>
 import HeroSection from '@/components/HeroSection.vue';
 import SponsorSlider from '@/components/SponsorSlider.vue';
-import { getEntry } from '@/api/contentful'
 import { getAllMovies } from '@/api/contentful'
+import { getLocalizedEntry } from '@/api/contentful';
 
 
 
@@ -68,7 +68,9 @@ export default {
     SponsorSlider,
   },
     created() {
-    getEntry('Deu8smLPRQ9ANt7wVGg45')
+      this.userLanguage = localStorage.getItem('userLanguage');
+
+    getLocalizedEntry('Deu8smLPRQ9ANt7wVGg45', this.userLanguage)
     .then((response) => {
       this.entry = response;
       this.heroHeading = this.entry.fields.heading;
@@ -87,6 +89,7 @@ export default {
   },
   data() {
     return {
+      userLanguage: '',
       entry: {},
       heroHeading: '',
       heroBackground: '',

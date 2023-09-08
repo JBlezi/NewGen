@@ -10,8 +10,7 @@
       Moviemento Kino, Kottbusser Damm 22, 10967 Berlin
     </template>
     <template v-slot:middle-button>
-      <Button v-if="this.userLanguage == 'en'" :link="screening[0].button_link">GET TICKETS</Button>
-      <Button v-else :link="screening[0].button_link">买票</Button>
+      <Button :link="screening[0].button_link">GET TICKETS</Button>
     </template>
   </HeroSection>
   <div v-if="screening && screening.length && screening[0].movies">
@@ -20,8 +19,7 @@
       :key="index"
       :movie="movie">
     </MovieSection>
-    <Button v-if="this.userLanguage == 'en'" class="mb-32" :link="screening[0].button_link">GET TICKETS</Button>
-    <Button v-else class="mb-32" :link="screening[0].button_link">买票</Button>
+    <Button class="mb-32" :link="screening[0].button_link">GET TICKETS</Button>
   </div>
 </template>
 

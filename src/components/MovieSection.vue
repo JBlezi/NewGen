@@ -96,9 +96,6 @@ export default {
       this.showModal = !this.showModal;
     }
   },
-  created() {
-    console.log("Movie in MovieSection:", this.movie);
-  }
 };
 </script>
 

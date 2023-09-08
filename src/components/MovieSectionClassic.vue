@@ -49,9 +49,6 @@ export default {
       this.showModal = !this.showModal;
     }
   },
-  created() {
-    console.log("LOG FROM CLASSIC", this.movie)
-  }
 };
 </script>
 

@@ -1,10 +1,7 @@
 <template>
   <HeroSection :bgImage="bgGif">
-    <template v-if="userLanguage == 'en'" v-slot:heading>
+    <template v-slot:heading>
     <span class="text-black">Berlin</span> NewGen <br> <span class="text-black">Chinese Film Festival</span>
-    </template>
-    <template v-else v-slot:heading>
-    <span class="text-main">NewGen</span>  <br> <span class="text-black">柏林华语青年电影节</span>
     </template>
   </HeroSection>
   <HomeSection v-if="specialEventOnOffSwitch" :button="specialEventButtonText" :button_link="buttonLink" :image="specialEventImage" :bgImage="specialEventBackgroundImage" :background="background2">

@@ -19,7 +19,6 @@ export default {
     getAllFestivalSponsors()
       .then((response) => {
         this.sponsors = response.items; // Store all fetched movie entries in the movies array
-        console.log("SPONSORS",  this.sponsors)
       })
       .catch(console.error)
       this.isLoaded = true;
