@@ -15,9 +15,9 @@
         <div class="md:mb-4 hidden lg:block lg:h-1/2 lg:flex cursor-pointer" @click="toggleModal">
           <img :src="movie.directorFoto" alt="Director Foto" class="h-full w-1/2 min-w-full lg:min-w-0 object-cover"/>
           <div v-if="!showModal" class="pl-8 w-1/2">
-            <div class="mb-2"><span class="text-main">Duration:</span><br>{{ movie.duration }}</div>
-            <div class="mb-2"><span class="text-main">Year:</span><br>{{ movie.year }}</div>
-            <div class="mb-2"><span class="text-main">Director:</span><br>{{ movie.director }}</div>
+            <div class="mb-2"><span class="text-main">{{ $t('movieSection.movieSection1') }}</span><br>{{ movie.duration }}</div>
+            <div class="mb-2"><span class="text-main">{{ $t('movieSection.movieSection2') }}</span><br>{{ movie.year }}</div>
+            <div class="mb-2"><span class="text-main">{{ $t('movieSection.movieSection3') }}</span><br>{{ movie.director }}</div>
           </div>
               <!-- Modal overlay -->
           <div v-if="showModal" class="w-1/2 h-1/2 font-medium text-lg pl-8">
@@ -30,10 +30,10 @@
         </div>
 
         <div class="lg:hidden">
-          <span class="text-main">Director:</span> {{ movie.director }}
+          <span class="text-main">{{ $t('movieSection.movieSection3') }}</span> {{ movie.director }}
         </div>
         <div class="lg:hidden">
-          <span class="text-main">Year:</span> {{ movie.year }}
+          <span class="text-main">{{ $t('movieSection.movieSection2') }}</span> {{ movie.year }}
         </div>
         <div class="hidden md:block md:font-medium mt-4 lg:hidden">
           {{ movie.description }}
@@ -63,8 +63,8 @@
             {{ movie.director }}
           </div>
           <div>
-            <span v-if="!showModal" class="text-main underline font-medium cursor-pointer md:hidden" @click="toggleModal">Read Bio</span>
-            <span v-else class="text-main underline font-medium cursor-pointer" @click="toggleModal">Close</span>
+            <span v-if="!showModal" class="text-main underline font-medium cursor-pointer md:hidden" @click="toggleModal">{{ $t('movieSection.movieSection4') }}</span>
+            <span v-else class="text-main underline font-medium cursor-pointer" @click="toggleModal">{{ $t('movieSection.movieSection5') }}</span>
           </div>
         </div>
       </div>

@@ -9,6 +9,11 @@ import { faFacebookF, faInstagram, faYoutube } from '@fortawesome/free-brands-sv
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import i18n from './i18n.js';  // Ensure this import is correct
+
+
+
+
 
 
 
@@ -25,6 +30,7 @@ library.add(faFacebookF, faInstagram, faYoutube);
 
 app.component('font-awesome-icon', FontAwesomeIcon);
 
+app.use(i18n);
 
 
 app.use(router);

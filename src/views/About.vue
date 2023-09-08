@@ -9,20 +9,20 @@
   </HeroSection>
   <section class="mt-12 mb-12 md:mb-24">
     <div class="px-8 md:px-16 lg:px-24">
-      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl italic font-medium font-semibold mb-4 md:mb-8">Inspiration and History</h3>
-      <p class="font-medium text-lg md:text-2xl">New Generation International Film Festival (NewGen) is a Berlin-based nonprofit organisation celebrating high-quality Chinese films with new and distinguished filmmakers, film enthusiasts, film industry professionals, related-field scholars and audiences around the world.</p>
+      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl italic font-medium font-semibold mb-4 md:mb-8">{{ $t('aboutUs1') }}</h3>
+      <p class="font-medium text-lg md:text-2xl">{{ $t('aboutUs2') }}</p>
     </div>
   </section>
   <section class="mt-12 mb-12 md:mb-24">
     <div class="px-8 md:px-16 lg:px-24">
-      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl italic font-medium font-semibold mb-4 md:mb-8">Our Mission</h3>
-      <p class="font-medium text-lg md:text-2xl">Acting as a springboard for creation, NewGen is dedicated to discovering new talented filmmakers who are making the future of Chinese cinema. Focusing on interconnections between cinema and contemporary society, NewGen encourages independent, proactive and innovative filmic expressions that showcase the diversity of Chinese culture and society. Believing in the power of film, New Gen aims to build a borderless exchange platform for cinematic culture through film screenings, audience discussions and expert panels. <br><br></p>
-      <p class="font-medium text-lg md:text-2xl">NewGen hopes to draw attention to new talented Chinese filmmakers and raise the profile of their underrepresented films, with the aspiration of contributing to the future of Chinese cinema, boosting the development of the local and global film industry and providing a sustainable platform for future dialogues between China and Europe.</p>
+      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl italic font-medium font-semibold mb-4 md:mb-8">{{ $t('aboutUs3') }}</h3>
+      <p class="font-medium text-lg md:text-2xl">{{ $t('aboutUs4') }}<br><br></p>
+      <p class="font-medium text-lg md:text-2xl">{{ $t('aboutUs5') }}</p>
     </div>
   </section>
   <section class="mt-12 mb-12 md:mb-24">
     <div class="px-8 md:px-16 lg:px-24">
-      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl italic font-medium font-semibold mb-4 md:mb-16">Meet The Team</h3>
+      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl italic font-medium font-semibold mb-4 md:mb-16">{{ $t('aboutUs6') }}</h3>
     </div>
     <div class="flex flex-wrap mx-8 md:mx-16 lg:mx-24 justify-around">
       <div v-for="(member) in staffMembers" :key="member.sys.id" class="text-center mb-8">
@@ -56,7 +56,7 @@ export default {
       this.heroDescription = this.entry.fields.description;
       this.heroHeading = this.entry.fields.heading;
       this.bgImagePath = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
-      console.log("Received entry:", response);
+      console.log("Received entry:", this.userLanguage);
     })
     .catch(console.error);
 
@@ -77,7 +77,7 @@ export default {
       heroDescription: '',
       heroHeading: '',
       bgImagePath: '',
-      userLanguage: 'en',
+      userLanguage: '',
       staffMembers: '',
     }
   }

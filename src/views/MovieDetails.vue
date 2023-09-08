@@ -7,10 +7,10 @@
       {{ screening[0].subheading }}
     </template>
     <template v-slot:description>
-      Moviemento Kino, Kottbusser Damm 22, 10967 Berlin
+      {{ $t('movieDetails.movieDetails1') }}
     </template>
     <template v-slot:middle-button>
-      <Button :link="screening[0].button_link">GET TICKETS</Button>
+      <Button :link="screening[0].button_link">{{ $t('movieDetails.movieDetails2') }}</Button>
     </template>
   </HeroSection>
   <div v-if="screening && screening.length && screening[0].movies">
@@ -19,7 +19,7 @@
       :key="index"
       :movie="movie">
     </MovieSection>
-    <Button class="mb-32" :link="screening[0].button_link">GET TICKETS</Button>
+    <Button class="mb-32" :link="screening[0].button_link">{{ $t('movieDetails.movieDetails2') }}</Button>
   </div>
 </template>
 

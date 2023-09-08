@@ -1,88 +1,88 @@
 <template>
     <HeroSection>
     <template v-slot:heading>
-      Join Us
+      {{ $t('joinUs.joinUs1') }}
     </template>
     <template v-slot:subheading>
-      <p>Become a Sponsor.</p>
-      <p>Become a Partner.</p>
-      <p>Donate to our Mission.</p>
+      <p>{{ $t('joinUs.joinUs2') }}</p>
+      <p>{{ $t('joinUs.joinUs3') }}</p>
+      <p>{{ $t('joinUs.joinUs4') }}</p>
     </template>
     </HeroSection>
     <section class="bg-white py-12">
       <div class="px-8 md:px-16 lg:px-24">
-        <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-4">Become a Sponsor</h3>
+        <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-4">{{ $t('joinUs.joinUs2') }}</h3>
         <div v-if="!showModal">
           <ol class="font-medium text-lg md:text-2xl lg:text-3xl">
-            <li>Logo placement on website</li>
-            <li>Merchandise & social media</li>
-            <li>Press Release of Sponsorship</li>
+            <li>{{ $t('joinUs.joinUs6') }}</li>
+            <li>{{ $t('joinUs.joinUs7') }}</li>
+            <li>{{ $t('joinUs.joinUs8') }}</li>
             <li><br></li>
           </ol>
-          <span class="text-main text-lg md:text-2xl lg:text-3xl underline text-lg font-medium cursor-pointer" @click="toggleModal">Read more</span>
+          <span class="text-main text-lg md:text-2xl lg:text-3xl underline text-lg font-medium cursor-pointer" @click="toggleModal">{{ $t('joinUs.joinUs9') }}</span>
         </div>
         <div v-else>
-          <h4 class="underline text-lg md:text-2xl lg:text-3xl font-medium">Headline Sponsor</h4>
-          <h5 class="text-main text-lg md:text-2xl lg:text-3xl font-medium mb-2">Minimum Amount: 1.500€</h5>
+          <h4 class="underline text-lg md:text-2xl lg:text-3xl font-medium">{{ $t('joinUs.joinUs10') }}</h4>
+          <h5 class="text-main text-lg md:text-2xl lg:text-3xl font-medium mb-2">{{ $t('joinUs.joinUs11') }}</h5>
           <ol class="font-medium text-lg md:text-2xl list-disc px-8 mb-2">
-            <li>Recognition as “Headline Sponsor” in the event-related press release</li>
-            <li>The sponsor will be invited to present awards at the closing ceremony</li>
-            <li>Prominent logo placement on the website and all marketing materials included but not limited to posters, flyers, booklets, roll-up, etc.</li>
-            <li>Sponsorship highlighted with the link of the sponsor homepage on social media and website</li>
-            <li>Dedicated section in the event slide shows</li>
-            <li>The main feature of the event program</li>
-            <li>Option to provide promotional items for attendees</li>
-            <li>Name announcement at the event</li>
-            <li>Other reasonable requests from the sponsor</li>
+            <li>{{ $t('joinUs.joinUs12') }}</li>
+            <li>{{ $t('joinUs.joinUs13') }}</li>
+            <li>{{ $t('joinUs.joinUs14') }}</li>
+            <li>{{ $t('joinUs.joinUs15') }}</li>
+            <li>{{ $t('joinUs.joinUs16') }}</li>
+            <li>{{ $t('joinUs.joinUs17') }}</li>
+            <li>{{ $t('joinUs.joinUs18') }}</li>
+            <li>{{ $t('joinUs.joinUs19') }}</li>
+            <li>{{ $t('joinUs.joinUs20') }}</li>
           </ol>
-          <p class="text-main text-lg md:text-2xl underline text-lg md:text-2xl font-medium cursor-pointer mb-4" @click="toggleModal">Close</p>
-          <p class="text-main text-lg md:text-2xl lg:text-3xl font-medium mb-8">For more information please reach out to us.</p>
-          <Button :link="button_link">GET IN TOUCH</Button>
+          <p class="text-main text-lg md:text-2xl underline text-lg md:text-2xl font-medium cursor-pointer mb-4" @click="toggleModal">{{ $t('joinUs.joinUs21') }}</p>
+          <p class="text-main text-lg md:text-2xl lg:text-3xl font-medium mb-8">{{ $t('joinUs.joinUs22') }}</p>
+          <Button :link="button_link">{{ $t('joinUs.joinUs23') }}</Button>
         </div>
       </div>
     </section>
     <section class="py-12 bg-main-light">
       <div class="px-8 md:px-16 lg:px-24">
-        <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-4">Become Advertiser</h3>
+        <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-4">{{ $t('joinUs.joinUs24') }}</h3>
         <div v-if="!showModal2">
           <ol class="font-medium text-lg md:text-2xl lg:text-3xl">
-            <li>Be part of our Pre-Screening Slideshow</li>
-            <li>Digital Program Guide</li>
-            <li>Advertise on our Website</li>
+            <li>{{ $t('joinUs.joinUs25') }}</li>
+            <li>{{ $t('joinUs.joinUs26') }}</li>
+            <li>{{ $t('joinUs.joinUs27') }}</li>
             <li><br></li>
           </ol>
-          <span class="text-main underline text-lg md:text-2xl lg:text-3xl font-medium cursor-pointer" @click="toggleModal2">Read more</span>
+          <span class="text-main underline text-lg md:text-2xl lg:text-3xl font-medium cursor-pointer" @click="toggleModal2">{{ $t('joinUs.joinUs9') }}</span>
         </div>
         <div v-else>
           <ol class="font-medium text-lg md:text-2xl mb-2">
-            <li>Be part of our Pre-Screening Slideshow</li>
-            <li>Digital Program Guide</li>
-            <li>Advertise on our Website</li>
+            <li>{{ $t('joinUs.joinUs25') }}</li>
+            <li>{{ $t('joinUs.joinUs26') }}</li>
+            <li>{{ $t('joinUs.joinUs27') }}</li>
           </ol>
-          <p class="text-main underline text-lg md:text-2xl font-medium cursor-pointer mb-4" @click="toggleModal2">Close</p>
-          <p class="text-main text-lg md:text-2xl lg:text-3xl font-medium mb-8">For more information please reach out to us.</p>
-          <Button :link="button_link">GET IN TOUCH</Button>
+          <p class="text-main underline text-lg md:text-2xl font-medium cursor-pointer mb-4" @click="toggleModal2">{{ $t('joinUs.joinUs21') }}</p>
+          <p class="text-main text-lg md:text-2xl lg:text-3xl font-medium mb-8">{{ $t('joinUs.joinUs22') }}</p>
+          <Button :link="button_link">{{ $t('joinUs.joinUs23') }}</Button>
         </div>
       </div>
     </section>
     <section class="py-12">
       <div class="px-8 md:px-16 lg:px-24">
-        <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-4">Donate To Us</h3>
+        <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-4">{{ $t('joinUs.joinUs35') }}</h3>
         <div v-if="!showModal3">
           <ol class="font-medium text-lg md:text-2xl lg:text-3xl">
-            <li>Official mention of Donation on our Website with name and amount</li>
+            <li>{{ $t('joinUs.joinUs36') }}</li>
             <li><br></li>
           </ol>
-          <span class="text-main underline text-lg md:text-2xl lg:text-3xl font-medium cursor-pointer" @click="toggleModal3">Read more</span>
+          <span class="text-main underline text-lg md:text-2xl lg:text-3xl font-medium cursor-pointer" @click="toggleModal3">{{ $t('joinUs.joinUs9') }}</span>
         </div>
         <div v-else>
           <ol class="font-medium text-lg md:text-2xl mb-2">
-            <li class="mb-2"><span class="font-bold">Above 100€:</span><br>Official Mention of your Donation on our social media</li>
-            <li class="mb-2"><span class="font-bold">Above 250€:</span><br>Official mention of your Donation on our social media and on our Website</li>
-            <li class="mb-2"><span class="font-bold">Above 1000€:</span><br>Official mention of your Donation on our social media, on our website and honourable mention at the Main Screening event.</li>
+            <li class="mb-2"><span class="font-bold">{{ $t('joinUs.joinUs38') }} 100€:</span><br>{{ $t('joinUs.joinUs39') }}</li>
+            <li class="mb-2"><span class="font-bold">{{ $t('joinUs.joinUs38') }} 250€:</span><br>{{ $t('joinUs.joinUs40') }}</li>
+            <li class="mb-2"><span class="font-bold">{{ $t('joinUs.joinUs38') }} 1000€:</span><br>{{ $t('joinUs.joinUs41') }}</li>
           </ol>
-          <p class="text-main underline text-lg md:text-2xl font-medium cursor-pointer mb-8" @click="toggleModal3">Close</p>
-          <p class="text-xl font-medium lg:text-2xl">Donate with PayPal:</p>
+          <p class="text-main underline text-lg md:text-2xl font-medium cursor-pointer mb-8" @click="toggleModal3">{{ $t('joinUs.joinUs21') }}</p>
+          <p class="text-xl font-medium lg:text-2xl">{{ $t('joinUs.joinUs42') }}</p>
           <a :href="paypalLink" target="_blank">
             <img src="@/assets/paypal.png" alt="" class="md:max-w-[24rem]">
           </a>
@@ -91,21 +91,21 @@
     </section>
     <section class="py-12 bg-main-light">
       <div class="px-8 md:px-16 lg:px-24">
-        <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-4">Join The Team</h3>
+        <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-4">{{ $t('joinUs.joinUs43') }}</h3>
         <div v-if="!showModal2">
           <ol class="font-medium text-lg md:text-2xl lg:text-3xl">
-            <li>Become part of our Team and help make Berlin NewGen Film Festival a continuous success!</li>
+            <li>{{ $t('joinUs.joinUs44') }}</li>
             <li><br></li>
           </ol>
-          <span class="text-main underline text-lg md:text-2xl lg:text-3xl font-medium cursor-pointer" @click="toggleModal2">Read more</span>
+          <span class="text-main underline text-lg md:text-2xl lg:text-3xl font-medium cursor-pointer" @click="toggleModal2">{{ $t('joinUs.joinUs9') }}</span>
         </div>
         <div v-else>
           <ol class="font-medium text-lg md:text-2xl mb-2">
-            <li>Become part of our Team and help make Berlin NewGen Film Festival a continuous success!</li>
+            <li>{{ $t('joinUs.joinUs44') }}</li>
           </ol>
-          <p class="text-main underline text-lg md:text-2xl font-medium cursor-pointer mb-4" @click="toggleModal2">Close</p>
-          <p class="text-main text-lg md:text-2xl lg:text-3xl font-medium mb-8">For more information please reach out to us.</p>
-          <Button :link="button_link">GET IN TOUCH</Button>
+          <p class="text-main underline text-lg md:text-2xl font-medium cursor-pointer mb-4" @click="toggleModal2">{{ $t('joinUs.joinUs21') }}</p>
+          <p class="text-main text-lg md:text-2xl lg:text-3xl font-medium mb-8">{{ $t('joinUs.joinUs22') }}</p>
+          <Button :link="button_link">{{ $t('joinUs.joinUs23') }}</Button>
         </div>
       </div>
     </section>
@@ -120,7 +120,7 @@ import Button from '@/components/Button.vue'
 import { getEntry } from '@/api/contentful';
 
 export default {
-  name: 'JoinUs',
+  name: 'joinUs.JoinUs',
   components: {
     SponsorSlider,
     HeroSection,

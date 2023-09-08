@@ -1,7 +1,7 @@
 <template>
   <HeroSection :bgImage="bgGif">
     <template v-slot:heading>
-    <span class="text-black">Berlin</span> NewGen <br> <span class="text-black">Chinese Film Festival</span>
+    <span class="text-black">{{ $t('home1') }}</span> {{ $t('home2') }}<br> <span class="text-black">{{ $t('home3') }}</span>
     </template>
   </HeroSection>
   <HomeSection v-if="specialEventOnOffSwitch" :button="specialEventButtonText" :button_link="buttonLink" :image="specialEventImage" :bgImage="specialEventBackgroundImage" :background="background2">

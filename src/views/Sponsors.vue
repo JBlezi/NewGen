@@ -1,6 +1,6 @@
 <template>
   <section class="px-8 md:px-16 my-24">
-    <h1 class="text-main font-bold text-3xl md:text-4xl lg:text-5xl">Sponsors</h1>
+    <h1 class="text-main font-bold text-3xl md:text-4xl lg:text-5xl">{{ $t('sponsors') }}</h1>
     <div v-if="isLoaded" class="lg:flex lg:flex-wrap lg:space-x-16">
       <img v-for="sponsor in sponsors" :key="sponsor.sys.div" :src="sponsor.fields.logo.fields.file.url" alt="" class="mx-auto my-8 md:my-16">
     </div>

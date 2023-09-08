@@ -3,15 +3,15 @@
     <div class="text-main bg-footer flex p-8 md:p-16 h-80 flex-col justify-between">
       <div class="flex mb-12 lg:mb-16">
         <ul class="list-none text-left ">
-          <li class="mb-2"><router-link to="/festival">FESTIVAL</router-link></li>
-          <li class="mb-2"><router-link to="/about-us">ABOUT US</router-link></li>
-          <li class="mb-2"><router-link to="/join-us">JOIN US</router-link></li>
-          <li class="mb-2"><router-link to="/contact">CONTACT</router-link></li>
+          <li class="mb-2"><router-link to="/festival">{{ $t('nav.footer1') }}</router-link></li>
+          <li class="mb-2"><router-link to="/about-us">{{ $t('nav.footer2') }}</router-link></li>
+          <li class="mb-2"><router-link to="/join-us">{{ $t('nav.footer3') }}</router-link></li>
+          <li class="mb-2"><router-link to="/contact">{{ $t('nav.footer4') }}</router-link></li>
         </ul>
         <ul class="list-none text-left px-8 md:px-16">
-          <li class="mb-2"><router-link to="/sponsors">SPONSORS</router-link></li>
-          <li class="mb-2"><router-link to="/press-releases">PRESS RELEASES</router-link></li>
-          <li class="mb-2"><router-link to="/partners">PARTNERS</router-link></li>
+          <li class="mb-2"><router-link to="/sponsors">{{ $t('nav.footer5') }}</router-link></li>
+          <li class="mb-2"><router-link to="/press-releases">{{ $t('nav.footer6') }}</router-link></li>
+          <li class="mb-2"><router-link to="/partners">{{ $t('nav.footer7') }}</router-link></li>
         </ul>
       </div>
       <div class="flex mb-4 justify-between align-text-bottom">

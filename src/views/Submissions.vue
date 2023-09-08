@@ -4,7 +4,7 @@
       {{heroHeading}}
     </template>
     <template v-slot:subheading>
-      Submit your movie now on:
+      {{ $t('submissions.submissions1') }}
     </template>
     <template v-slot:middle-button>
       <button class="bg-main rounded-lg"><a :href="heroButtonLink" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt="FilmFreeWay Button"></a></button>
@@ -12,41 +12,41 @@
   </HeroSection>
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
-      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">Submission Deadlines & Fees</h3>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl ">May 7, 2023 (CET) - 1€</p>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl ">June 30, 2023 (CET) - 3€</p>
+      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">{{ $t('submissions.submissions2') }}</h3>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl ">{{ $t('submissions.submissions3') }} 7, {{currentYear - 1}} (CET) - 1€</p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl ">{{ $t('submissions.submissions4') }} 30, {{currentYear - 1}} (CET) - 3€</p>
     </div>
   </section>
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
-      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">Terms & Conditions</h3>
+      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">{{ $t('submissions.submissions5') }}</h3>
       <ol class="font-medium text-lg md:text-xl lg:text-2xl list-decimal px-6">
         <li>
-          <div>The submitted film must</div>
+          <div>{{ $t('submissions.submissions6') }}</div>
           <ol class="list-decimal pl-6 mt-2">
-            <li>be made in one or more than one of the Chinese languages (Mandarin, Cantonese, or other dialects)</li>
-            <li>be produced, directed, written, cinematographed, or performed by at least one ethnic Chinese filmmaker.</li>
+            <li>{{ $t('submissions.submissions7') }}</li>
+            <li>{{ $t('submissions.submissions8') }}</li>
           </ol>
         </li>
-        <li>The submitted film must provide English subtitles/captions if the dialogues are not in English.</li>
-        <li>The submitted film should be made after January 1, 2021.</li>
-        <li>The submitted film should run no longer than 40 minutes.</li>
-        <li>We welcome all genres and themes.</li>
-        <li>Applicants may submit more than one title, but an entry fee is required for each title.</li>
-        <li>We do not request premiere from applicants.</li>
-        <li>Once selected, the copyright holder of the submission must authorize the selected title to be screened at least once at the festival in Berlin, and allow us to use related promotional materials.</li>
+        <li>{{ $t('submissions.submissions9') }}</li>
+        <li>{{ $t('submissions.submissions10') }}</li>
+        <li>{{ $t('submissions.submissions11') }}</li>
+        <li>{{ $t('submissions.submissions12') }}</li>
+        <li>{{ $t('submissions.submissions13') }}</li>
+        <li>{{ $t('submissions.submissions14') }}</li>
+        <li>{{ $t('submissions.submissions15') }}</li>
       </ol>
     </div>
   </section>
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
-      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-2">How To Submit</h3>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl ">To apply, please fill out the application form and submit your film on <a href="https://filmfreeway.com/" target="_blank">FilmFreeway</a>.<br><br></p>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl ">In principle, we do not accept new versions after your successful submission. In case of major changes, please contact info@bngcff.com before the regular submission deadline.</p>
+      <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-2">{{ $t('submissions.submissions16') }}</h3>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl ">{{ $t('submissions.submissions17') }} <a href="https://filmfreeway.com/" target="_blank">FilmFreeway</a>.<br><br></p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl ">{{ $t('submissions.submissions18') }}</p>
     </div>
   </section>
   <div class="px-8 md:px-16 lg:px-24 mb-16 lg:mb-32">
-    <p class="mb-2 font-medium text-lg md:text-xl md:font-bold">Submit on:</p>
+    <p class="mb-2 font-medium text-lg md:text-xl md:font-bold">{{ $t('submissions.submissions1') }}</p>
     <button class="bg-main rounded-lg"><a :href="heroButtonLink" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
   </div>
   <SponsorSlider :sponsors="images" class="hidden"></SponsorSlider>
@@ -89,6 +89,7 @@ export default {
   },
   data() {
     return {
+      currentYear: new Date().getFullYear(),
       userLanguage: '',
       entry: {},
       heroHeading: '',

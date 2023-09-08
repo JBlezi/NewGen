@@ -5,9 +5,9 @@
         {{heroHeading}}
       </template>
       <template v-slot:subheading>
-        <span class="text-main">Festival Days:</span><br>{{heroDays}}
+        <span class="text-main">{{ $t('festival1') }}</span><br>{{heroDays}}
         <br><br>
-        <span class="text-main">Cinema:</span><br>{{heroLocation}}
+        <span class="text-main">{{ $t('festival2') }}</span><br>{{heroLocation}}
       </template>
       <template v-slot:description>
         {{ heroDescription }}

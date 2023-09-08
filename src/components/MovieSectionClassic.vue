@@ -12,18 +12,18 @@
         </div>
         <div class="font-medium md:text-2xl lg:text-3xl flex justify-start mb-4 lg:mb-8">
           <div class="w-1/2">
-            <p class="text-main">Director:</p> {{ movie.fields.director }}
+            <p class="text-main">{{ $t('movieSection.movieSection3') }}</p> {{ movie.fields.director }}
           </div>
           <div>
-            <p class="text-main">Duration:</p> {{ movie.fields.duration }}
+            <p class="text-main">{{ $t('movieSection.movieSection1') }}</p> {{ movie.fields.duration }}
           </div>
         </div>
         <div class="font-medium md:text-2xl lg:text-3xl flex justify-start mb-8 md:mb-12">
           <div class="w-1/2">
-            <p class="text-main">Language:</p> {{ movie.fields.languages }}
+            <p class="text-main">{{ $t('movieSectionClassic.movieSectionClassic1') }}</p> {{ movie.fields.languages }}
           </div>
           <div>
-            <p class="text-main">Subtitles:</p> {{ movie.fields.subtitles }}
+            <p class="text-main">{{ $t('movieSectionClassic.movieSectionClassic2') }}</p> {{ movie.fields.subtitles }}
           </div>
         </div>
       </div>
