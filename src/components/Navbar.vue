@@ -6,7 +6,11 @@
           <img :src="logoImage" alt="Logo" class="md:h-12 md:w-12 h-8 w-8 lg:h-8 lg:w-8 m-4 lg:m-3">
           <span class="self-center text-lg xl:text-2xl font-medium">NewGen</span>
         </router-link>
-        <div class="flex hidden lg:block xl:text-lg p-8 space-x-8 py-4 font-medium">
+        <div class="lg:flex hidden lg:block xl:text-lg p-8 space-x-8 py-4 font-medium">
+          <div class="flex space-x-2 justify-center text-xl">
+            <button @click="changeLanguage('en')" :class="{ 'text-main': $i18n.locale === 'en' }">&#x1F1EC;&#x1F1E7;</button>
+            <button @click="changeLanguage('zh')" :class="{ 'text-main': $i18n.locale === 'zh' }">&#x1F1E8;&#x1F1F3;</button>
+          </div>
           <router-link active-class="text-main" to="/">{{ $t('nav.navbar1') }}</router-link>
           <router-link active-class="text-main" to="/festival">{{ $t('nav.footer1') }}</router-link>
           <router-link active-class="text-main" to="/about-us">{{ $t('nav.footer2') }}</router-link>
@@ -37,7 +41,13 @@
             <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/join-us">{{ $t('nav.footer3') }}</router-link></li>
             <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/submissions">{{ $t('nav.navbar2') }}</router-link></li>
             <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/contact">{{ $t('nav.footer4') }}</router-link></li>
-            <li class="text-2xl md:text-4xl mb-4 md:mb-16" @click="isOpen = !isOpen"><router-link to="/archive">{{ $t('nav.navbar3') }}</router-link></li>
+            <li class="text-2xl md:text-4xl mb-8 md:mb-16" @click="isOpen = !isOpen"><router-link to="/archive">{{ $t('nav.navbar3') }}</router-link></li>
+            <li>
+              <div class="flex space-x-8 justify-center text-4xl md:text-5xl mb-4 md:mb-16">
+                <button @click="changeLanguage('en')" :class="{ 'text-main': $i18n.locale === 'en' }">&#x1F1EC;&#x1F1E7;</button>
+                <button @click="changeLanguage('zh')" :class="{ 'text-main': $i18n.locale === 'zh' }">&#x1F1E8;&#x1F1F3;</button>
+              </div>
+            </li>
           </ul>
 
           <!-- Social Media Links -->
@@ -62,8 +72,16 @@
       closingX: require('@/assets/ClosingX.svg'),
       isOpen: false
     };
+  },
+  methods: {
+    changeLanguage(lang) {
+      this.$i18n.locale = lang; // set the language
+      localStorage.setItem('userLanguage', lang); // store the language in localStorage
+      this.isOpen = false; // close the navigation (optional)
+      location.reload();
+    }
   }
-  }
+}
 </script>
 
 <style scoped>
