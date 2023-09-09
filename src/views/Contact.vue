@@ -51,6 +51,7 @@
   </form>
 </div>
 
+<div data-tf-widget="C3l7YLt2" data-tf-opacity="100" data-tf-iframe-props="title=NewGen Contact Form EN" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:500px;"></div>
   </section>
 </template>
 
@@ -70,20 +71,26 @@ export default {
   }
 },
   methods: {
-  validateEmail() {
-    // Simple regex for email validation
-    const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    if (this.email.match(pattern)) {
-      this.emailValid = true;
-      this.emailFeedback = '';
-    } else {
-      this.emailValid = false;
-      this.emailFeedback = 'Please enter a valid email address.';
+    validateEmail() {
+      // Simple regex for email validation
+      const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+      if (this.email.match(pattern)) {
+        this.emailValid = true;
+        this.emailFeedback = '';
+      } else {
+        this.emailValid = false;
+        this.emailFeedback = 'Please enter a valid email address.';
+      }
+    },
+    loadTypeformScript() {
+        const script = document.createElement('script');
+        script.src = "//embed.typeform.com/next/embed.js";
+        document.body.appendChild(script);
     }
+  },
+  mounted() {
+    this.loadTypeformScript();
   }
-}
-
-
 };
 </script>
 
