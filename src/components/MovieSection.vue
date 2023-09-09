@@ -12,22 +12,26 @@
         <div class="mb-4 md:mb-16 lg:mb-12 hidden lg:block lg:h-1/2">
           <img :src="movie.movieScene" alt="Still Shot" class="h-full min-w-full object-cover"/>
         </div>
-        <div class="md:mb-4 hidden lg:block lg:h-1/2 lg:flex cursor-pointer" @click="toggleModal">
+        <div class="relative md:mb-4 hidden lg:block lg:h-1/2 lg:flex cursor-pointer" @click="toggleModal">
           <img :src="movie.directorFoto" alt="Director Foto" class="h-full w-1/2 min-w-full lg:min-w-0 object-cover"/>
           <div v-if="!showModal" class="pl-8 w-1/2">
             <div class="mb-2"><span class="text-main">{{ $t('movieSection.movieSection1') }}</span><br>{{ movie.duration }}</div>
             <div class="mb-2"><span class="text-main">{{ $t('movieSection.movieSection2') }}</span><br>{{ movie.year }}</div>
             <div class="mb-2"><span class="text-main">{{ $t('movieSection.movieSection3') }}</span><br>{{ movie.director }}</div>
           </div>
-              <!-- Modal overlay -->
-          <div v-if="showModal" class="w-1/2 h-1/2 font-medium text-lg pl-8">
-            <div class="bg-white">
+          <!-- Modal overlay -->
+          <div v-if="showModal" class="w-1/2 h-full font-medium text-lg pl-8 overflow-y-scroll">
+            <div class="">
               <p>
                 {{ movie.directorBio }}
               </p>
             </div>
           </div>
+          <div class="absolute top-0 left-0 w-1/2 h-full bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <span class="text-white">Read Bio</span>
+          </div>
         </div>
+
 
         <div class="lg:hidden">
           <span class="text-main">{{ $t('movieSection.movieSection3') }}</span> {{ movie.director }}
