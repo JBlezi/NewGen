@@ -86,8 +86,7 @@ const messages = {
       submissions15: 'Once selected, the copyright holder of the submission must authorize the selected title to be screened at least once at the festival in Berlin, and allow us to use related promotional materials.',
       submissions16: 'How To Submit',
       submissions17: 'To apply, please fill out the application form and submit your film on',
-      submissions18: 'In principle, we do not accept new versions after your successful submission. In case of major changes, please contact info@bngcff.com before the regular submission deadline.',
-
+      submissions18: 'In principle, we do not accept new versions after your successful submission. In case of major changes, please contact {email} before the regular submission deadline.',
     },
     nav: {
       footer1: 'FESTIVAL',
@@ -200,8 +199,7 @@ const messages = {
       submissions15: '参赛作品须是参赛者创作的原创作品，参赛者必须是参赛作品版权的合法持有者',
       submissions16: '如何投递',
       submissions17: '请使用电影节影片投递及报名平台',
-      submissions18: '成功提交作品后，组委会原则上不再接受新版本。如有重大改动，请在标准截止日期前通过邮箱info@bngcff.com联系组委会',
-
+      submissions18: '成功提交作品后，组委会原则上不再接受新版本。如有重大改动，请在标准截止日期前通过邮箱{email}联系组委会',
     },
     nav: {
       footer1: '电影节',

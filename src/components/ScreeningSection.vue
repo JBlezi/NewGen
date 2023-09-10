@@ -4,7 +4,7 @@
       <div class="relative">
         <div class="flex">
           <div class="mt-8 md:my-16 flex flex-col px-8 md:px-16 lg:px-24 lg:mt-24 h-full w-full">
-            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-main lg:mb-4">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-main lg:mb-4 lg:w-4/5">
               <slot name="heading"></slot>
             </h2>
             <h3 class="font-medium mb-4 md:text-lg lg:text-xl lg:mb-8">
@@ -41,7 +41,10 @@
                     <h4 class="font-medium text-xl lg:text-2xl flex justify-center hidden lg:block pl-8 lg:mb-8">
                       {{ movieList.movies[this.counter].director }} | {{ movieList.movies[this.counter].year }}
                     </h4>
-                    <div class="hidden lg:block w-56 pl-8 font-medium lg:text-xl">
+                    <div v-if="movieList.movies.length == 1" class="hidden lg:block w-56 lg:w-[32rem] pl-8 font-medium lg:text-xl">
+                      {{ movieList.movies[this.counter].description }}
+                    </div>
+                    <div v-else class="hidden lg:block w-56 pl-8 font-medium lg:text-xl">
                       {{ movieList.movies[this.counter].description }}
                     </div>
                   </div>
