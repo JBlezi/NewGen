@@ -4,8 +4,8 @@
       {{ movie.title }}
     </div>
     <div class="md:w-full md:flex md:mb-8 lg:max-h-[60vh]">
-      <div class="md:mb-4 md:mb-0 md:w-1/2 ">
-        <img :src="movie.poster" alt="Movie Poster" class="h-[50vh] md:h-[40vh] min-w-full lg:h-auto lg:max-h-[60vh] lg:object-contain object-center"/>
+      <div class="md:mb-6 md:mb-0 md:w-1/2 ">
+        <img :src="movie.poster" alt="Movie Poster" class="h-[55vh] md:h-[45vh] min-w-full lg:h-auto lg:max-h-[60vh] lg:object-contain object-center"/>
       </div>
       <div class="font-medium md:font-semibold md:text-2xl flex md:flex-col justify-between md:justify-start mb-4 md:mb-12 md:w-1/2 md:pl-8">
 
@@ -39,7 +39,7 @@
         <div class="lg:hidden">
           <span class="text-main">{{ $t('movieSection.movieSection2') }}</span> {{ movie.year }}
         </div>
-        <div class="hidden md:block md:font-medium mt-4 lg:hidden h-96 overflow-y-scroll">
+        <div class="hidden md:block md:font-medium mt-4 lg:hidden h-[35vh] overflow-y-scroll">
           {{ movie.description }}
         </div>
       </div>
