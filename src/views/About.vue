@@ -27,8 +27,8 @@
     <div class="flex flex-wrap mx-8 md:mx-16 lg:mx-24 justify-around">
       <div v-for="(member) in staffMembers" :key="member.sys.id" class="text-center mb-8">
         <img :src="member.fields.picture.fields.file.url" :alt="member.fields.name" class="w-32 h-48 md:w-64 md:h-96 mx-auto object-cover">
-        <p class="mt-2 font-medium md:text-2xl">{{ member.fields.name }}</p>
-        <p class="italic md:text-2xl">{{ member.fields.title }}</p>
+        <p class="mt-2 font-medium w-32 md:w-64 md:text-2xl">{{ member.fields.name }}</p>
+        <p class="italic md:text-2xl w-32 md:w-64">{{ member.fields.title }}</p>
       </div>
     </div>
 
