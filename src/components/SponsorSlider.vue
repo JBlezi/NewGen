@@ -1,7 +1,7 @@
 <template>
   <section class="w-full h-32 my-8 overflow-x-hidden" id="sponsor-slider">
     <div class="h-32 top-0 left-0">
-      <div class="h-full flex transition-transform" :style="{ transform: `translateX(-${currentSlide}px)` }">
+      <div class="h-full flex" :style="{ transform: `translateX(-${currentSlide}px)` }">
         <img class="h-full mx-8 py-2" v-for="sponsor in sponsors" :key="sponsor" :src="sponsor">
 
       </div>
