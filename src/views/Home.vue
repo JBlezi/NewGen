@@ -3,6 +3,12 @@
     <template v-slot:heading>
     <span class="text-black">{{ $t('home1') }}</span> {{ $t('home2') }}<br> <span class="text-black">{{ $t('home3') }}</span>
     </template>
+    <template v-slot:subheading>
+      {{ heroSubheading }}
+    </template>
+    <template v-slot:description>
+      {{ heroDescription }}
+    </template>
   </HeroSection>
   <HomeSection v-if="specialEventOnOffSwitch" :button="specialEventButtonText" :button_link="buttonLink" :image="specialEventImage" :bgImage="specialEventBackgroundImage" :background="background2">
     <template v-slot:heading>
@@ -19,16 +25,22 @@
     <template v-slot:heading>
       {{filmFestivalHeading}}
     </template>
-    <template v-slot:description>
+    <template v-slot:subheading>
       {{ filmFestivalSubheading }}
+    </template>
+    <template v-slot:description>
+      {{ filmFestivalDescription }}
     </template>
   </HomeSection>
   <HomeSection :button="archiveButtonText" :bgImage="archiveBackgroundImage" :button_link="buttonLink3" :image="archiveImage" :background="background3">
     <template v-slot:heading>
       {{archiveHeading}}
     </template>
-    <template v-slot:description>
+    <template v-slot:subheading>
       {{ archiveSubheading }}
+    </template>
+    <template v-slot:description>
+      {{ archiveDescription }}
     </template>
   </HomeSection>
 </template>
@@ -102,6 +114,8 @@ export default {
     .then((response) => {
       this.entry = response;
       this.heroHeading = this.entry.fields.heading;
+      this.heroSubheading = this.entry.fields.subheading,
+      this.heroDescription = this.entry.fields.description,
       this.bgGif = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
     })
     .catch(console.error);
@@ -141,6 +155,8 @@ export default {
       userLanguage: 'en',
       entry: {},
       heroHeading: '',
+      heroSubheading: '',
+      heroDescription: '',
       festivalImage: require('@/assets/newgen_2023.png'),
       bgImagePath: require('@/assets/palm_trees.png'),
       bgImagePath2: require('@/assets/moviemento.png'),
