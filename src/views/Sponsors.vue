@@ -30,6 +30,7 @@
 
 <script>
 import { getAllFestivalSponsors } from '@/api/contentful';
+import { getAllPartners } from '@/api/contentful';
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -44,6 +45,11 @@ export default {
         this.isLoaded = true;
       })
       .catch(console.error)
+
+    getAllPartners().then((response) => {
+      this.mediaPartners = response.items;
+
+    })
   },
   data() {
     return {
@@ -67,10 +73,6 @@ export default {
 
         case 'strategic partner':
           this.strategicPartners.push(sponsor);
-          break;
-
-        case 'media partner':
-          this.mediaPartners.push(sponsor);
           break;
 
         case 'headline sponsor':
