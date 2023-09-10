@@ -1,15 +1,15 @@
 <template>
   <section>
-    <div class="h-[80vh] md:h-[60vh] lg:h-[75vh] bg-cover" :style="backgroundStyle">
-      <div :class="['h-[80vh]', 'md:h-[60vh]', 'lg:h-[75vh]', 'relative', `${background}`]">
-        <div class="flex h-[80vh] md:h-[60vh] lg:h-[75vh]">
+    <div class="h-[80vh] md:h-[60vh] lg:h-[80vh] bg-cover" :style="backgroundStyle">
+      <div :class="['h-[80vh]', 'md:h-[60vh]', 'lg:h-[80vh]', 'relative', `${background}`]">
+        <div class="flex h-[80vh] md:h-[60vh] lg:h-[80vh]">
           <div class="flex flex-col justify-between w-full">
             <div class="mt-16 lg:mt-24">
               <h2 class="text-5xl md:text-4xl lg:text-5xl px-8 md:px-16 lg:px-24 font-bold text-main mb-4 md:mb-8 lg:mb-12">
                 <slot name="heading"></slot>
               </h2>
-              <div class="md:flex md:h-[45vh] lg:h-[50vh]">
-                <div class="md:w-1/2 md:h-[45vh] lg:h-[50vh] md:flex md:flex-col md:justify-between md:relative">
+              <div class="md:flex md:h-[45vh] lg:h-[55vh]">
+                <div class="md:w-1/2 md:h-[45vh] lg:h-[55vh] md:flex md:flex-col md:justify-between md:relative">
                   <div>
                     <h3 class="px-8 md:px-16 lg:px-24 font-medium text-lg md:text-xl lg:text-2xl underline mb-4">
                       <slot name="subheading"></slot>
