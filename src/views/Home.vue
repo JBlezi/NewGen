@@ -75,7 +75,6 @@ export default {
         this.specialEventVideo = this.entry.fields.youtubeVideoEmbedUrl
       }
       this.specialEventOnOffSwitch = this.entry.fields.onOffSwitch;
-      console.log("on off switch", this.specialEventOnOffSwitch)
     })
 
     getLocalizedEntry('7c787EsghBxb1ceUXF4JBD', this.userLanguage).then((response) => {

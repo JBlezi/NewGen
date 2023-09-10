@@ -19,7 +19,7 @@
                     </h4>
                   </div>
                   <router-link :to="button_link" class="flex justify-center mb-16 absolute bottom-0 left-0 right-0 ">
-                    <button class="border border-main bg-white lg:border-2 font-bold rounded-full p-4 lg:p-6 lg:text-xl">{{ button }}</button>
+                    <button class="border border-main bg-white border-2 font-bold rounded-full p-6 text-xl">{{ button }}</button>
                   </router-link>
                 </div>
                 <div class="md:w-1/2 md:pr-16 lg:pr-24 lg:pb-24">

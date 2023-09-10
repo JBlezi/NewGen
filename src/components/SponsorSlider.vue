@@ -1,7 +1,5 @@
 <template>
-  <section class="w-full h-32 my-8 overflow-x-hidden" id="sponsor-slider" @mousedown="handleMouseDown" @mousemove="handleMouseMove" @mouseup="handleMouseUp" @touchstart="handleTouchStart"
-    @touchmove="handleTouchMove"
-    @touchend="handleTouchEnd">
+  <section class="w-full h-32 my-8 overflow-x-hidden" id="sponsor-slider">
     <div class="h-32 top-0 left-0">
       <div class="h-full flex transition-transform" :style="{ transform: `translateX(-${currentSlide}px)` }">
         <img class="h-full mx-8 py-2" v-for="sponsor in sponsors" :key="sponsor" :src="sponsor">
@@ -57,8 +55,9 @@ export default {
 
           if (this.currentSlide >= (this.sponsors.length - 1) * this.imageWidth) {
             clearInterval(this.intervalId);
+            this.currentSlide = 0;
             setTimeout(() => {
-              this.currentSlide = 0;
+              this.startSliding();
             }, 2000);
           }
         }

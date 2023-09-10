@@ -42,9 +42,6 @@ export default {
         language = supportedLanguages.includes(browserLanguage.split('-')[0]) ? browserLanguage.split('-')[0] : 'en';
         localStorage.setItem('userLanguage', language);
       }
-
-      // Here, the detected or stored language is set in `language` variable.
-      console.log(language); // You can use this for debugging or further processing.
     }
   },
   data() {
