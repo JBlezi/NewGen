@@ -22,7 +22,7 @@
   <section class="mt-12 mb-12 md:my-24">
     <div class="px-8 md:px-16">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-bold mb-4">{{ $t('specialEvent.specialEvent2') }}</h3>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl">The {{ heroHeading }} {{ $t('specialEvent.specialEvent3') }} <span class="font-bold">{{ date }}at Moviemento Kino, Kottbusser Damm 22, Berlin.</span></p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl">The {{ heroHeading }} {{ $t('specialEvent.specialEvent3') }} <span class="font-bold">{{ date }} at Moviemento Kino, Kottbusser Damm 22, Berlin.</span></p>
     </div>
   </section>
   <section v-if="this.classicMovies.length > 0" class="mt-12 mb-12 md:my-24">
