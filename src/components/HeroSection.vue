@@ -4,7 +4,7 @@
       <div v-if="isGif" class=" h-screen md:h-full md:min-h-[40vh] lg:h-[75vh] bg-opacity-50 relative">
         <div class="flex items-center md:h-full md:min-h-[40vh] h-screen lg:h-[75vh]">
           <div class="flex flex-col md:h-full md:min-h-[40vh] lg:h-[75vh] md:mt-32 lg:my-24 md:w-full">
-            <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-16 lg:mt-32 font-bold text-main mb-4 md:w-full">
+            <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-16 lg:mt-32 font-bold text-main mb-8 md:mb-12 lg:mb-16 md:w-full">
                 <slot name="heading"></slot>
             </h1>
             <h2 v-if="hasSubheadingSlot" class="px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
@@ -26,7 +26,7 @@
       <div v-else class="h-screen md:h-full md:min-h-[40vh] lg:h-[75vh] relative">
         <div class="flex items-center md:h-full md:min-h-[40vh] lg:h-[75vh] h-screen">
           <div class="flex flex-col md:h-full md:min-h-[40vh] lg:h-[75vh] md:mt-32 lg:mt-24 md:w-full">
-            <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-24 lg:mt-40 font-bold text-main mb-4 lg:mb-8 md:w-full">
+            <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-24 lg:mt-40 font-bold text-main mb-8 md:mb-12 lg:mb-16 md:w-full">
               <slot name="heading"></slot>
             </h1>
             <div class="lg:flex">

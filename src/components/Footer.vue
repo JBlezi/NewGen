@@ -11,7 +11,8 @@
         <ul class="list-none text-left px-8 md:px-16">
           <li class="mb-2"><router-link to="/sponsors">{{ $t('nav.footer5') }}</router-link></li>
           <li class="mb-2"><router-link to="/press-releases">{{ $t('nav.footer6') }}</router-link></li>
-          <li class="mb-2"><router-link to="/partners">{{ $t('nav.footer7') }}</router-link></li>
+          <li class="mb-2"><router-link to="/privacy">PRIVACY NOTICE</router-link></li>
+<!--           <li class="mb-2"><router-link to="/partners">{{ $t('nav.footer7') }}</router-link></li> -->
         </ul>
       </div>
       <div class="flex mb-4 justify-between align-text-bottom">

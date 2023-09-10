@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center">
     <a :href="link" target="_blank">
-      <button class="border border-main md:border-4 md:text-2xl font-bold rounded-full p-4 md:p-6"><slot></slot></button>
+      <button class="border-2 bg-white border-main md:border-4 md:text-2xl font-bold rounded-full p-4 md:p-6"><slot></slot></button>
     </a>
   </div>
 </template>

@@ -9,13 +9,13 @@
       {{ $t('archive1') }} {{ nominee.competitionYear }}
     </template>
   </ScreeningSection>
-  <p class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer" @click="toggleAdditionalEntries2">{{ showAdditionalWinners2 ? 'Hide past editions winners' : 'See past editions winners' }}</p>
+  <p v-if="filteredCategories2.length > 0" class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer" @click="toggleAdditionalEntries2">{{ showAdditionalWinners2 ? 'Hide past editions winners' : 'See past editions winners' }}</p>
   <ScreeningSection v-for="nominee in filteredCategories" :key="nominee" :movieList="nominee" class="mb-8">
     <template v-slot:heading>
       {{ $t('archive2') }} {{ nominee.competitionYear }}
     </template>
   </ScreeningSection>
-  <p class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer" @click="toggleAdditionalEntries">{{ showAdditionalWinners ? 'Hide past editions nominees' : 'See past editions nominees' }}</p>
+  <p v-if="filteredCategories.length > 0" class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer" @click="toggleAdditionalEntries">{{ showAdditionalWinners ? 'Hide past editions nominees' : 'See past editions nominees' }}</p>
   <section class="my-16 md:my-32">
     <h2 class="px-8 md:px-16 lg:px-24 text-main mb-4 md:mb-16 text-3xl md:text-4xl lg:text-5xl md:font-bold font-medium">{{ $t('archive3') }}</h2>
     <div class="flex flex-wrap mx-8">
@@ -23,8 +23,8 @@
         <img :src="member.fields.picture.fields.file.url" :alt="member.fields.name" class="w-32 md:w-64 h-48 md:h-96 mx-auto object-cover">
         <p class="mt-2 font-medium md:text-2xl">{{ member.fields.name }}</p>
         <p class="italic md:text-2xl">{{ member.fields.title }}</p>
-        <div v-if="modalMember === member.sys.id" class="text-left absolute opacity-90 md:opacity-100 top-0 left-16 right-0">
-          <div class="bg-white p-4 border border-slate-500 md:min-h-[28.5rem] lg:w-80">
+        <div v-if="modalMember === member.sys.id" class="text-left absolute opacity-90 md:opacity-100 top-0 left-0 right-0 md:left-10 lg:left-14">
+          <div class="bg-white p-4 border border-slate-500 h-48 md:h-96 lg:w-80 overflow-y-scroll">
             <h3 class="font-medium mb-2 md:text-2xl">{{ member.fields.name }}, {{ member.fields.title }}</h3>
             <p class="md:text-2xl">
               {{ member.fields.biography }}

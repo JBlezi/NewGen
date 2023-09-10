@@ -11,6 +11,7 @@ import PressReleases from '@/views/PressReleases.vue';
 import Sponsors from '@/views/Sponsors.vue';
 import Partners from '@/views/Partners.vue';
 import Archive from '@/views/Archive.vue';
+import Privacy from '@/views/Privacy.vue';
 
 const routes = [
     {
@@ -73,6 +74,11 @@ const routes = [
       path: '/archive',
       name: 'archive',
       component: Archive
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: Privacy
     },
 ];
 

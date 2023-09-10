@@ -111,17 +111,18 @@ const messages = {
     movieSectionClassic: {
       movieSectionClassic1: 'Language:',
       movieSectionClassic2: 'Subtitles:'
-    }
+    },
+    privacy: 'Privacy Notice'
     // ... English translations
   },
   zh: {
-    aboutUs1: 'Chinese',
-    aboutUs2: 'Chinese',
-    aboutUs3: 'cn',
+    aboutUs1: 'Inspiration and History',
+    aboutUs2: 'New Generation International Film Festival (NewGen) is a Berlin-based nonprofit organisation celebrating high-quality Chinese films with new and distinguished filmmakers, film enthusiasts, film industry professionals, related-field scholars and audiences around the world.',
+    aboutUs3: 'Our Mission',
     aboutUs4: 'Acting as a springboard for creation, NewGen is dedicated to discovering new talented filmmakers who are making the future of Chinese cinema. Focusing on interconnections between cinema and contemporary society, NewGen encourages independent, proactive and innovative filmic expressions that showcase the diversity of Chinese culture and society. Believing in the power of film, New Gen aims to build a borderless exchange platform for cinematic culture through film screenings, audience discussions and expert panels.',
     aboutUs5: 'NewGen hopes to draw attention to new talented Chinese filmmakers and raise the profile of their underrepresented films, with the aspiration of contributing to the future of Chinese cinema, boosting the development of the local and global film industry and providing a sustainable platform for future dialogues between China and Europe.',
     aboutUs6: 'Meet The Team',
-    archive1: 'cn',
+    archive1: 'Winners',
     archive2: 'Nominees',
     archive3: 'NewGen Jury',
     contact: 'Contact',
@@ -224,7 +225,8 @@ const messages = {
     movieSectionClassic: {
       movieSectionClassic1: 'Language:',
       movieSectionClassic2: 'Subtitles:'
-    }
+    },
+    privacy: 'Privacy Notice'
   }
   // ... other languages
 };
