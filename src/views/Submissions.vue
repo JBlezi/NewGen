@@ -42,7 +42,7 @@
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-2">{{ $t('submissions.submissions16') }}</h3>
       <p class="font-medium text-lg md:text-xl lg:text-2xl ">{{ $t('submissions.submissions17') }} <a href="https://filmfreeway.com/" target="_blank">FilmFreeway</a>.<br><br></p>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl ">{{ $t('submissions.submissions18') }}</p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl ">  {{ $t('submissions.submissions18', { email: 'info@bngcff.com' }) }}</p>
     </div>
   </section>
   <div class="px-8 md:px-16 lg:px-24 mb-16 lg:mb-32">

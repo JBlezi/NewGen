@@ -86,8 +86,7 @@ const messages = {
       submissions15: 'Once selected, the copyright holder of the submission must authorize the selected title to be screened at least once at the festival in Berlin, and allow us to use related promotional materials.',
       submissions16: 'How To Submit',
       submissions17: 'To apply, please fill out the application form and submit your film on',
-      submissions18: 'In principle, we do not accept new versions after your successful submission. In case of major changes, please contact info@bngcff.com before the regular submission deadline.',
-
+      submissions18: 'In principle, we do not accept new versions after your successful submission. In case of major changes, please contact {email} before the regular submission deadline.',
     },
     nav: {
       footer1: 'FESTIVAL',
@@ -200,8 +199,7 @@ const messages = {
       submissions15: 'Once selected, the copyright holder of the submission must authorize the selected title to be screened at least once at the festival in Berlin, and allow us to use related promotional materials.',
       submissions16: 'How To Submit',
       submissions17: 'To apply, please fill out the application form and submit your film on',
-      submissions18: 'In principle, we do not accept new versions after your successful submission. In case of major changes, please contact info@bngcff.com before the regular submission deadline.',
-
+      submissions18: 'In principle, we do not accept new versions after your successful submission. In case of major changes, please contact {email} before the regular submission deadline.',
     },
     nav: {
       footer1: 'FESTIVAL',
