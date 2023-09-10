@@ -2,57 +2,32 @@
   <section class="px-8 md:px-16 my-24">
     <h1 class="text-main font-bold text-3xl md:text-4xl lg:text-5xl">{{ $t('contact') }}</h1>
 
-    <div id="mc_embed_shell">
-      <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-    </div>
+    <iframe
+    ref="jotformIframe"
+    id="JotFormIFrame-232522949602053"
+    title="NewGen Website Contact Form"
+    onload="window.parent.scrollTo(0,0)"
+    allowtransparency="true"
+    allowfullscreen="true"
+    allow="geolocation; microphone; camera"
+    src="https://form.jotform.com/232522949602053"
+    frameborder="0"
+    style="min-width:100%;max-width:100%;height:1039px;border:none;"
+    scrolling="no"
+  >
+  </iframe>
+  <div class="my-16">
+    <h2 class="text-3xl font-medium">Sign up for our Newsletter</h2>
+    <iframe src="https://bcb49699.sibforms.com/serve/MUIFAHHcdAXCv7wWxySav2VZLCsFefHQeKlTA_Qsl0oOFq9I5B00zI05F13la16YnfokoGa7U_2LdCDhhVy7iS76bmvBQtEfyL6GgL0kS48bGZNhU10jYUq1SY950CjHhpJ_gBIYe48bnxx-8fVcsAIPz1kcbj10y2FZQdnYyrMpETq7rLvTf4rpF9Yy5yXe025PlDhbB6LTo-Gp"  frameborder="0" scrolling="auto" allowfullscreen style="display: block;min-width:100%;max-width:100%;height:639px;"></iframe>
+  </div>
 
-    <div id="mc_embed_signup">
-      <form action="https://bngcff.us21.list-manage.com/subscribe/post?u=b4089b69f3cca3a6d1aa4a765&amp;id=83166b1177&amp;v_id=157&amp;f_id=00efe1e6f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-        <div id="mc_embed_signup_scroll">
-          <h2>Subscribe</h2>
-          <div class="indicates-required">
-            <span class="asterisk">*</span> indicates required
-          </div>
-          <div class="mc-field-group">
-            <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
-            <input type="email" v-model="email" @input="validateEmail" name="EMAIL" class="required email">
-            <p v-if="emailFeedback" class="text-red-500">{{ emailFeedback }}</p>
-          </div>
-          <div id="mergeRow-gdpr" class="mergeRow gdpr-mergeRow content__gdprBlock mc-field-group">
-            <div class="content__gdpr">
-              <label>Would you like to receive emails from us?</label>
-              <p>Please select all the ways you would like to hear from NewGen Chinese Film Festival:</p>
-              <fieldset class="mc_fieldset gdprRequired mc-field-group" name="interestgroup_field">
-                <label class="checkbox subfield" for="gdpr1527">
-                  <input type="checkbox" id="gdpr_1527" name="gdpr[1527]" class="gdpr" value="Y"><span>Email</span>
-                </label>
-              </fieldset>
-              <p>You can unsubscribe at any time by clicking the link in the footer of our emails. For information about our privacy practices, please visit our website.</p>
-            </div>
-            <div class="content__gdprLegal">
-              <p>We use Mailchimp as our marketing platform. By clicking below to subscribe, you acknowledge that your information will be transferred to Mailchimp for processing. <a href="https://mailchimp.com/legal/terms">Learn more</a> about Mailchimp's privacy practices.</p>
-            </div>
-          </div>
-          <div id="mce-responses" class="clear foot">
-          <div class="response" id="mce-error-response" style="display: none;"></div>
-          <div class="response" id="mce-success-response" style="display: none;"></div>
-        </div>
-        <div aria-hidden="true" style="position: absolute; left: -5000px;">
-          /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-          <input type="text" name="b_b4089b69f3cca3a6d1aa4a765_83166b1177" tabindex="-1" value="">
-        </div>
-        <div class="optionalParent">
-          <div class="clear foot">
-            <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe" :disabled="!emailValid">
-            <p style="margin: 0px auto;"><a href="http://eepurl.com/ixhBz6" title="Mailchimp - email marketing made easy and fun"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
-          </div>
-        </div>
-    </div>
-  </form>
-</div>
 
-<div data-tf-widget="C3l7YLt2" data-tf-opacity="100" data-tf-iframe-props="title=NewGen Contact Form EN" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:500px;"></div>
-  </section>
+
+
+
+
+<!-- <div data-tf-widget="C3l7YLt2" data-tf-opacity="100" data-tf-iframe-props="title=NewGen Contact Form EN" data-tf-transitive-search-params data-tf-medium="snippet" style="width:100%;height:500px;"></div>
+ -->  </section>
 </template>
 
 <script>
@@ -67,11 +42,13 @@ export default {
     movies: [],
     email: '',
     emailValid: false,
-    emailFeedback: ''
+    emailFeedback: '',
+    script3: '',
+    src: '',
   }
 },
   methods: {
-    validateEmail() {
+/*     validateEmail() {
       // Simple regex for email validation
       const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
       if (this.email.match(pattern)) {
@@ -81,43 +58,115 @@ export default {
         this.emailValid = false;
         this.emailFeedback = 'Please enter a valid email address.';
       }
-    },
-    loadTypeformScript() {
+    }, */
+/*     loadTypeformScript() {
         const script = document.createElement('script');
         script.src = "//embed.typeform.com/next/embed.js";
         document.body.appendChild(script);
-    }
+    }, */
+/*     loadJotformScript() {
+        const script2 = document.createElement('script');
+        script2.src = "https://form.jotform.com/jsform/232522949602053";
+        document.body.appendChild(script2);
+    } */
   },
   mounted() {
-    this.loadTypeformScript();
+/*     this.loadTypeformScript(); */
+/*     this.configureJotform(); */
+    // Add event listener for Jotform iframe communication
+/*     if (window.addEventListener) {
+      window.addEventListener("message", this.handleIFrameMessage, false);
+    } else if (window.attachEvent) {
+      window.attachEvent("onmessage", this.handleIFrameMessage);
+    } */
+  },
+  beforeUnmount() {
+    // Clean up event listeners when the component is destroyed
+    if (window.removeEventListener) {
+      window.removeEventListener("message", this.handleIFrameMessage, false);
+    } else if (window.detachEvent) {
+      window.detachEvent("onmessage", this.handleIFrameMessage);
+    }
+  },
+  configureJotform() {
+    const ifr = this.$refs.jotformIframe; // Using Vue's ref system
+    if (ifr) {
+      let src = ifr.src;
+      let iframeParams = [];
+      if (window.location.href && window.location.href.indexOf("?") > -1) {
+        iframeParams = iframeParams.concat(window.location.href.substr(window.location.href.indexOf("?") + 1).split('&'));
+      }
+      if (src && src.indexOf("?") > -1) {
+        iframeParams = iframeParams.concat(src.substr(src.indexOf("?") + 1).split("&"));
+        src = src.substr(0, src.indexOf("?"));
+      }
+      iframeParams.push("isIframeEmbed=1");
+      ifr.src = src + "?" + iframeParams.join('&');
+    }
+  },
+  handleIFrameMessage(e) {
+  if (typeof e.data === 'object') return;
+
+  const args = e.data.split(":");
+  let iframe;
+
+  if (args.length > 2) {
+    iframe = document.getElementById("JotFormIFrame-" + args[(args.length - 1)]);
+  } else {
+    iframe = document.getElementById("JotFormIFrame");
   }
+  if (!iframe) return;
+
+  switch (args[0]) {
+    case "scrollIntoView":
+      iframe.scrollIntoView();
+      break;
+    case "setHeight":
+      iframe.style.height = args[1] + "px";
+      if (!isNaN(args[1]) && parseInt(iframe.style.minHeight) > parseInt(args[1])) {
+        iframe.style.minHeight = args[1] + "px";
+      }
+      break;
+    case "collapseErrorPage":
+      if (iframe.clientHeight > window.innerHeight) {
+        iframe.style.height = window.innerHeight + "px";
+      }
+      break;
+    case "reloadPage":
+      window.location.reload();
+      break;
+    case "loadScript":
+      if(!this.isPermitted(e.origin, ['jotform.com', 'jotform.pro'])) break;
+      this.src = args[1];
+      if (args.length > 3) {
+        this.src = args[1] + ':' + args[2];
+      }
+      this.script3 = document.createElement('script');
+      this.script3.src = this.src;
+      this.script3.type = 'text/javascript';
+      document.body.appendChild(this.script3);
+      break;
+    case "exitFullscreen":
+      if (window.document.exitFullscreen) window.document.exitFullscreen();
+      else if (window.document.mozCancelFullScreen) window.document.mozCancelFullScreen();
+      else if (window.document.webkitExitFullscreen) window.document.webkitExitFullscreen();
+      else if (window.document.msExitFullscreen) window.document.msExitFullscreen();
+      break;
+  }
+
+  const isJotForm = (e.origin.indexOf("jotform") > -1) ? true : false;
+  if (isJotForm && "contentWindow" in iframe && "postMessage" in iframe.contentWindow) {
+    const urls = {
+      "docurl": encodeURIComponent(document.URL),
+      "referrer": encodeURIComponent(document.referrer)
+    };
+    iframe.contentWindow.postMessage(JSON.stringify({ "type": "urls", "value": urls }), "*");
+  }
+}
+
 };
 </script>
 
 <style scoped>
-    #mc_embed_signup {
-        background: #fff;
-        clear: left;
-        font: 14px Helvetica, Arial, sans-serif;
-        max-width: 600px;
-    }
 
-    /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-    #mc-embedded-subscribe-form input[type=checkbox] {
-        display: inline;
-        width: auto;
-        margin-right: 10px;
-    }
-    #mergeRow-gdpr {
-        margin-top: 20px;
-    }
-    #mergeRow-gdpr fieldset label {
-        font-weight: normal;
-    }
-    #mc-embedded-subscribe-form .mc_fieldset {
-        border: none;
-        min-height: 0px;
-        padding-bottom: 0px;
-    }
 </style>

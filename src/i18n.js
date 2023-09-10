@@ -111,7 +111,8 @@ const messages = {
     movieSectionClassic: {
       movieSectionClassic1: 'Language:',
       movieSectionClassic2: 'Subtitles:'
-    }
+    },
+    privacy: 'Privacy Notice'
     // ... English translations
   },
   zh: {
@@ -224,7 +225,8 @@ const messages = {
     movieSectionClassic: {
       movieSectionClassic1: 'Language:',
       movieSectionClassic2: 'Subtitles:'
-    }
+    },
+    privacy: 'Privacy Notice'
   }
   // ... other languages
 };
