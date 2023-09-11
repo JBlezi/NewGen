@@ -75,7 +75,7 @@
     </div>
 
     <!-- Modal overlay -->
-    <div v-if="showModal" class="w-full h-full bg-black bg-opacity-50 flex items-center justify-center font-medium md:font-semibold md:text-2xl lg:hidden">
+    <div v-if="showModal" class="w-full h-full bg-black bg-opacity-50 items-start font-medium md:font-semibold md:text-2xl lg:hidden">
       <div class="bg-white font-medium text-lg">
         <p>
           {{ movie.directorBio }}
