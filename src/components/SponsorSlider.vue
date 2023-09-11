@@ -16,6 +16,7 @@ export default {
   props: ['sponsors'],
   data() {
     return {
+      actualTotalSponsorWidth: 0,
       currentSlide: 0,
       speed: 2,
       imageWidth: 240,  // estimate width of each image including its margins. Adjust this value as per actual width + margins.
@@ -25,9 +26,22 @@ export default {
       lastDragX: null
     }
   },
+  computed: {
+    totalSponsorWidth() {
+      return this.sponsors.length * this.imageWidth;  // this gives a rough estimate of the total width
+    }
+  },
   mounted() {
-    window.addEventListener('scroll', this.checkIfInView);
-    this.checkIfInView();
+    this.$nextTick(() => {
+      const sponsorEls = document.querySelectorAll("#sponsor-slider img");
+      let totalWidth = 0;
+      sponsorEls.forEach(el => {
+        totalWidth += el.offsetWidth + parseInt(window.getComputedStyle(el).marginLeft) + parseInt(window.getComputedStyle(el).marginRight);
+      });
+      this.actualTotalSponsorWidth = totalWidth;
+      window.addEventListener('scroll', this.checkIfInView);
+      this.checkIfInView();
+    });
   },
   beforeUnmount() {
     clearInterval(this.intervalId);
@@ -43,9 +57,9 @@ export default {
         // Check if the element is in the viewport
         const isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
 
-        if (isVisible) {
-            this.startSliding();
-            window.removeEventListener('scroll', this.checkIfInView);  // remove listener if we've started sliding
+        if (isVisible && this.actualTotalSponsorWidth > window.innerWidth) {
+          this.startSliding();
+          window.removeEventListener('scroll', this.checkIfInView);
         }
     },
     startSliding() {
@@ -53,7 +67,7 @@ export default {
         if (!this.isDragging) {
           this.currentSlide += this.speed;
 
-          if (this.currentSlide >= (this.sponsors.length - 1) * this.imageWidth) {
+          if (this.currentSlide >= this.actualTotalSponsorWidth - window.innerWidth) {
             clearInterval(this.intervalId);
             this.currentSlide = 0;
             setTimeout(() => {
@@ -63,7 +77,7 @@ export default {
         }
       }, 30);
     },
-    handleMouseDown(event) {
+   /*  handleMouseDown(event) {
       clearInterval(this.intervalId);
       this.isDragging = true;
       this.startDragX = event.clientX;
@@ -99,7 +113,7 @@ export default {
       this.isDragging = false;
       this.startDragX = null;
       this.lastDragX = null;
-    }
+    } */
   }
 }
 </script>
