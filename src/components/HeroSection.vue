@@ -13,7 +13,7 @@
             <h3 v-if="hasDescriptionSlot" class="px-8 md:px-16 lg:px-24 font-medium text-lg mb-4 md:text-3xl md:mb-12">
               <slot name="description"></slot>
             </h3>
-            <h3 v-if="hasMiddleButtonSlot" class="px-8 md:px-16 lg:px-24 font-medium text-lg md:text-xl mb-16 md:mb-0">
+            <h3 v-if="hasMiddleButtonSlot" class="px-8 md:px-16 lg:px-24 font-medium text-lg md:text-xl md:mb-0">
               <slot name="middle-button"></slot>
             </h3>
           </div>
@@ -51,7 +51,7 @@
                 </h3>
               </div>
             </div>
-            <h3 v-if="hasMiddleButtonSlot" class="px-8 md:px-16 lg:px-24 font-medium text-lg md:text-xl mb-16 md:mb-0">
+            <h3 v-if="hasMiddleButtonSlot" class="px-8 md:px-16 lg:px-24 font-medium text-lg md:text-xl md:mb-0">
               <slot name="middle-button"></slot>
             </h3>
             <div v-if="video" class="px-16 lg:px-24 hidden md:block w-full h-3/5 lg:h-4/5 lg:mb-12">
