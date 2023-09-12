@@ -16,7 +16,7 @@
     <ScreeningSection
       v-for="(section, index) in screeningSections2"
       :key="index"
-      button="GET TICKETS"
+      :button="section.buttonText"
       :movieList="section"
       :button_link="section.button_link"
       :bgColor="index % 2 ? desiredColor : 'white'">
@@ -69,10 +69,12 @@ export default {
 
 
         this.sectionsWithMovies = this.screenings.map(screening => {
+          console.log("BUTTON TEXT1", screening.fields.buttonText)
         return {
           heading: screening.fields.heading,
           subheading: screening.fields.subheading,
           button_link: screening.fields.buttonLink,
+          buttonText: screening.fields.buttonText,
           id: screening.sys.id,
           movies: this.movies.filter(movie => {
 
@@ -98,7 +100,7 @@ export default {
       });
       // Filter out sections that don't have movies
       this.screeningSections2 = this.sectionsWithMovies.filter(section => section.movies.length > 0);
-
+      console.log("BUTTON TEXT", this.buttonText),
       this.isLoading = false; // Set this to false after all data has been loaded
     })
     .catch(error => {
@@ -110,6 +112,7 @@ export default {
   },
   data() {
     return {
+      buttonText: '',
       userLanguage: '',
       isLoading: true, // This indicates if the content is being loaded
       sectionsWithMovies: [],
