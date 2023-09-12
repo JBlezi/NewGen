@@ -69,7 +69,7 @@ export default {
 
 
         this.sectionsWithMovies = this.screenings.map(screening => {
-          console.log("BUTTON TEXT1", screening.fields.buttonText)
+
         return {
           heading: screening.fields.heading,
           subheading: screening.fields.subheading,
@@ -100,7 +100,7 @@ export default {
       });
       // Filter out sections that don't have movies
       this.screeningSections2 = this.sectionsWithMovies.filter(section => section.movies.length > 0);
-      console.log("BUTTON TEXT", this.buttonText),
+
       this.isLoading = false; // Set this to false after all data has been loaded
     })
     .catch(error => {
