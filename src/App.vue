@@ -31,6 +31,19 @@ export default {
       .finally(() => {
         this.isLoaded = true;
       });
+
+    // Check and set the initial theme on app creation
+    this.setInitialTheme();
+    console.log(this.prefersDarkScheme)
+
+    // Optional: Listen for system preference changes
+    window.matchMedia("(prefers-color-scheme: dark)").addListener(e => {
+      if (e.matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    });
   },
   methods: {
     setLanguagePreference() {
@@ -42,6 +55,27 @@ export default {
         language = supportedLanguages.includes(browserLanguage.split('-')[0]) ? browserLanguage.split('-')[0] : 'en';
         localStorage.setItem('userLanguage', language);
       }
+    },
+    async setInitialTheme() {
+      let storedTheme = localStorage.getItem('theme');
+
+      // Check if theme is already saved in local storage
+      if (storedTheme) {
+        if (storedTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } else {
+        // If theme is not in local storage, check system preference
+        this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (this.prefersDarkScheme) {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');  // Save to local storage
+        } else {
+          localStorage.setItem('theme', 'light');  // Save to local storage
+        }
+      }
     }
   },
   data() {
@@ -49,6 +83,7 @@ export default {
       userLanguage: 'en',  // Default language
       isLoaded: false,
       sponsors: [],
+      prefersDarkScheme: false,
     }
   }
 }
