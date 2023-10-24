@@ -4,16 +4,16 @@
       <div v-if="isGif" class=" md:h-full md:min-h-[40vh] lg:h-[75vh] bg-opacity-50 ">
         <div class="flex items-center md:h-full md:min-h-[40vh]  lg:h-[75vh]">
           <div class="flex flex-col md:h-full md:min-h-[40vh] lg:h-[75vh] lg:my-24 md:w-full">
-            <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-16 font-bold text-main mb-8 md:mb-12 lg:mb-16 md:w-full">
+            <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-16 font-bold dark:text-main mb-8 md:mb-12 lg:mb-16 md:w-full">
                 <slot name="heading"></slot>
             </h1>
-            <h2 v-if="hasSubheadingSlot" class="px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
+            <h2 v-if="hasSubheadingSlot" class="dark:text-white px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
               <slot name="subheading"></slot>
             </h2>
-            <h3 v-if="hasDescriptionSlot" class="px-8 md:px-16 lg:px-24 font-medium text-lg mb-4 md:text-3xl md:mb-12">
+            <h3 v-if="hasDescriptionSlot" class="dark:text-white px-8 md:px-16 lg:px-24 font-medium text-lg mb-4 md:text-3xl md:mb-12">
               <slot name="description"></slot>
             </h3>
-            <h3 v-if="hasMiddleButtonSlot" class="px-8 md:px-16 lg:px-24 font-medium text-lg md:text-xl md:mb-0">
+            <h3 v-if="hasMiddleButtonSlot" class="dark:text-white px-8 md:px-16 lg:px-24 font-medium text-lg md:text-xl md:mb-0">
               <slot name="middle-button"></slot>
             </h3>
           </div>
@@ -21,32 +21,32 @@
         <div v-if="hasButtonSlot" class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <slot name="button"></slot>
         </div>
-        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute md:hidden bottom-2 left-1/2 transform -translate-x-1/2"/>
+        <font-awesome-icon :icon="['fas', 'chevron-down']" class="dark:text-white h-6 w-6 absolute md:hidden bottom-2 left-1/2 transform -translate-x-1/2"/>
       </div>
-      <div v-else class=" md:h-full md:min-h-[40vh] lg:h-[75vh]">
+      <div v-else class="md:h-full md:min-h-[40vh] lg:h-[75vh]">
         <div class="flex items-center md:h-full md:min-h-[40vh] lg:h-[75vh] ">
           <div class="flex flex-col md:h-full md:min-h-[40vh] lg:h-[75vh] lg:mt-24 md:w-full">
-            <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-16 font-bold text-main mb-8 md:mb-12 lg:mb-16 md:w-full">
+            <h1 v-if="hasHeadingSlot" class="text-5xl lg:text-6xl px-8 md:px-16 lg:px-24 md:mt-16 font-bold dark:text-main mb-8 md:mb-12 lg:mb-16 md:w-full">
               <slot name="heading"></slot>
             </h1>
             <div class="lg:flex">
               <div v-if="hasSubheadingSlot && hasDescriptionSlot" class="lg:w-2/5">
-                <h2 class="px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
+                <h2 class="dark:text-white px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
                   <slot name="subheading"></slot>
                 </h2>
               </div>
               <div v-if="hasSubheadingSlot && !hasDescriptionSlot" class="lg:w-full">
-                <h2 class="px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
+                <h2 class="dark:text-white px-8 md:px-16 lg:px-24 font-medium text-2xl md:text-3xl mb-4 md:mb-8">
                   <slot name="subheading"></slot>
                 </h2>
               </div>
               <div v-if="hasDescriptionSlot && hasSubheadingSlot" class="lg:w-3/5">
-                <h3 class="px-8 md:px-16 lg:px-24 font-medium text-xl mb-4 md:text-3xl md:mb-12 ">
+                <h3 class="dark:text-white px-8 md:px-16 lg:px-24 font-medium text-xl mb-4 md:text-3xl md:mb-12 ">
                   <slot name="description"></slot>
                 </h3>
               </div>
               <div v-if="hasDescriptionSlot && !hasSubheadingSlot" class="lg:w-full">
-                <h3 class="px-8 md:px-16 lg:px-24 font-medium text-xl mb-4 md:text-3xl md:mb-12 ">
+                <h3 class="dark:text-white px-8 md:px-16 lg:px-24 font-medium text-xl mb-4 md:text-3xl md:mb-12 ">
                   <slot name="description"></slot>
                 </h3>
               </div>
@@ -62,7 +62,7 @@
         <div v-if="hasButtonSlot" class="absolute bottom-0 left-1/2 transform -translate-x-1/2">
           <slot name="button"></slot>
         </div>
-        <font-awesome-icon :icon="['fas', 'chevron-down']" class="h-6 w-6 absolute bottom-2 left-1/2 transform -translate-x-1/2 md:hidden"/>
+        <font-awesome-icon :icon="['fas', 'chevron-down']" class="dark:text-white h-6 w-6 absolute bottom-2 left-1/2 transform -translate-x-1/2 md:hidden"/>
       </div>
     </div>
   </section>

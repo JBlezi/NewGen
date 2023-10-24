@@ -32,7 +32,7 @@
       {{ filmFestivalDescription }}
     </template>
   </HomeSection>
-  <HomeSection :button="archiveButtonText" :bgImage="archiveBackgroundImage" :button_link="buttonLink3" :image="archiveImage" :background="background3">
+  <HomeSection :button="archiveButtonText" :bgImage="archiveBackgroundImage" :button_link="buttonLink3" :image="archiveImage" :background="background2">
     <template v-slot:heading>
       {{archiveHeading}}
     </template>
