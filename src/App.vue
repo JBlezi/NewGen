@@ -1,6 +1,6 @@
 <template>
   <MainNavbar />
-  <div class="max-w-[1300px] mx-auto">
+  <div class="max-w-[1300px] mx-auto dark:bg-black">
     <router-view />
   </div>
   <SponsorSlider v-if="isLoaded" :sponsors="sponsors"></SponsorSlider>
