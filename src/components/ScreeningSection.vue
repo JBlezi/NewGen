@@ -1,9 +1,9 @@
 <template>
   <section>
-    <div class="bg-cover" :style="{ backgroundColor: bgColor }">
+    <div class="bg-cover" :style="{ backgroundColor: adjustedBgColor }">
       <div class="relative">
         <div class="flex">
-          <div class="mt-8 md:my-16 flex flex-col px-8 md:px-16 lg:px-24 lg:mt-24 h-full w-full">
+          <div class="dark:text-white mt-8 md:my-16 flex flex-col px-8 md:px-16 lg:px-24 lg:mt-24 h-full w-full">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-main lg:mb-4 lg:w-4/5">
               <slot name="heading"></slot>
             </h2>
@@ -34,7 +34,7 @@
                       {{ movieList.movies[this.counter].director }} | {{ movieList.movies[this.counter].year }}
                     </h4>
                   </router-link>
-                  <div class="flex flex-col max-h-96 overflow-y-scroll">
+                  <div class="flex flex-col max-h-96 overflow-y-scroll div-scrolling scrollbar-hide-vertical">
                     <h4 class="font-medium text-xl lg:text-2xl flex justify-center text-main hidden lg:block pl-8">
                       {{ movieList.movies[this.counter].title }}
                     </h4>
@@ -61,7 +61,7 @@
                       {{ movieList.movies[this.counterTablet].director }} | {{ movieList.movies[this.counterTablet].year }}
                     </h4>
                   </router-link>
-                  <div class="flex flex-col max-h-96 overflow-y-scroll">
+                  <div class="flex flex-col max-h-96 overflow-y-scroll div-scrolling scrollbar-hide-vertical">
                     <h4 class="font-medium text-xl lg:text-2xl flex justify-center text-main hidden lg:block pl-8">
                       {{ movieList.movies[this.counterTablet].title }}
                     </h4>
@@ -76,8 +76,8 @@
               </div>
             </div>
             <a v-if="button" class="my-8 flex justify-center lg:absolute lg:right-16 lg:top-16" :href="button_link" target="_blank">
-              <button v-if="bgColor == 'white'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-main-light">{{ button }}</button>
-              <button v-if="bgColor == '#FFF8EE'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-white">{{ button }}</button>
+              <button v-if="adjustedBgColor == 'black'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-main-light dark:bg-main-dark">{{ button }}</button>
+              <button v-if="adjustedBgColor == '#584932'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-white dark:bg-black">{{ button }}</button>
             </a>
           </div>
         </div>
@@ -87,6 +87,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'ScreeningSection',
   props: {
@@ -177,9 +179,42 @@ export default {
         backgroundImage: `url(${this.bgImage})`,
       };
     },
+    adjustedBgColor() {
+      if (this.currentTheme === 'dark') {
+        if (this.bgColor === 'white') return 'black';
+        if (this.bgColor === '#FFF8EE') return '#584932';
+      }
+      return this.bgColor;
+    },
+    ...mapGetters(['currentTheme']),
   },
 };
 </script>
 
 <style scoped>
+  /* Hide scrollbar for Chrome, Safari and Opera */
+.div-scrolling::-webkit-scrollbar {
+    width: 4px;  /* Hide the scrollbar container */
+}
+
+.scrollbar-hide-vertical::-webkit-scrollbar-vertical {
+  display: none;
+}
+
+.scrollbar-hide-vertical {
+  overflow-x: hidden;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.div-scrolling {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.div-scrolling::-webkit-scrollbar-thumb {
+    background-color: rgba(239, 239, 240, 0.5); /* Change the color to your liking */
+    border-radius: 8px;
+    width: 8px; /* Adjust width if needed */
+}
+
 </style>

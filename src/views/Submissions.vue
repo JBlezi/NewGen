@@ -13,14 +13,14 @@
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">{{ $t('submissions.submissions2') }}</h3>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl ">{{ $t('submissions.submissions3') }} 7, {{currentYear - 1}} (CET) - 1€</p>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl ">{{ $t('submissions.submissions4') }} 30, {{currentYear - 1}} (CET) - 3€</p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ $t('submissions.submissions3') }} 7, {{currentYear - 1}} (CET) - 1€</p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ $t('submissions.submissions4') }} 30, {{currentYear - 1}} (CET) - 3€</p>
     </div>
   </section>
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">{{ $t('submissions.submissions5') }}</h3>
-      <ol class="font-medium text-lg md:text-xl lg:text-2xl list-decimal px-6">
+      <ol class="font-medium text-lg md:text-xl lg:text-2xl list-decimal px-6 dark:text-white">
         <li>
           <div>{{ $t('submissions.submissions6') }}</div>
           <ol class="list-decimal pl-6 mt-2">
@@ -41,12 +41,12 @@
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold italic font-medium mb-2">{{ $t('submissions.submissions16') }}</h3>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl ">{{ $t('submissions.submissions17') }} <a href="https://filmfreeway.com/" target="_blank">FilmFreeway</a>.<br><br></p>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl ">  {{ $t('submissions.submissions18', { email: 'info@bngcff.com' }) }}</p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ $t('submissions.submissions17') }} <a href="https://filmfreeway.com/" target="_blank">FilmFreeway</a>.<br><br></p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">  {{ $t('submissions.submissions18', { email: 'info@bngcff.com' }) }}</p>
     </div>
   </section>
   <div class="px-8 md:px-16 lg:px-24 mb-16 lg:mb-32">
-    <p class="mb-2 font-medium text-lg md:text-xl md:font-bold">{{ $t('submissions.submissions1') }}</p>
+    <p class="mb-2 font-medium text-lg md:text-xl md:font-bold dark:text-white">{{ $t('submissions.submissions1') }}</p>
     <button class="bg-main rounded-lg"><a :href="heroButtonLink" target="_blank"><img src="@/assets/filmfreeway-logo-hires-black.png" alt=""></a></button>
   </div>
   <SponsorSlider :sponsors="images" class="hidden"></SponsorSlider>

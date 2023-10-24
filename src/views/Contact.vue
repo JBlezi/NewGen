@@ -17,7 +17,7 @@
   >
   </iframe>
   <div class="my-16">
-    <h2 class="text-3xl font-medium">Sign up for our Newsletter</h2>
+    <h2 class="text-3xl font-medium dark:text-white">Sign up for our Newsletter</h2>
     <iframe src="https://bcb49699.sibforms.com/serve/MUIFAHHcdAXCv7wWxySav2VZLCsFefHQeKlTA_Qsl0oOFq9I5B00zI05F13la16YnfokoGa7U_2LdCDhhVy7iS76bmvBQtEfyL6GgL0kS48bGZNhU10jYUq1SY950CjHhpJ_gBIYe48bnxx-8fVcsAIPz1kcbj10y2FZQdnYyrMpETq7rLvTf4rpF9Yy5yXe025PlDhbB6LTo-Gp"  frameborder="0" scrolling="auto" allowfullscreen style="display: block;min-width:100%;max-width:100%;height:639px;"></iframe>
   </div>
 

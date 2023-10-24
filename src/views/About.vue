@@ -10,14 +10,14 @@
   <section class="mt-12 mb-12 md:mb-24">
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl italic font-medium font-semibold mb-4 md:mb-8">{{ $t('aboutUs1') }}</h3>
-      <p class="font-medium text-lg md:text-2xl">{{ $t('aboutUs2') }}</p>
+      <p class="font-medium text-lg md:text-2xl dark:text-white">{{ $t('aboutUs2') }}</p>
     </div>
   </section>
   <section class="mt-12 mb-12 md:mb-24">
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl italic font-medium font-semibold mb-4 md:mb-8">{{ $t('aboutUs3') }}</h3>
-      <p class="font-medium text-lg md:text-2xl">{{ $t('aboutUs4') }}<br><br></p>
-      <p class="font-medium text-lg md:text-2xl">{{ $t('aboutUs5') }}</p>
+      <p class="font-medium text-lg md:text-2xl dark:text-white">{{ $t('aboutUs4') }}<br><br></p>
+      <p class="font-medium text-lg md:text-2xl dark:text-white">{{ $t('aboutUs5') }}</p>
     </div>
   </section>
   <section class="mt-12 mb-12 md:mb-24">
@@ -27,8 +27,8 @@
     <div class="flex flex-wrap mx-8 md:mx-16 lg:mx-24 justify-around">
       <div v-for="(member) in staffMembers" :key="member.sys.id" class="text-center mb-8">
         <img :src="member.fields.picture.fields.file.url" :alt="member.fields.name" class="w-32 h-48 md:w-64 md:h-96 mx-auto object-cover">
-        <p class="mt-2 font-medium w-32 md:w-64 md:text-2xl">{{ member.fields.name }}</p>
-        <p class="italic md:text-2xl w-32 md:w-64">{{ member.fields.title }}</p>
+        <p class="mt-2 font-medium w-32 md:w-64 md:text-2xl dark:text-white">{{ member.fields.name }}</p>
+        <p class="italic md:text-2xl w-32 md:w-64 dark:text-white">{{ member.fields.title }}</p>
       </div>
     </div>
 

@@ -9,16 +9,16 @@
       {{ $t('archive1') }} {{ nominee.competitionYear }}
     </template>
   </ScreeningSection>
-  <p v-if="filteredCategories2.length > 0" class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer" @click="toggleAdditionalEntries2">{{ showAdditionalWinners2 ? 'Hide past editions winners' : 'See past editions winners' }}</p>
+  <p v-if="filteredCategories2.length > 0" class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer dark:text-main" @click="toggleAdditionalEntries2">{{ showAdditionalWinners2 ? 'Hide past editions winners' : 'See past editions winners' }}</p>
   <ScreeningSection v-for="nominee in filteredCategories" :key="nominee" :movieList="nominee" class="mb-8">
     <template v-slot:heading>
       {{ $t('archive2') }} {{ nominee.competitionYear }}
     </template>
   </ScreeningSection>
-  <p v-if="filteredCategories.length > 0" class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer" @click="toggleAdditionalEntries">{{ showAdditionalWinners ? 'Hide past editions nominees' : 'See past editions nominees' }}</p>
+  <p v-if="filteredCategories.length > 0" class="flex justify-center mb-8 md:text-2xl underline text-main cursor-pointer dark:text-main" @click="toggleAdditionalEntries">{{ showAdditionalWinners ? 'Hide past editions nominees' : 'See past editions nominees' }}</p>
   <section class="my-16 md:my-32">
     <h2 class="px-8 md:px-16 lg:px-24 text-main mb-4 md:mb-16 text-3xl md:text-4xl lg:text-5xl md:font-bold font-medium">{{ $t('archive3') }}</h2>
-    <div class="flex flex-wrap mx-8">
+    <div class="flex flex-wrap mx-8 dark:text-white">
       <div v-for="(member) in juryMembers" :key="member.sys.id" class="w-1/2 lg:w-1/3 text-center mb-8 lg:mb-32 relative" @mouseover="openModal(member.sys.id)" @mouseleave="closeModal">
         <img :src="member.fields.picture.fields.file.url" :alt="member.fields.name" class="w-32 md:w-64 h-48 md:h-96 mx-auto object-cover">
         <p class="mt-2 font-medium md:text-2xl">{{ member.fields.name }}</p>

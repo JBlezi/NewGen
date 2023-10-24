@@ -70,7 +70,7 @@
     </div>
  -->
 
-    <div class="px-8 md:px-16 lg:px-24">
+    <div class="dark:text-white px-8 md:px-16 lg:px-24">
 
       <h1 class="font-bold text-5xl">PRIVACY POLICY</h1>
       <br><br>
