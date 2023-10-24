@@ -1,7 +1,7 @@
 <template>
   <HeroSection :bgImage="bgGif">
     <template v-slot:heading>
-    <span class="text-black">{{ $t('home1') }}</span> {{ $t('home2') }}<br> <span class="text-black">{{ $t('home3') }}</span>
+    <span class="text-black dark:text-white">{{ $t('home1') }}</span> {{ $t('home2') }}<br> <span class="text-black dark:text-white">{{ $t('home3') }}</span>
     </template>
     <template v-slot:subheading>
       {{ heroSubheading }}

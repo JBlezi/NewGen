@@ -36,12 +36,16 @@ export default {
     this.setInitialTheme();
     console.log(this.prefersDarkScheme)
 
+    this.darkThemeMatcher = window.matchMedia("(prefers-color-scheme: dark)");
+
     // Optional: Listen for system preference changes
-    window.matchMedia("(prefers-color-scheme: dark)").addListener(e => {
+    this.darkThemeMatcher.addEventListener("change", (e) => {
       if (e.matches) {
         document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
       } else {
         document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
       }
     });
   },
@@ -68,8 +72,8 @@ export default {
         }
       } else {
         // If theme is not in local storage, check system preference
-        this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (this.prefersDarkScheme) {
+        this.darkThemeMatcher = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (this.darkThemeMatcher) {
           document.documentElement.classList.add('dark');
           localStorage.setItem('theme', 'dark');  // Save to local storage
         } else {
@@ -83,7 +87,7 @@ export default {
       userLanguage: 'en',  // Default language
       isLoaded: false,
       sponsors: [],
-      prefersDarkScheme: false,
+      darkThemeMatcher: false,
     }
   }
 }

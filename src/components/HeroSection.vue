@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-cover bg-gradient" :style="{ marginLeft: marginLeftAndRight, marginRight: marginLeftAndRight, ...backgroundStyle }">
+  <section class="bg-cover bg-gradient dark:bg-gradient-dark" :style="{ marginLeft: marginLeftAndRight, marginRight: marginLeftAndRight, ...backgroundStyle }">
     <div class="pt-24 pb-12 min-h-screen md:h-full md:min-h-[40vh] lg:h-[75vh] relative" :style="{ paddingLeft: paddingLeftAndRight, paddingRight: paddingLeftAndRight }">
       <div v-if="isGif" class=" md:h-full md:min-h-[40vh] lg:h-[75vh] bg-opacity-50 ">
         <div class="flex items-center md:h-full md:min-h-[40vh]  lg:h-[75vh]">
@@ -73,11 +73,19 @@
     name: 'HeroSection',
     props: ['bgImage', 'video'],
     computed: {
-    backgroundStyle() {
-      return {
-        backgroundImage: `linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%), url(${this.bgImage})`,
-        backgroundSize: 'cover'
-      }
+      backgroundStyle() {
+        console.log(this.$store.state.currentTheme )
+        if (this.$store.state.currentTheme === 'light') {
+            return {
+                backgroundImage: `linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%), url(${this.bgImage})`,
+                backgroundSize: 'cover'
+            };
+        } else {
+            return {
+                backgroundImage: `linear-gradient(180deg, #D39C49 0%, rgba(47, 34, 16, 0.70) 40.63%, rgba(0, 0, 0, 0.95) 73.96%, #000 100%), url(${this.bgImage})`,
+                backgroundSize: 'cover'
+            };
+        }
     },
     marginLeftAndRight() {
       return `-${(window.innerWidth - 1300) / 2}px`;
@@ -115,6 +123,10 @@
 /*  background: linear-gradient(180deg, #FFBD59 0%, rgba(255, 255, 255, 0.50) 40.63%, rgba(255, 255, 255, 0.70) 73.96%, #FFF 100%); */
 /*  background: linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%);
  */ background: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%);
+}
+
+.bg-gradient-dark {
+  background: linear-gradient(180deg, #D39C49 0%, rgba(47, 34, 16, 0.70) 40.63%, rgba(0, 0, 0, 0.95) 73.96%, #000 100%) !important;
 }
 
 @media screen and (max-width: 640px) {

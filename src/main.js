@@ -10,6 +10,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import i18n from './i18n.js';  // Ensure this import is correct
+import store from './store';  // Import the store
 
 
 
@@ -19,6 +20,19 @@ import i18n from './i18n.js';  // Ensure this import is correct
 
 
 const app = createApp(App);
+
+app.use(store);
+
+if (window.matchMedia) {
+  const darkModeMatcher = window.matchMedia('(prefers-color-scheme: dark)');
+  darkModeMatcher.addEventListener('change', (event) => {
+      if (event.matches) {
+          store.commit('SET_THEME', 'dark');
+      } else {
+          store.commit('SET_THEME', 'light');
+      }
+  });
+}
 
 
 library.add(faChevronLeft);
@@ -31,7 +45,6 @@ library.add(faFacebookF, faInstagram, faYoutube);
 app.component('font-awesome-icon', FontAwesomeIcon);
 
 app.use(i18n);
-
 
 app.use(router);
 
