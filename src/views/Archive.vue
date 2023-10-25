@@ -25,8 +25,8 @@
         <p class="italic md:text-2xl">{{ member.fields.title }}</p>
         <div v-if="modalMember === member.sys.id" class="text-left absolute opacity-90 md:opacity-100 top-0 left-0 right-0 md:left-10 lg:left-14">
           <div class="bg-white p-4 border border-slate-500 h-48 md:h-96 lg:w-80 overflow-y-scroll">
-            <h3 class="font-medium mb-2 md:text-2xl">{{ member.fields.name }}, {{ member.fields.title }}</h3>
-            <p class="md:text-2xl">
+            <h3 class="font-medium mb-2 md:text-2xl dark:text-black">{{ member.fields.name }}, {{ member.fields.title }}</h3>
+            <p class="md:text-2xl dark:text-black">
               {{ member.fields.biography }}
             </p>
           </div>
@@ -214,3 +214,5 @@ export default {
   }
 };
 </script>
+
+
