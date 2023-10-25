@@ -173,7 +173,7 @@ const messages = {
       movieDetails2: '马上购票'
     },
     partners: '合作伙伴',
-    pressReleases: '媒体报道哦',
+    pressReleases: '媒体报道',
     specialEvent: {
       specialEvent1: '活动详情',
       specialEvent2: '举办时间',
