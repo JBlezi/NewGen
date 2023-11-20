@@ -69,14 +69,12 @@
     name: 'MainNavbar',
     data() {
     return {
-      currentTheme: 'light',
       logoImage: require('@/assets/cropped-newgen-logo.png'),
       hamburgerSvg: require('@/assets/hamburger.svg'),
       hamburgerSvgWhite: require('@/assets/hamburgerSvg-white.svg'),
       closingXWhite: require('@/assets/closingX-white.svg'),
       closingX: require('@/assets/ClosingX.svg'),
       isOpen: false,
-      themeChangeListener: null
     };
   },
   methods: {
@@ -85,33 +83,8 @@
       localStorage.setItem('userLanguage', lang); // store the language in localStorage
       this.isOpen = false; // close the navigation (optional)
       location.reload();
-    },
-    updateTheme() {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        this.currentTheme = 'dark';
-      } else {
-        this.currentTheme = 'light';
-      }
-
-      // Save to local storage
-      localStorage.setItem('theme', this.currentTheme);
     }
-  },
-  created() {
-    this.currentTheme = localStorage.getItem('theme') || 'light';
-  },
-  mounted() {
-    this.themeChangeListener = window.matchMedia("(prefers-color-scheme: dark)");
-    this.themeChangeListener.addEventListener("change", this.updateTheme);
-
-    // Initial theme setting
-    this.updateTheme();
-  },
-
-  beforeUnmount() {
-    // Cleanup the listener when the component is destroyed
-    this.themeChangeListener.removeEventListener("change", this.updateTheme);
-  },
+  }
 }
 </script>
 
