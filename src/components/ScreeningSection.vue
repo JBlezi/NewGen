@@ -78,6 +78,8 @@
             <a v-if="button" class="my-8 flex justify-center lg:absolute lg:right-16 lg:top-16" :href="button_link" target="_blank">
               <button v-if="adjustedBgColor == 'black'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-main-light dark:bg-main-dark">{{ button }}</button>
               <button v-if="adjustedBgColor == '#584932'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-white dark:bg-black">{{ button }}</button>
+              <button v-if="adjustedBgColor == 'white'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-white dark:bg-black">{{ button }}</button>
+              <button v-if="adjustedBgColor == '#FFF8EE'" class="border border-main border-4 font-bold rounded-full p-4 md:p-6 md:text-2xl bg-white dark:bg-black">{{ button }}</button>
             </a>
           </div>
         </div>
@@ -184,7 +186,11 @@ export default {
         if (this.bgColor === 'white') return 'black';
         if (this.bgColor === '#FFF8EE') return '#584932';
       }
-      return this.bgColor;
+      if (this.currentTheme === 'light') {
+        if (this.bgColor === 'white') return '#FFF8EE';
+        if (this.bgColor === '#FFF8EE') return 'white';
+      }
+      return this.bgColor
     },
     ...mapGetters(['currentTheme']),
   },

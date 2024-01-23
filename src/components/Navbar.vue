@@ -65,6 +65,8 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex';
+
   export default {
     name: 'MainNavbar',
     data() {
@@ -76,6 +78,16 @@
       closingX: require('@/assets/ClosingX.svg'),
       isOpen: false,
     };
+  },
+  computed: {
+    // Map the currentTheme state from Vuex store to your component
+    ...mapState({
+      currentTheme: state => {
+        // Log the current theme for debugging
+        console.log('Current theme from Vuex store:', state.currentTheme);
+        return state.currentTheme;
+      }
+    })
   },
   methods: {
     changeLanguage(lang) {
