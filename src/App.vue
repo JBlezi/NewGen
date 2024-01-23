@@ -13,6 +13,7 @@ import MainNavbar from '@/components/Navbar.vue'
 import MainFooter from '@/components/Footer.vue'
 import SponsorSlider from './components/SponsorSlider.vue';
 import { getAllFestivalSponsors } from './api/contentful';
+import { mapState } from 'vuex';
 
 export default {
   name: 'App',
@@ -32,9 +33,6 @@ export default {
         this.isLoaded = true;
       });
 
-    // Check and set the initial theme on app creation
-    this.setInitialTheme();
-    console.log(this.prefersDarkScheme)
 
     this.darkThemeMatcher = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -49,6 +47,11 @@ export default {
       }
     });
   },
+  computed: {
+    ...mapState({
+      currentTheme: state => state.currentTheme
+    })
+  },
   methods: {
     setLanguagePreference() {
       const supportedLanguages = ['en', 'zh'];
@@ -59,27 +62,6 @@ export default {
         language = supportedLanguages.includes(browserLanguage.split('-')[0]) ? browserLanguage.split('-')[0] : 'en';
         localStorage.setItem('userLanguage', language);
       }
-    },
-    async setInitialTheme() {
-      let storedTheme = localStorage.getItem('theme');
-
-      // Check if theme is already saved in local storage
-      if (storedTheme) {
-        if (storedTheme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-      } else {
-        // If theme is not in local storage, check system preference
-        this.darkThemeMatcher = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (this.darkThemeMatcher) {
-          document.documentElement.classList.add('dark');
-          localStorage.setItem('theme', 'dark');  // Save to local storage
-        } else {
-          localStorage.setItem('theme', 'light');  // Save to local storage
-        }
-      }
     }
   },
   data() {
@@ -88,6 +70,7 @@ export default {
       isLoaded: false,
       sponsors: [],
       darkThemeMatcher: false,
+      storedTheme: "",
     }
   }
 }
