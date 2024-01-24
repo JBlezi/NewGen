@@ -22,8 +22,24 @@ export default {
     MainNavbar, // Registering Navbar component
     MainFooter  // Registering Footer component
   },
+  computed: {
+    ...mapState({
+      currentTheme: state => state.currentTheme
+    })
+  },
+  watch: {
+    // Watch for changes in the currentTheme
+    currentTheme(newTheme) {
+      if (newTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+  },
   created() {
     this.setLanguagePreference();
+    this.applyTheme(this.currentTheme);
     getAllFestivalSponsors()
       .then((response) => {
         this.sponsors = response.items.map(item => item.fields.logo.fields.file.url);
@@ -32,27 +48,15 @@ export default {
       .finally(() => {
         this.isLoaded = true;
       });
-
-
-    this.darkThemeMatcher = window.matchMedia("(prefers-color-scheme: dark)");
-
-    // Optional: Listen for system preference changes
-    this.darkThemeMatcher.addEventListener("change", (e) => {
-      if (e.matches) {
-        document.documentElement.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      }
-    });
-  },
-  computed: {
-    ...mapState({
-      currentTheme: state => state.currentTheme
-    })
   },
   methods: {
+    applyTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    },
     setLanguagePreference() {
       const supportedLanguages = ['en', 'zh'];
       let language = localStorage.getItem('userLanguage');
