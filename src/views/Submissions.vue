@@ -13,8 +13,8 @@
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">{{ $t('submissions.submissions2') }}</h3>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ $t('submissions.submissions3') }} 7, {{currentYear - 1}} (CET) - 1€</p>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ $t('submissions.submissions4') }} 30, {{currentYear - 1}} (CET) - 3€</p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ $t('submissions.submissions3') }} 15, {{currentYear}} (CET) - 5€</p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ $t('submissions.submissions4') }} 31, {{currentYear}} (CET) - 10€</p>
     </div>
   </section>
   <section class="mt-8 mb-8 md:my-16">
