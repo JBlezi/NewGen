@@ -184,8 +184,8 @@ const messages = {
     submissions: {
       submissions1: '影片投递请点击：',
       submissions2: '截止日期及费用',
-      submissions3: '6.',
-      submissions4: '7.',
+      submissions3: '6月',
+      submissions4: '7月',
       submissions5: '参赛须知',
       submissions6: '所提交的参赛作品必须符合以下要求之一：',
       submissions7: '影片的核心主创（导演、制片人或主演）至少一位是华人、华裔或亚裔（居住地不限）',
