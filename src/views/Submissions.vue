@@ -20,7 +20,7 @@
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">{{ $t('submissions.submissions5') }}</h3>
-      <RichTextRenderer :richText="terms" class="font-medium text-lg md:text-xl lg:text-2xl list-decimal px-6 dark:text-white"/>
+      <RichTextRenderer :richText="terms" class="font-medium text-lg md:text-xl lg:text-2xl list-decimal dark:text-white"/>
 <!--       <ol class="font-medium text-lg md:text-xl lg:text-2xl list-decimal px-6 dark:text-white">
         <li>
           <div>{{ $t('submissions.submissions6') }}</div>
