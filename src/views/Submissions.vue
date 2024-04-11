@@ -13,8 +13,8 @@
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">{{ $t('submissions.submissions2') }}</h3>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ $t('submissions.submissions3') }} 7, {{currentYear - 1}} (CET) - 1€</p>
-      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ $t('submissions.submissions4') }} 30, {{currentYear - 1}} (CET) - 3€</p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ this.date }}</p>
+      <p class="font-medium text-lg md:text-xl lg:text-2xl dark:text-white">{{ this.date2 }}</p>
     </div>
   </section>
   <section class="mt-8 mb-8 md:my-16">
@@ -29,7 +29,7 @@
           </ol>
         </li>
         <li>{{ $t('submissions.submissions9') }}</li>
-        <li>{{ $t('submissions.submissions10') }}</li>
+        <li>{{ $t('submissions.submissions10') }}01.01.{{currentYear - 1}}</li>
         <li>{{ $t('submissions.submissions11') }}</li>
         <li>{{ $t('submissions.submissions12') }}</li>
         <li>{{ $t('submissions.submissions13') }}</li>
@@ -80,6 +80,14 @@ export default {
     })
     .catch(console.error);
 
+    getLocalizedEntry('5gpMsuuwF8GKQg9UutoC3q', this.userLanguage)
+    .then((response) => {
+      this.entry = response;
+      this.date = this.entry.fields.content;
+      this.date2 = this.entry.fields.content2;
+    })
+    .catch(console.error);
+
     getAllMovies()
       .then((response) => {
         this.movies = response.items; // Store all fetched movie entries in the movies array
@@ -93,6 +101,8 @@ export default {
       userLanguage: '',
       entry: {},
       heroHeading: '',
+      date: '',
+      date2: '',
       heroBackground: '',
       heroButtonLink: '',
       bgImagePath0: require('@/assets/Film-bg.png'),
