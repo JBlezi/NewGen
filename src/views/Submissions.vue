@@ -20,7 +20,8 @@
   <section class="mt-8 mb-8 md:my-16">
     <div class="px-8 md:px-16 lg:px-24">
       <h3 class="text-main text-3xl md:text-4xl lg:text-5xl md:font-semibold  italic font-medium mb-2">{{ $t('submissions.submissions5') }}</h3>
-      <ol class="font-medium text-lg md:text-xl lg:text-2xl list-decimal px-6 dark:text-white">
+      <RichTextRenderer :richText="terms" class="font-medium text-lg md:text-xl lg:text-2xl list-decimal px-6 dark:text-white"/>
+<!--       <ol class="font-medium text-lg md:text-xl lg:text-2xl list-decimal px-6 dark:text-white">
         <li>
           <div>{{ $t('submissions.submissions6') }}</div>
           <ol class="list-decimal pl-6 mt-2">
@@ -35,7 +36,7 @@
         <li>{{ $t('submissions.submissions13') }}</li>
         <li>{{ $t('submissions.submissions14') }}</li>
         <li>{{ $t('submissions.submissions15') }}</li>
-      </ol>
+      </ol> -->
     </div>
   </section>
   <section class="mt-8 mb-8 md:my-16">
@@ -58,6 +59,7 @@ import HeroSection from '@/components/HeroSection.vue';
 import SponsorSlider from '@/components/SponsorSlider.vue';
 import { getAllMovies } from '@/api/contentful'
 import { getLocalizedEntry } from '@/api/contentful';
+import RichTextRenderer from '@/components/RichTextRenderer.vue';
 
 
 
@@ -66,6 +68,7 @@ export default {
   components: {
     HeroSection,
     SponsorSlider,
+    RichTextRenderer,
   },
     created() {
       this.userLanguage = localStorage.getItem('userLanguage');
@@ -85,6 +88,7 @@ export default {
       this.entry = response;
       this.date = this.entry.fields.content;
       this.date2 = this.entry.fields.content2;
+      this.terms = this.entry.fields.content3;
     })
     .catch(console.error);
 
@@ -103,6 +107,7 @@ export default {
       heroHeading: '',
       date: '',
       date2: '',
+      terms: '',
       heroBackground: '',
       heroButtonLink: '',
       bgImagePath0: require('@/assets/Film-bg.png'),
@@ -172,5 +177,7 @@ export default {
 </script>
 
 <style scoped>
-
+  ol {
+    list-style-type: decimal !important;
+  }
 </style>
