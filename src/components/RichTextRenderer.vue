@@ -12,7 +12,7 @@ export default {
     renderedHtml() {
       const options = {
         renderNode: {
-          [BLOCKS.OL_LIST]: (node, next) => `<ol>${next(node.content)}</ol>`,
+          [BLOCKS.OL_LIST]: (node, next) => `<ol class="list-decimal px-6">${next(node.content)}</ol>`,
           [BLOCKS.UL_LIST]: (node, next) => `<ul>${next(node.content)}</ul>`,
           [BLOCKS.LIST_ITEM]: (node, next) => `<li>${next(node.content)}</li>`,
           [BLOCKS.PARAGRAPH]: (node, next) => `<p>${next(node.content)}</p>`,
