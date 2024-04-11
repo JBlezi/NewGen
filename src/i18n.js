@@ -16,7 +16,7 @@ const messages = {
     festival2: 'Cinema:',
     home1: 'Berlin',
     home2: 'NewGen',
-    home3: 'Chinese Film Festival',
+    home3: 'Film Festival',
     joinUs: {
       joinUs1: 'Join Us',
       joinUs2: 'Become a Sponsor.',
@@ -129,7 +129,7 @@ const messages = {
     festival2: '举办地点：',
     home1: '柏林',
     home2: 'NewGen',
-    home3: '华语青年电影节',
+    home3: '青年电影节',
     joinUs: {
       joinUs1: '加入我们',
       joinUs2: '成为赞助商',
