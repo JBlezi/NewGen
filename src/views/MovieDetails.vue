@@ -6,9 +6,6 @@
     <template v-slot:subheading>
       {{ screening[0].subheading }}
     </template>
-    <template v-slot:description>
-      {{ $t('movieDetails.movieDetails1') }}
-    </template>
     <template v-slot:middle-button>
       <Button :link="screening[0].button_link">{{ $t('movieDetails.movieDetails2') }}</Button>
     </template>
