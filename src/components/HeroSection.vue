@@ -74,7 +74,6 @@
     props: ['bgImage', 'video'],
     computed: {
       backgroundStyle() {
-        console.log(this.$store.state.currentTheme )
         if (this.$store.state.currentTheme === 'light') {
             return {
                 backgroundImage: `linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%), linear-gradient(180deg, rgba(255, 189, 89, 0.70) 0%, rgba(255, 189, 89, 0.30) 40.63%, rgba(255, 255, 255, 0.80) 75%, #FFF 100%), url(${this.bgImage})`,

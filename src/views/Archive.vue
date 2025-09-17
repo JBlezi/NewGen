@@ -68,7 +68,6 @@ export default {
       this.entry = entryResponse;
       this.heroHeading = this.entry.fields.heading;
       this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;
-      console.log("Received entry:", entryResponse);
 
       // Handling getAllMovies response
       this.movies = moviesResponse.items;
@@ -200,7 +199,6 @@ export default {
     },
     filteredCategories2() {
       if (this.showAdditionalWinners2) {
-        console.log("show additional winners", this.winners2)
         return this.winners2;
       }
       // Check if nominees2 has at least one element before returning it
@@ -214,5 +212,3 @@ export default {
   }
 };
 </script>
-
-

@@ -56,14 +56,12 @@ export default {
       this.heroDescription = this.entry.fields.description;
       this.heroHeading = this.entry.fields.heading;
       this.bgImagePath = this.entry.fields.backgroundPicture.fields.file.url;  // assuming the attribute is named backgroundPicture
-      console.log("Received entry:", this.userLanguage);
     })
     .catch(console.error);
 
     getAllMovies()
       .then((response) => {
         this.movies = response.items; // Store all fetched movie entries in the movies array
-        console.log("Received movies:", response.items);
       })
       .catch(console.error)
 
