@@ -71,7 +71,7 @@
     name: 'MainNavbar',
     data() {
     return {
-      logoImage: require('@/assets/cropped-newgen-logo.png'),
+      logoImage: require('@/assets/NEWGEN_LOGO-3.png'),
       hamburgerSvg: require('@/assets/hamburger.svg'),
       hamburgerSvgWhite: require('@/assets/hamburgerSvg-white.svg'),
       closingXWhite: require('@/assets/closingX-white.svg'),
@@ -84,7 +84,6 @@
     ...mapState({
       currentTheme: state => {
         // Log the current theme for debugging
-        console.log('Current theme from Vuex store:', state.currentTheme);
         return state.currentTheme;
       }
     })

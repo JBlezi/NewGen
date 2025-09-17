@@ -25,7 +25,7 @@
 import HeroSection from '@/components/HeroSection.vue';
 import Button from '@/components/Button.vue';
 import MovieSection from '@/components/MovieSection.vue';
-import { getLocalizedMoviesByCategory } from '@/api/contentful'
+import { getLocalizedMoviesByCategory, getAllLocalizedSpecialEventMovies } from '@/api/contentful'
 import { getAllLocalizedScreenings } from '@/api/contentful'
 
 export default {
@@ -75,9 +75,10 @@ export default {
 
     Promise.all([
         getLocalizedMoviesByCategory('Festival', this.userLanguage),
+        getAllLocalizedSpecialEventMovies(this.userLanguage),
         getAllLocalizedScreenings(this.userLanguage)
-    ]).then(([moviesResponse, screeningsResponse]) => {
-        this.movies = moviesResponse.items;
+    ]).then(([moviesResponse, specialEventMoviesResponse, screeningsResponse]) => {
+        this.movies = [...moviesResponse.items, ...specialEventMoviesResponse.items];
 
         this.screenings = screeningsResponse.items;
 
@@ -95,14 +96,14 @@ export default {
               title: movie.fields.title,
               director: movie.fields.director,
               year: movie.fields.competitionYear,
-              poster: movie.fields.poster.fields.file.url, // Assuming poster has the structure as you've shown
-              description: movie.fields.description,
-              competitionYear: movie.fields.competitionYear,
-              duration: movie.fields.duration,
-              languages: movie.fields.languages,
-              subtitles: movie.fields.subtitles,
-              directorFoto: movie.fields.directorFoto.fields.file.url,
-              movieScene: movie.fields.movieScene.fields.file.url,
+            poster: movie.fields.poster?.fields?.file?.url,
+            description: movie.fields.description,
+            competitionYear: movie.fields.competitionYear,
+            duration: movie.fields.duration,
+            languages: movie.fields.languages,
+            subtitles: movie.fields.subtitles,
+            directorFoto: movie.fields.directorFoto?.fields?.file?.url,
+            movieScene: movie.fields.movieScene?.fields?.file?.url,
               directorBio: movie.fields.directorBio,
               id: movie.sys.id
             }

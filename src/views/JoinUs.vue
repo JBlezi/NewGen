@@ -133,7 +133,6 @@ export default {
     .then((response) => {
       this.entry = response;
       this.paypalLink = this.entry.fields.middleButtonLink;
-      console.log("Received entry:", response);
     })
     .catch(console.error);
   },

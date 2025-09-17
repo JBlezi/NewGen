@@ -79,7 +79,6 @@ export default {
       this.heroHeading = this.entry.fields.heading;
       this.heroButtonLink = this.entry.fields.middleButtonLink;
       this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;
-      console.log("Received entry:", response);
     })
     .catch(console.error);
 
@@ -95,7 +94,6 @@ export default {
     getAllMovies()
       .then((response) => {
         this.movies = response.items; // Store all fetched movie entries in the movies array
-        console.log("Received movies:", response.items);
       })
       .catch(console.error)
   },

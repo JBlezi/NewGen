@@ -67,9 +67,7 @@ export default {
     ScreeningSection
   },
   created() {
-    console.log('SpecialEvent component created');
     this.userLanguage = localStorage.getItem('userLanguage');
-    console.log('User language:', this.userLanguage);
 
     Promise.all([
       getAllSpecialEventSponsors(),
@@ -81,17 +79,13 @@ export default {
       getAllLocalizedScreenings(this.userLanguage)
     ])
     .then(([sponsorsResponse, entry2Response, entryResponse, moviesResponse, classicMoviesResponse, specialEventMoviesResponse, screeningsResponse]) => {
-      console.log('All data fetched successfully');
 
-      console.log('Sponsors:', sponsorsResponse.items);
       this.sponsors = sponsorsResponse.items;
 
-      console.log('Entry2:', entry2Response);
       this.entry2 = entry2Response;
       this.description = this.entry2.fields.content2;
       this.date = this.entry2.fields.content;
 
-      console.log('Entry:', entryResponse);
       this.entry = entryResponse;
       this.heroSubheading = this.entry.fields.subheading;
       this.heroDescription = this.entry.fields.description;
@@ -100,16 +94,12 @@ export default {
       this.heroButtonText = this.entry.fields.middleButton;
       this.heroBackground = this.entry.fields.backgroundPicture.fields.file.url;
 
-      console.log('Movies:', moviesResponse.items);
       this.movies = moviesResponse.items;
 
-      console.log('Classic Movies:', classicMoviesResponse.items);
       this.classicMovies = classicMoviesResponse.items;
 
-      console.log('Special Event Movies:', specialEventMoviesResponse.items);
       const specialEventMovies = specialEventMoviesResponse.items;
 
-      console.log('Screenings:', screeningsResponse.items);
       const screenings = screeningsResponse.items;
 
       this.screeningSections = screenings.map(screening => {
@@ -137,15 +127,12 @@ export default {
             id: movie.sys.id
           }))
         };
-        console.log(`Screening section "${section.heading}":`, section);
         return section;
       });
 
       this.screeningSections = this.screeningSections.filter(section => section.movies.length > 0);
-      console.log('Filtered screening sections:', this.screeningSections);
 
       this.isLoading = false;
-      console.log('Loading complete');
     })
     .catch(error => {
       console.error('Error fetching data:', error);
